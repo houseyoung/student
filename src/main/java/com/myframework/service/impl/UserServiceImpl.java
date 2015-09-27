@@ -1,6 +1,5 @@
 package com.myframework.service.impl;
 
-import com.myframework.utils.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean checkLogin(User user){
-//        user.setPassword(MD5.md5(user.getPassword()));
+    //TODO:将密码加密
         return userMapper.countByUsernameAndPassword(user.getUsername(), user.getPassword()) > 0 ? true : false;
     }
 
