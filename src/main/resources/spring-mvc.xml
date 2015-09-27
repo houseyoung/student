@@ -27,4 +27,19 @@
     <!-- 对模型视图添加前后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/views/" p:suffix=".jsp"/>
+
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--需拦截的地址-->
+            <mvc:mapping path="/index" />
+            <mvc:mapping path="/*/*" />
+
+            <bean class="com.myframework.interceptor.LoginInterceptor">
+                <!--登录页地址-->
+                <property name="loginUrl" value="/login"/>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
