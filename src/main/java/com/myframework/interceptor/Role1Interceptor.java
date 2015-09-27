@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by houseyoung on 15/9/27 15:22.
- * 登录拦截器，Modify from http://jinnianshilongnian.iteye.com/blog/1670856 & http://www.cnblogs.com/AloneSword/p/3420286.html
+ * Created by houseyoung on 15/9/27 16:57.
+ * Modify from http://jinnianshilongnian.iteye.com/blog/1670856 & http://www.cnblogs.com/AloneSword/p/3420286.html
  */
-public class LoginInterceptor extends HandlerInterceptorAdapter {
-    private String loginUrl;
+public class Role1Interceptor extends HandlerInterceptorAdapter {
+    private String loginUrl, forbiddenUrl;
     public void setLoginUrl(String loginUrl) {
         this.loginUrl = loginUrl;
+    }
+    public void setForbiddenUrl(String forbiddenUrl) {
+        this.forbiddenUrl = forbiddenUrl;
     }
 
     @Override
@@ -25,12 +28,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
         //登录后放行其他页
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") != null) {
+        if (session.getAttribute("role1") != null) {
             return true;
         }
 
-        //非法访问时跳转回登录页
-        response.sendRedirect(request.getContextPath() + loginUrl);
+        //非法访问时跳转至错误页
+        response.sendRedirect(request.getContextPath() + forbiddenUrl);
         return false;
     }
 }

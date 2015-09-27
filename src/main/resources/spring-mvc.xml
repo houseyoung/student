@@ -28,17 +28,27 @@
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/views/" p:suffix=".jsp"/>
 
-
     <!--拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <!--需拦截的地址-->
-            <mvc:mapping path="/index" />
-            <mvc:mapping path="/*/*" />
-
-            <bean class="com.myframework.interceptor.LoginInterceptor">
-                <!--登录页地址-->
+            <!-- Role1拦截器 -->
+            <mvc:mapping path="/role1/*" />
+            <mvc:mapping path="/role1" />
+            <bean class="com.myframework.interceptor.Role1Interceptor">
+                <!--忽略地址-->
                 <property name="loginUrl" value="/login"/>
+                <property name="forbiddenUrl" value="/forbidden"/>
+            </bean>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <!-- Role2拦截器 -->
+            <mvc:mapping path="/role2/*" />
+            <mvc:mapping path="/role2" />
+            <bean class="com.myframework.interceptor.Role2Interceptor">
+                <!--忽略地址-->
+                <property name="loginUrl" value="/login"/>
+                <property name="forbiddenUrl" value="/forbidden"/>
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>

@@ -24,8 +24,9 @@
         WHERE username = #{username} AND password = #{password}
     </select>
 
+    <!--int类型在返回null时会报错，因而将null转换为0-->
     <select id="checkRole" resultType="int">
-        SELECT role FROM t_user
+        SELECT IFNULL(MAX(role), 0) AS role FROM t_user
         WHERE username = #{username} AND password = #{password}
     </select>
 </mapper>
