@@ -19,14 +19,14 @@
         SELECT * FROM t_user
     </select>
 
-    <select id="countByUsernameAndPassword" resultType="int">
-        SELECT count(1) FROM t_user
-        WHERE username = #{username} AND password = #{password}
-    </select>
-
     <!--int类型在返回null时会报错，因而将null转换为0-->
     <select id="checkRole" resultType="int">
         SELECT IFNULL(MAX(role), 0) AS role FROM t_user
         WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <select id="insert" resultMap="userResultMap">
+        INSERT INTO t_user (username, password, role)
+        VALUES(#{user.username}, #{user.password}, #{user.role})
     </select>
 </mapper>

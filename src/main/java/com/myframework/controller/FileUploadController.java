@@ -41,9 +41,4 @@ public class FileUploadController {
     public String toWebUploader(){
         return "webuploader";
     }
-
-    @RequestMapping(value = "uploadtest")
-    public String toUploadTest(){
-        return "uploadtest";
-    }
 }

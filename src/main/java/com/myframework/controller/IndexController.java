@@ -36,6 +36,7 @@ public class IndexController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(User role1, User role2, Model model, HttpServletRequest request) {
+        String pwd = role1.getPassword();
         if (userService.checkRole(role1) == 1) {
             request.getSession().setAttribute("role1", role1);
             return "redirect:role1";

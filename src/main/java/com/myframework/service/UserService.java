@@ -12,7 +12,7 @@ public interface UserService {
 
     public User queryById(int id);
 
-    public boolean checkLogin(User user);
-
     public int checkRole(User user);
+
+    public void insert(User user);
 }

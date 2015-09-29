@@ -13,11 +13,15 @@
     <tr>
         <td>ID</td>
         <td>Username</td>
+        <td>Password</td>
+        <td>Role</td>
     </tr>
     <c:forEach var="user" items="${listUser}">
         <tr>
             <td>${user.id}</td>
             <td>${user.username}</td>
+            <td>${user.password}</td>
+            <td>${user.role}</td>
             <%--<td><button onclick="location='${website}score/score_edit?id=${score.id}'">修改</button></td>--%>
             <%--<td><button onclick="location='${website}score/score_delete?id=${score.id}'">删除</button></td>--%>
         </tr>

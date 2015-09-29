@@ -13,7 +13,7 @@ public interface UserMapper {
 
     public User queryById(int id);
 
-    public int countByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
-
     public int checkRole(@Param("username")String username, @Param("password")String password);
+
+    public void insert(@Param("user")User user);
 }
