@@ -10,7 +10,8 @@
         <!--<typeAlias alias="Admin" type="com.myframework.entity.Admin"/>-->
         <!--<typeAlias alias="Class" type="com.myframework.entity.Class"/>-->
         <!--<typeAlias alias="Course" type="com.myframework.entity.Course"/>-->
-        <!--<typeAlias alias="Department" type="com.myframework.entity.Department"/>-->
+        <typeAlias alias="Department" type="com.myframework.entity.Department"/>
+        <typeAlias alias="DepartmentDto" type="com.myframework.dto.DepartmentDto"/>
         <!--<typeAlias alias="Health" type="com.myframework.entity.Health"/>-->
         <typeAlias alias="School" type="com.myframework.entity.School"/>
         <!--<typeAlias alias="Score" type="com.myframework.entity.Score"/>-->
