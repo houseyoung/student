@@ -12,7 +12,7 @@
   <title>InsertSchool</title>
 </head>
 <body>
-<form action="${website}insert" method="post">
+<form action="${website}/school/insert" method="post">
   学院名称: <input type="text" name="name" /> <br />
   所属大学: <input type="text" name="university" /> <br />
   <input type="submit" value="增加" />
