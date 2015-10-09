@@ -21,7 +21,7 @@ public class DepartmentController {
 
     //显示、搜索
     @RequestMapping(value = "")
-    public String toDepartmentList(String keywords, Model model){
+    public String toList(String keywords, Model model){
         List<DepartmentDto> listDepartment = departmentService.listDepartment(keywords);
         model.addAttribute("listDepartment", listDepartment);
         return "department/list";
@@ -29,33 +29,33 @@ public class DepartmentController {
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
-    public String toDepartmentInsert(){
+    public String toInsert(){
         return "department/insert";
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String departmentInsert(DepartmentDto departmentDto){
+    public String insert(DepartmentDto departmentDto){
         departmentService.insert(departmentDto);
         return "redirect:";
     }
 
     //删除
     @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String toDepartmentDelete(Integer id){
+    public String toDelete(Integer id){
         departmentService.delete(id);
         return "redirect:";
     }
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toDepartmentEdit(Integer id, Model model){
+    public String toEdit(Integer id, Model model){
         DepartmentDto departmentDto = departmentService.queryById(id);
         model.addAttribute("departmentDto", departmentDto);
         return "department/edit";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String departmentEdit(DepartmentDto departmentDto){
+    public String edit(DepartmentDto departmentDto){
         departmentService.update(departmentDto);
         return "redirect:";
     }

@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-  <title>InsertSchool</title>
+  <title>InsertDepartment</title>
 </head>
 <body>
 <form action="${website}/department/insert" method="post">

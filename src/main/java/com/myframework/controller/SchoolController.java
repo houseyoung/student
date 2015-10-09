@@ -2,7 +2,6 @@ package com.myframework.controller;
 
 import com.myframework.entity.School;
 import com.myframework.service.SchoolService;
-import com.myframework.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,7 @@ public class SchoolController {
 
     //显示、搜索
     @RequestMapping(value = {"", "/"})
-    public String toSchoolList(String keywords, Model model){
+    public String toList(String keywords, Model model){
         List<School> listSchool = schoolService.listSchool(keywords);
         model.addAttribute("listSchool", listSchool);
         return "school/list";
@@ -30,33 +29,33 @@ public class SchoolController {
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
-    public String toSchoolInsert(){
+    public String toInsert(){
         return "school/insert";
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String schoolInsert(School school){
+    public String insert(School school){
         schoolService.insert(school);
         return "redirect:";
     }
 
     //删除
     @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String toSchoolDelete(Integer id){
+    public String toDelete(Integer id){
         schoolService.delete(id);
         return "redirect:";
     }
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toSchoolEdit(Integer id, Model model){
+    public String toEdit(Integer id, Model model){
         School school = schoolService.queryById(id);
         model.addAttribute("school", school);
         return "school/edit";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String SchoolEdit(School school){
+    public String edit(School school){
         schoolService.update(school);
         return "redirect:";
     }

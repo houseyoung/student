@@ -7,7 +7,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,13 +25,13 @@
     <td>Name</td>
     <td>SchoolName</td>
   </tr>
-  <c:forEach var="department" items="${listDepartment}">
+  <c:forEach var="departmentDto" items="${listDepartment}">
     <tr>
-      <td>${department.id}</td>
-      <td>${department.departmentName}</td>
-      <td>${department.schoolName}</td>
-      <td><button onclick="location='${website}/department/edit?id=${department.id}'">修改</button></td>
-      <td><button onclick="location='${website}/department/delete?id=${department.id}'">删除</button></td>
+      <td>${departmentDto.id}</td>
+      <td>${departmentDto.departmentName}</td>
+      <td>${departmentDto.schoolName}</td>
+      <td><button onclick="location='${website}/department/edit?id=${departmentDto.id}'">修改</button></td>
+      <td><button onclick="location='${website}/department/delete?id=${departmentDto.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>
