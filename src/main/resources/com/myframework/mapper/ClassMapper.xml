@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myframework.mapper.ClassMapper">
+    <select id="listClass" resultType="ClassDto">
+        SELECT
+        t_class.id AS id,
+        t_department.id AS departmentId,
+        t_class.name AS className,
+        t_department.name AS departmentName,
+        t_school.name AS schoolName
+        FROM t_class
+        LEFT JOIN t_department ON t_class.department_id=t_department.id
+        LEFT JOIN t_school ON t_class.school_id = t_school.id
+        <where>
+            <if test="keywords!=null">
+                t_class.name LIKE "%"#{keywords}"%"
+            </if>
+        </where>
+        ORDER BY id
+    </select>
+
+    <insert id="insert">
+        INSERT INTO t_class (name, department_id, school_id)
+        VALUES (#{classDto.className},
+        (SELECT id FROM t_department WHERE name = #{classDto.departmentName}),
+        (SELECT school_id FROM t_department WHERE name = #{classDto.departmentName}
+        AND school_id = (SELECT id FROM t_school WHERE name = #{classDto.schoolName})))
+    </insert>
+
+    <select id="queryById" resultType="ClassDto">
+        SELECT
+        t_class.id AS id,
+        t_department.id AS departmentId,
+        t_class.name AS className,
+        t_department.name AS departmentName,
+        t_school.name AS schoolName
+        FROM t_class
+        LEFT JOIN t_department ON t_class.department_id=t_department.id
+        LEFT JOIN t_school ON t_class.school_id = t_school.id
+        WHERE t_class.id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE t_class
+        SET name = #{classDto.className},
+        department_id = (SELECT id FROM t_department WHERE name = #{classDto.departmentName}),
+        school_id = (SELECT school_id FROM t_department WHERE name = #{classDto.departmentName}
+                     AND school_id = (SELECT id FROM t_school WHERE name = #{classDto.schoolName}))
+        WHERE id = #{classDto.id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_class WHERE id = #{id}
+    </delete>
+</mapper>
