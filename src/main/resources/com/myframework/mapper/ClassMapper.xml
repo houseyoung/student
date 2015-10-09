@@ -7,34 +7,34 @@
         SELECT
         t_class.id AS id,
         t_department.id AS departmentId,
-        t_class.name AS className,
-        t_department.name AS departmentName,
-        t_school.name AS schoolName
+        t_class.class_name AS className,
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
         FROM t_class
         LEFT JOIN t_department ON t_class.department_id=t_department.id
         LEFT JOIN t_school ON t_class.school_id = t_school.id
         <where>
             <if test="keywords!=null">
-                t_class.name LIKE "%"#{keywords}"%"
+                t_class.class_name LIKE "%"#{keywords}"%"
             </if>
         </where>
         ORDER BY id
     </select>
 
     <insert id="insert">
-        INSERT INTO t_class (name, department_id, school_id)
+        INSERT INTO t_class (class_name, department_id, school_id)
         VALUES (#{classDto.className},
-        (SELECT id FROM t_department WHERE name = #{classDto.departmentName}),
-        (SELECT school_id FROM t_department WHERE name = #{classDto.departmentName}
-        AND school_id = (SELECT id FROM t_school WHERE name = #{classDto.schoolName})))
+        (SELECT id FROM t_department WHERE department_name = #{classDto.departmentName}),
+        (SELECT school_id FROM t_department WHERE department_name = #{classDto.departmentName}
+        AND school_id = (SELECT id FROM t_school WHERE school_name = #{classDto.schoolName})))
     </insert>
 
     <select id="queryById" resultType="ClassDto">
         SELECT
         t_class.id AS id,
-        t_department.id AS departmentId,
-        t_class.name AS className,
-        t_department.name AS departmentName,
+        t_class.class_name AS className,
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
         t_school.name AS schoolName
         FROM t_class
         LEFT JOIN t_department ON t_class.department_id=t_department.id
@@ -44,10 +44,10 @@
 
     <update id="update">
         UPDATE t_class
-        SET name = #{classDto.className},
-        department_id = (SELECT id FROM t_department WHERE name = #{classDto.departmentName}),
-        school_id = (SELECT school_id FROM t_department WHERE name = #{classDto.departmentName}
-                     AND school_id = (SELECT id FROM t_school WHERE name = #{classDto.schoolName}))
+        SET class_name = #{classDto.className},
+        department_id = (SELECT id FROM t_department WHERE department_name = #{classDto.departmentName}),
+        school_id = (SELECT school_id FROM t_department WHERE department_name = #{classDto.departmentName}
+                     AND school_id = (SELECT id FROM t_school WHERE school_name = #{classDto.schoolName}))
         WHERE id = #{classDto.id}
     </update>
 

@@ -7,29 +7,29 @@
         SELECT
         t_department.id AS id,
         t_school.id AS schoolId,
-        t_department.name AS departmentName,
-        t_school.name AS schoolName
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
         FROM t_department
         LEFT JOIN t_school ON t_department.school_id=t_school.id
         <where>
             <if test="keywords!=null">
-                t_department.name LIKE "%"#{keywords}"%"
+                t_department.department_name LIKE "%"#{keywords}"%"
             </if>
         </where>
         ORDER BY id
     </select>
     <insert id="insert">
-        INSERT INTO t_department (name, school_id)
+        INSERT INTO t_department (department_name, school_id)
         VALUES (#{departmentDto.departmentName},
-        (SELECT id FROM t_school WHERE name = #{departmentDto.schoolName}))
+        (SELECT id FROM t_school WHERE school_name = #{departmentDto.schoolName}))
     </insert>
 
     <select id="queryById" resultType="DepartmentDto">
         SELECT
         t_department.id AS id,
         t_school.id AS schoolId,
-        t_department.name AS departmentName,
-        t_school.name AS schoolName
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
         FROM t_department
         LEFT JOIN t_school ON t_department.school_id=t_school.id
         WHERE t_department.id = #{id}
@@ -37,8 +37,8 @@
 
     <update id="update">
         UPDATE t_department
-        SET name = #{departmentDto.departmentName},
-            school_id = (SELECT id FROM t_school WHERE name = #{departmentDto.schoolName})
+        SET department_name = #{departmentDto.departmentName},
+            school_id = (SELECT id FROM t_school WHERE school_name = #{departmentDto.schoolName})
         WHERE id = #{departmentDto.id}
     </update>
 
