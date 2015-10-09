@@ -16,7 +16,8 @@
         <!--<typeAlias alias="Health" type="com.myframework.entity.Health"/>-->
         <typeAlias alias="School" type="com.myframework.entity.School"/>
         <!--<typeAlias alias="Score" type="com.myframework.entity.Score"/>-->
-        <!--<typeAlias alias="Student" type="com.myframework.entity.Student"/>-->
+        <typeAlias alias="Student" type="com.myframework.entity.Student"/>
+        <typeAlias alias="StudentDto" type="com.myframework.dto.StudentDto"/>
     </typeAliases>
 
     <!-- 映射Mapper -->
