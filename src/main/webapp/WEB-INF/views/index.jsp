@@ -23,5 +23,6 @@
 <a href="${website}/department">系</a><br>
 <a href="${website}/class">班级</a><br>
 <a href="${website}/student">学生</a><br>
+<a href="${website}/course">课程</a><br>
 </body>
 </html>

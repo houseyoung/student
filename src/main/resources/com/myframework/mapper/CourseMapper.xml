@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myframework.mapper.CourseMapper">
+    <resultMap id="courseResultMap" type="Course">
+        <id column="id" property="id"/>
+        <result column="course_name" property="name"/>
+        <result column="course_hour" property="courseHour"/>
+        <result column="credit" property="credit"/>
+        <result column="teacher_name" property="teacherName"/>
+        <result column="place" property="place"/>
+    </resultMap>
+
+    <select id="listCourse" resultMap="courseResultMap">
+        SELECT * FROM t_Course
+        <if test="keywords!=null">
+            <where>
+                course_name LIKE "%"#{keywords}"%"
+            </where>
+        </if>
+        ORDER BY id
+    </select>
+
+    <insert id="insert">
+        INSERT INTO t_course (id, course_name, course_hour, credit, teacher_name, place)
+        VALUES(#{course.id}, #{course.name}, #{course.courseHour}, #{course.credit},
+        #{course.teacherName}, #{course.place})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM t_course WHERE id = #{id}
+    </delete>
+
+    <select id="queryById" resultMap="courseResultMap">
+        SELECT * FROM t_course WHERE id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE t_course
+        SET
+        id = #{course.id},
+        course_name = #{course.name},
+        course_hour = #{course.courseHour},
+        credit = #{course.credit},
+        teacher_name = #{course.teacherName},
+        place = #{course.place}
+        WHERE id = #{course.id}
+    </update>
+</mapper>
