@@ -44,4 +44,25 @@ public class StudentServiceImpl implements StudentService{
     public void update(@Param("studentDto") StudentDto studentDto){
         studentMapper.update(studentDto);
     }
+
+    @Override
+    public StudentDto showHimself(@Param("studentId") String studentId) {
+        return studentMapper.showHimself(studentId);
+    }
+
+    @Override
+    public int checkLogin(@Param("studentDto") StudentDto studentDto){
+        studentDto.setPassword(MD5Util.md5(studentDto.getPassword()));
+        return studentMapper.checkLogin(studentDto.getStudentId(), studentDto.getPassword());
+    }
+
+    @Override
+    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password) {
+        studentMapper.editPassword(studentDto, MD5Util.md5(password));
+    }
+
+    @Override
+    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest) {
+        studentMapper.editInterest(studentDto, interest);
+    }
 }

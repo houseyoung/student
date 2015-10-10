@@ -18,4 +18,12 @@ public interface StudentService {
     public StudentDto queryById(@Param("id") int id);
 
     public void update(@Param("studentDto") StudentDto studentDto);
+
+    public StudentDto showHimself(@Param("studentId") String studentId);
+
+    public int checkLogin(@Param("studentDto") StudentDto studentDto);
+
+    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password);
+
+    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest);
 }

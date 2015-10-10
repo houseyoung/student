@@ -85,4 +85,41 @@
     <delete id="delete">
         DELETE FROM t_student WHERE id = #{id}
     </delete>
+
+    <select id="showHimself" resultType="StudentDto">
+        SELECT
+        t_student.id AS id,
+        t_student.student_id AS studentId,
+        t_student.student_name AS studentName,
+        t_student.sex AS sex,
+        t_class.class_name AS className,
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName,
+        t_student.birthday AS birthday,
+        t_student.hometown AS hometown,
+        t_student.interest AS interest
+        FROM t_student
+        LEFT JOIN t_class ON t_student.class_id = t_class.id
+        LEFT JOIN t_department ON t_class.department_id = t_department.id
+        LEFT JOIN t_school ON t_department.school_id = t_school.id
+        WHERE t_student.student_id = #{studentId}
+    </select>
+
+    <!--int类型在返回null时会报错，因而将null转换为0-->
+    <select id="checkLogin" resultType="int">
+        SELECT IFNULL(MAX(student_id), 0) AS student_id FROM t_student
+        WHERE student_id = #{studentId} AND password = #{password}
+    </select>
+
+    <update id="editPassword">
+        UPDATE t_student
+        SET password = #{password}
+        WHERE student_id = #{studentDto.studentId}
+    </update>
+
+    <update id="editInterest">
+        UPDATE t_student
+        SET interest = #{interest}
+        WHERE student_id = #{studentDto.studentId}
+    </update>
 </mapper>

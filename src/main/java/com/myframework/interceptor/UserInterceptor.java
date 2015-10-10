@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by houseyoung on 15/9/27 16:57.
+ * Created by houseyoung on 2015/10/10 15:20.
  * Modify from http://jinnianshilongnian.iteye.com/blog/1670856 & http://www.cnblogs.com/AloneSword/p/3420286.html
  */
-public class Role1Interceptor extends HandlerInterceptorAdapter {
+public class UserInterceptor extends HandlerInterceptorAdapter{
     private String loginUrl, forbiddenUrl;
     public void setLoginUrl(String loginUrl) {
         this.loginUrl = loginUrl;
@@ -28,7 +28,7 @@ public class Role1Interceptor extends HandlerInterceptorAdapter {
 
         //登录后放行其他页
         HttpSession session = request.getSession();
-        if (session.getAttribute("role1") != null) {
+        if (session.getAttribute("studentDto") != null) {
             return true;
         }
 

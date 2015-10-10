@@ -18,4 +18,12 @@ public interface StudentMapper {
     public StudentDto queryById(@Param("id") int id);
 
     public void update(@Param("studentDto") StudentDto studentDto);
+
+    public StudentDto showHimself(@Param("studentId") String studentId);
+
+    public int checkLogin(@Param("studentId")String studentId, @Param("password")String password);
+
+    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password);
+
+    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest);
 }
