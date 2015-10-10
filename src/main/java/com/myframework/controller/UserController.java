@@ -1,7 +1,9 @@
 package com.myframework.controller;
 
+import com.myframework.dto.ScoreDto;
 import com.myframework.dto.StudentDto;
 import com.myframework.entity.Student;
+import com.myframework.service.ScoreService;
 import com.myframework.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by houseyoung on 15/9/24 23:05.
@@ -19,6 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     @Resource
     private StudentService studentService;
+
+    @Resource
+    private ScoreService scoreService;
 
     //记录登录的学号
     private String studentId;
@@ -102,5 +108,13 @@ public class UserController {
         //清除记录的学号
         studentId = null;
         return "redirect:";
+    }
+
+    //成绩页
+    @RequestMapping(value = "score")
+    public String toScore(Model model){
+        List<ScoreDto> listHimself = scoreService.listHimself(studentId);
+        model.addAttribute("listHimself", listHimself);
+        return "user/score";
     }
 }

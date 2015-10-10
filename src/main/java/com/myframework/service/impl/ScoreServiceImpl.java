@@ -42,4 +42,9 @@ public class ScoreServiceImpl implements ScoreService{
         scoreMapper.update(scoreDto);
     }
 
+    @Override
+    public List<ScoreDto> listHimself(@Param("studentId") String studentId) {
+        return scoreMapper.listHimself(studentId);
+    }
+
 }

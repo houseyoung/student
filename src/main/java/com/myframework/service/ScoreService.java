@@ -18,4 +18,6 @@ public interface ScoreService {
     public ScoreDto queryById(@Param("id") int id);
 
     public void update(@Param("scoreDto") ScoreDto scoreDto);
+
+    public List<ScoreDto> listHimself(@Param("studentId") String studentId);
 }
