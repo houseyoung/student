@@ -14,7 +14,7 @@ import java.util.List;
  * Created by houseyoung on 15/10/8 21:34.
  */
 @Controller
-@RequestMapping(value = "school")
+@RequestMapping(value = "admin/school")
 public class SchoolController {
     @Resource
     private SchoolService schoolService;
@@ -24,13 +24,13 @@ public class SchoolController {
     public String toList(String keywords, Model model){
         List<School> listSchool = schoolService.listSchool(keywords);
         model.addAttribute("listSchool", listSchool);
-        return "school/list";
+        return "admin/school/list";
     }
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(){
-        return "school/insert";
+        return "admin/school/insert";
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
@@ -51,7 +51,7 @@ public class SchoolController {
     public String toEdit(Integer id, Model model){
         School school = schoolService.queryById(id);
         model.addAttribute("school", school);
-        return "school/edit";
+        return "admin/school/edit";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)

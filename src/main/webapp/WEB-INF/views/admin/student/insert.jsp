@@ -12,7 +12,7 @@
   <title>InsertStudent</title>
 </head>
 <body>
-<form action="${website}/student/insert" method="post">
+<form action="${website}/admin/student/insert" method="post">
   学号: <input type="text" name="studentId" /> <br />
   姓名: <input type="text" name="studentName" /> <br />
   性别: <input type="text" name="sex" /> <br />

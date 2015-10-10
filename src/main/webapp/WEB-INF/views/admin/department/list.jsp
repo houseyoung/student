@@ -13,9 +13,9 @@
   <title>DepartmentList</title>
 </head>
 <body>
-<button onclick="location='${website}/department/insert'">增加</button>
+<button onclick="location='${website}/admin/department/insert'">增加</button>
 <p>
-<form method=post action="${website}/department">
+<form method=post action="${website}/admin/department">
   <input type="text" name="keywords"><input type="submit" value="搜索">
 </form>
 <p>
@@ -30,8 +30,8 @@
       <td>${departmentDto.id}</td>
       <td>${departmentDto.departmentName}</td>
       <td>${departmentDto.schoolName}</td>
-      <td><button onclick="location='${website}/department/edit?id=${departmentDto.id}'">修改</button></td>
-      <td><button onclick="location='${website}/department/delete?id=${departmentDto.id}'">删除</button></td>
+      <td><button onclick="location='${website}/admin/department/edit?id=${departmentDto.id}'">修改</button></td>
+      <td><button onclick="location='${website}/admin/department/delete?id=${departmentDto.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>

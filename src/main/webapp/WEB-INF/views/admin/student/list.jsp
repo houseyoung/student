@@ -12,9 +12,9 @@
   <title>StudentList</title>
 </head>
 <body>
-<button onclick="location='${website}/student/insert'">增加</button>
+<button onclick="location='${website}/admin/student/insert'">增加</button>
 <p>
-<form method=post action="${website}/student">
+<form method=post action="${website}/admin/student">
   <input type="text" name="keywords"><input type="submit" value="搜索">
 </form>
 <p>
@@ -41,8 +41,8 @@
       <td>${studentDto.birthday}</td>
       <td>${studentDto.hometown}</td>
       <td>${studentDto.interest}</td>
-      <td><button onclick="location='${website}/student/edit?id=${studentDto.id}'">修改</button></td>
-      <td><button onclick="location='${website}/student/delete?id=${studentDto.id}'">删除</button></td>
+      <td><button onclick="location='${website}/admin/student/edit?id=${studentDto.id}'">修改</button></td>
+      <td><button onclick="location='${website}/admin/student/delete?id=${studentDto.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>

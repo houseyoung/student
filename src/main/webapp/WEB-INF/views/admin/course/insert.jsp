@@ -12,7 +12,7 @@
     <title>InsertCourse</title>
 </head>
 <body>
-<form action="${website}/course/insert" method="post">
+<form action="${website}/admin/course/insert" method="post">
     课程名称: <input type="text" name="name" /> <br />
     课时: <input type="text" name="courseHour" /> <br />
     学分: <input type="text" name="credit" /> <br />

@@ -19,12 +19,12 @@
     <%--<input type="reset" value="重置" />--%>
   <%--</form>--%>
 <%--</div>--%>
-<a href="${website}/school">学院</a><br>
-<a href="${website}/department">系</a><br>
-<a href="${website}/class">班级</a><br>
-<a href="${website}/student">学生</a><br>
-<a href="${website}/course">课程</a><br>
-<a href="${website}/score">成绩</a><br>
+<a href="${website}/admin/school">学院</a><br>
+<a href="${website}/admin/department">系</a><br>
+<a href="${website}/admin/class">班级</a><br>
+<a href="${website}/admin/student">学生</a><br>
+<a href="${website}/admin/course">课程</a><br>
+<a href="${website}/admin/score">成绩</a><br>
 ----------------------<br>
 <a href="${website}/user">学生登录</a><br>
 </body>

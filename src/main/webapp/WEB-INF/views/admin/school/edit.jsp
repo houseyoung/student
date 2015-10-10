@@ -2,20 +2,20 @@
   Created by IntelliJ IDEA.
   User: houseyoung
   Date: 15/10/8
-  Time: 22:46
+  Time: 21:59
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-  <title>InsertDepartment</title>
+  <title>EditSchool</title>
 </head>
 <body>
-<form action="${website}/department/insert" method="post">
-  系名称: <input type="text" name="departmentName" /> <br />
-  所属学院: <input type="text" name="schoolName" /> <br />
-  <input type="submit" value="增加" />
+<form action="${website}/admin/school/edit?id=${school.id}" method="post">
+  学院名称: <input type="text" name="name" value="${school.name}"/> <br />
+  所属大学: <input type="text" name="university" value="${school.university}"/> <br />
+  <input type="submit" value="修改" />
   <input type="reset" value="重置" />
 </form>
 </body>
