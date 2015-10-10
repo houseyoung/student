@@ -24,6 +24,7 @@
 <a href="${website}/class">班级</a><br>
 <a href="${website}/student">学生</a><br>
 <a href="${website}/course">课程</a><br>
+<a href="${website}/score">成绩</a><br>
 ----------------------<br>
 <a href="${website}/user">学生登录</a><br>
 </body>

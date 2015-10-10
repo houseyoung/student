@@ -15,7 +15,8 @@
         <typeAlias alias="DepartmentDto" type="com.myframework.dto.DepartmentDto"/>
         <!--<typeAlias alias="Health" type="com.myframework.entity.Health"/>-->
         <typeAlias alias="School" type="com.myframework.entity.School"/>
-        <!--<typeAlias alias="Score" type="com.myframework.entity.Score"/>-->
+        <typeAlias alias="Score" type="com.myframework.entity.Score"/>
+        <typeAlias alias="ScoreDto" type="com.myframework.dto.ScoreDto"/>
         <typeAlias alias="Student" type="com.myframework.entity.Student"/>
         <typeAlias alias="StudentDto" type="com.myframework.dto.StudentDto"/>
     </typeAliases>
