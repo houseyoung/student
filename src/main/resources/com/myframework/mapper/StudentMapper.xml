@@ -50,7 +50,7 @@
     <insert id="insert">
         INSERT INTO t_student (student_id, password, student_name, sex, class_id, birthday, hometown, interest)
         VALUES (#{studentDto.studentId},
-        #{studentDto.studentId},
+        #{studentDto.password},
         #{studentDto.studentName},
         #{studentDto.sex},
         (SELECT t_class.id FROM t_class

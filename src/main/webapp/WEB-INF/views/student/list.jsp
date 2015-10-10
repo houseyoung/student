@@ -41,8 +41,8 @@
       <td>${studentDto.birthday}</td>
       <td>${studentDto.hometown}</td>
       <td>${studentDto.interest}</td>
-      <td><button onclick="location='${website}student/edit?id=${studentDto.id}'">修改</button></td>
-      <td><button onclick="location='${website}student/delete?id=${studentDto.id}'">删除</button></td>
+      <td><button onclick="location='${website}/student/edit?id=${studentDto.id}'">修改</button></td>
+      <td><button onclick="location='${website}/student/delete?id=${studentDto.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>

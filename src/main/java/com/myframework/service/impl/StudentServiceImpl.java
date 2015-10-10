@@ -4,6 +4,7 @@ import com.myframework.dto.StudentDto;
 import com.myframework.entity.Student;
 import com.myframework.mapper.StudentMapper;
 import com.myframework.service.StudentService;
+import com.myframework.util.MD5Util;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void insert(@Param("studentDto") StudentDto studentDto){
+        studentDto.setPassword(MD5Util.md5(studentDto.getStudentId()));
         studentMapper.insert(studentDto);
     }
 
