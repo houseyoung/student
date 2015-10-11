@@ -16,7 +16,9 @@
 <button onclick="location='${website}/admin/score/insert'">增加</button>
 <p>
 <form method=post action="${website}/admin/score">
-  <input type="text" name="keywords"><input type="submit" value="搜索">
+  学号：<input type="text" name="studentId">
+  课程名称：<input type="text" name="courseName">
+  <input type="submit" value="搜索">
 </form>
 <p>
 <table>

@@ -22,9 +22,10 @@
 <a href="${website}/admin/school">学院</a><br>
 <a href="${website}/admin/department">系</a><br>
 <a href="${website}/admin/class">班级</a><br>
-<a href="${website}/admin/student">学生</a><br>
 <a href="${website}/admin/course">课程</a><br>
 <a href="${website}/admin/score">成绩</a><br>
+<a href="${website}/admin/student">学生</a><br>
+<a href="${website}/admin/health">健康</a><br>
 ----------------------<br>
 <a href="${website}/user">学生登录</a><br>
 </body>

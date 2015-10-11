@@ -21,8 +21,8 @@ public class ScoreController {
 
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String keywords, Model model){
-        List<ScoreDto> listScore = scoreService.listScore(keywords);
+    public String toList(String studentId, String courseName, Model model){
+        List<ScoreDto> listScore = scoreService.listScore(studentId, courseName);
         model.addAttribute("listScore", listScore);
         return "admin/score/list";
     }
