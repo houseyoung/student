@@ -5,14 +5,13 @@
 <configuration>
     <!-- 命名空间 -->
     <typeAliases>
-        <!--<typeAlias alias="Admin" type="com.myframework.entity.Admin"/>-->
         <typeAlias alias="Class" type="com.myframework.entity.Class"/>
         <typeAlias alias="ClassDto" type="com.myframework.dto.ClassDto"/>
         <typeAlias alias="Course" type="com.myframework.entity.Course"/>
         <typeAlias alias="Department" type="com.myframework.entity.Department"/>
         <typeAlias alias="DepartmentDto" type="com.myframework.dto.DepartmentDto"/>
-        <!--<typeAlias alias="Health" type="com.myframework.entity.Health"/>-->
-        <!--<typeAlias alias="HealthDto" type="com.myframework.dto.HealthDto"/>-->
+        <typeAlias alias="Health" type="com.myframework.entity.Health"/>
+        <typeAlias alias="HealthDto" type="com.myframework.dto.HealthDto"/>
         <typeAlias alias="School" type="com.myframework.entity.School"/>
         <typeAlias alias="Score" type="com.myframework.entity.Score"/>
         <typeAlias alias="ScoreDto" type="com.myframework.dto.ScoreDto"/>
