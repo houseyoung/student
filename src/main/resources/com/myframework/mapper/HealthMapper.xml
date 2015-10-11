@@ -54,4 +54,17 @@
     <delete id="delete">
         DELETE FROM t_health WHERE id = #{id}
     </delete>
+
+    <select id="listHimself" resultType="HealthDto">
+        SELECT
+        t_health.id AS id,
+        t_health.student_id AS studentId,
+        t_student.student_name AS studentName,
+        t_health.height AS height,
+        t_health.weight AS weight,
+        t_health.nutrition AS nutrition
+        FROM t_health
+        LEFT JOIN t_student ON t_health.student_id = t_student.student_id
+        WHERE t_health.student_id = #{studentId}
+    </select>
 </mapper>

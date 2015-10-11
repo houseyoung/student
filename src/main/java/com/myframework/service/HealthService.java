@@ -18,4 +18,6 @@ public interface HealthService {
     public HealthDto queryById(@Param("id") int id);
 
     public void update(@Param("healthDto") HealthDto healthDto);
+
+    public List<HealthDto> listHimself(@Param("studentId") String studentId);
 }

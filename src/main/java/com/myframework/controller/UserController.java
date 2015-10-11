@@ -1,8 +1,10 @@
 package com.myframework.controller;
 
+import com.myframework.dto.HealthDto;
 import com.myframework.dto.ScoreDto;
 import com.myframework.dto.StudentDto;
 import com.myframework.entity.Student;
+import com.myframework.service.HealthService;
 import com.myframework.service.ScoreService;
 import com.myframework.service.StudentService;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class UserController {
 
     @Resource
     private ScoreService scoreService;
+
+    @Resource
+    private HealthService healthService;
 
     //记录登录的学号
     private String studentId;
@@ -116,5 +121,13 @@ public class UserController {
         List<ScoreDto> listHimself = scoreService.listHimself(studentId);
         model.addAttribute("listHimself", listHimself);
         return "user/score";
+    }
+
+    //健康页
+    @RequestMapping(value = "health")
+    public String toHealth(Model model){
+        List<HealthDto> listHimself = healthService.listHimself(studentId);
+        model.addAttribute("listHimself", listHimself);
+        return "user/health";
     }
 }

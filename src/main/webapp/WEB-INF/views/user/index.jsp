@@ -37,7 +37,8 @@
         <td>
             <button onclick="location='${website}/user/editinterest'">修改兴趣</button>
             <button onclick="location='${website}/user/editpassword'">修改密码</button>
-            <button onclick="location='${website}/user/score'">查看全部成绩</button>
+            <button onclick="location='${website}/user/score'">查看成绩</button>
+            <button onclick="location='${website}/user/health'">查看健康信息</button>
         </td>
     </tr>
 </table>

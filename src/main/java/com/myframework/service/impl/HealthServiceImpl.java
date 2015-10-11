@@ -1,6 +1,7 @@
 package com.myframework.service.impl;
 
 import com.myframework.dto.HealthDto;
+import com.myframework.entity.Health;
 import com.myframework.mapper.HealthMapper;
 import com.myframework.service.HealthService;
 import com.myframework.util.MD5Util;
@@ -43,5 +44,8 @@ public class HealthServiceImpl implements HealthService {
         healthMapper.update(healthDto);
     }
 
-
+    @Override
+    public List<HealthDto> listHimself(@Param("studentId") String studentId) {
+        return healthMapper.listHimself(studentId);
+    }
 }
