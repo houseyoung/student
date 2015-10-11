@@ -20,7 +20,7 @@
         LEFT JOIN t_department ON t_class.department_id = t_department.id
         LEFT JOIN t_school ON t_department.school_id = t_school.id
         <where>
-            <if test="keywords!=null">
+            <if test="keywords!=null and keywords!=''">
                 t_student.student_name LIKE "%"#{keywords}"%"
             </if>
         </where>

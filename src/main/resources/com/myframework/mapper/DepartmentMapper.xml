@@ -12,7 +12,7 @@
         FROM t_department
         LEFT JOIN t_school ON t_department.school_id=t_school.id
         <where>
-            <if test="keywords!=null">
+            <if test="keywords!=null and keywords!=''">
                 t_department.department_name LIKE "%"#{keywords}"%"
             </if>
         </where>
