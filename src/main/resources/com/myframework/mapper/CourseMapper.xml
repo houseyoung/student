@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="listCourse" resultMap="courseResultMap">
-        SELECT * FROM t_Course
+        SELECT * FROM t_course
         <if test="keywords!=null and keywords!=''">
             <where>
                 course_name LIKE "%"#{keywords}"%"
