@@ -24,7 +24,7 @@ public class ConstantsFilter implements Filter{
         String path = httpRequest.getContextPath();
 
         basePath = httpRequest.getScheme() + "://" + httpRequest.getServerName() + ":"
-                + httpRequest.getServerPort() + path;
+                + httpRequest.getServerPort() + path + "";
 
         request.setAttribute("website", basePath);
         chain.doFilter(request, response);
