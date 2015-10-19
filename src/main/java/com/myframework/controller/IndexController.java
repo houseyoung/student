@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "")
 public class IndexController {
-    @RequestMapping(value = {"", "/", "login"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"", "/", "index"}, method = RequestMethod.GET)
     public String toLogin()
     {
 //        if (request.getSession().getAttribute("role1") != null){

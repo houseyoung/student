@@ -92,4 +92,14 @@
         <!--<error-code>500</error-code>-->
         <!--<location>/WEB-INF/500.jsp</location>-->
     <!--</error-page>-->
+
+    <!--获取${website}地址-->
+    <filter>
+        <filter-name>ConstantsFilter</filter-name>
+        <filter-class>com.myframework.filter.ConstantsFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ConstantsFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
 </web-app>
