@@ -3,7 +3,6 @@ package com.myframework.controller;
 import com.myframework.dto.HealthDto;
 import com.myframework.dto.ScoreDto;
 import com.myframework.dto.StudentDto;
-import com.myframework.entity.Student;
 import com.myframework.service.HealthService;
 import com.myframework.service.ScoreService;
 import com.myframework.service.StudentService;
@@ -95,7 +94,9 @@ public class UserController {
 
     //修改兴趣
     @RequestMapping(value = "editinterest", method = RequestMethod.GET)
-    public String toEditInterest(){
+    public String toEditInterest(Model model){
+        StudentDto showHimself = studentService.showHimself(studentId);
+        model.addAttribute("showHimself", showHimself);
         return "user/editinterest";
     }
 
