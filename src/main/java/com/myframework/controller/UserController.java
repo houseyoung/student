@@ -3,6 +3,7 @@ package com.myframework.controller;
 import com.myframework.dto.HealthDto;
 import com.myframework.dto.ScoreDto;
 import com.myframework.dto.StudentDto;
+import com.myframework.entity.Student;
 import com.myframework.service.HealthService;
 import com.myframework.service.ScoreService;
 import com.myframework.service.StudentService;
@@ -33,18 +34,20 @@ public class UserController {
     //记录登录的学号
     private String studentId;
 
-    @RequestMapping(value = {"", "login"}, method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String toLogin(HttpServletRequest request)
     {
         if (request.getSession().getAttribute("studentDto") != null){
             return "redirect:user/index";
         }
         else {
+            //清除记录的学号
+            studentId = null;
             return "user/login";
         }
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "login"}, method = RequestMethod.GET)
     public String toIndex(HttpServletRequest request)
     {
         if (request.getSession().getAttribute("studentDto") != null){
@@ -94,9 +97,8 @@ public class UserController {
 
     //修改兴趣
     @RequestMapping(value = "editinterest", method = RequestMethod.GET)
-    public String toEditInterest(Model model){
-        StudentDto showHimself = studentService.showHimself(studentId);
-        model.addAttribute("showHimself", showHimself);
+    public String toEditInterest(){
+
         return "user/editinterest";
     }
 
