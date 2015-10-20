@@ -11,7 +11,7 @@
 </head>
 <body>
 <div style="width: 25%; margin-left: auto; margin-right: auto;">
-    <form action="${website}/user/editinterest" method="post">
+    <form action="${website}user/editinterest" method="post">
         兴趣: <input type="text" name="interest"  value="${showHimself.interest}"/> <br/>
         <input type="submit" value="修改"/>
     </form>

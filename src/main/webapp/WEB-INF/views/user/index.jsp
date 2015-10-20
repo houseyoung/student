@@ -35,13 +35,13 @@
         <td>${showHimself.hometown}</td>
         <td>${showHimself.interest}</td>
         <td>
-            <button onclick="location='${website}/user/editinterest'">修改兴趣</button>
-            <button onclick="location='${website}/user/editpassword'">修改密码</button>
-            <button onclick="location='${website}/user/score'">查看成绩</button>
-            <button onclick="location='${website}/user/health'">查看健康信息</button>
+            <button onclick="location='${website}user/editinterest'">修改兴趣</button>
+            <button onclick="location='${website}user/editpassword'">修改密码</button>
+            <button onclick="location='${website}user/score'">查看成绩</button>
+            <button onclick="location='${website}user/health'">查看健康信息</button>
         </td>
     </tr>
 </table>
-<p><button onclick="location='${website}/user/logoff'">退出登录</button>
+<p><button onclick="location='${website}user/logoff'">退出登录</button>
 </body>
 </html>

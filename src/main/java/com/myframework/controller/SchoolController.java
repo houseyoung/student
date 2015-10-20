@@ -20,7 +20,7 @@ public class SchoolController {
     private SchoolService schoolService;
 
     //显示、搜索
-    @RequestMapping(value = {"", "/"})
+    @RequestMapping(value = "")
     public String toList(String keywords, Model model){
         List<School> listSchool = schoolService.listSchool(keywords);
         model.addAttribute("listSchool", listSchool);

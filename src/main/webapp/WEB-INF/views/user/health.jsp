@@ -26,6 +26,6 @@
     </tr>
   </c:forEach>
 </table>
-<br><button onclick="location='${website}/user'">返回</button>
+<br><button onclick="location='${website}user'">返回</button>
 </body>
 </html>

@@ -13,9 +13,9 @@
   <title>SchoolList</title>
 </head>
 <body>
-<button onclick="location='${website}/admin/school/insert'">增加</button>
+<button onclick="location='${website}admin/school/insert'">增加</button>
 <p>
-<form method=post action="${website}/admin/school">
+<form method=post action="${website}admin/school">
   <input type="text" name="keywords"><input type="submit" value="搜索">
 </form>
 <p>
@@ -30,8 +30,8 @@
       <td>${school.id}</td>
       <td>${school.name}</td>
       <td>${school.university}</td>
-      <td><button onclick="location='${website}/admin/school/edit?id=${school.id}'">修改</button></td>
-      <td><button onclick="location='${website}/admin/school/delete?id=${school.id}'">删除</button></td>
+      <td><button onclick="location='${website}admin/school/edit?id=${school.id}'">修改</button></td>
+      <td><button onclick="location='${website}admin/school/delete?id=${school.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>

@@ -14,7 +14,7 @@ import java.util.List;
  * Created by houseyoung on 2015/10/9 8:48.
  */
 @Controller
-@RequestMapping(value = "admin/class")
+@RequestMapping(value = "/admin/class")
 public class ClassController {
     @Resource
     private ClassService classService;

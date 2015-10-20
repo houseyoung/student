@@ -12,7 +12,7 @@
   <title>EditStudent</title>
 </head>
 <body>
-<form action="${website}/admin/student/edit?id=${studentDto.id}" method="post">
+<form action="${website}admin/student/edit?id=${studentDto.id}" method="post">
   学号: <input type="text" name="studentId" value="${studentDto.studentId}"/> <br />
   姓名: <input type="text" name="studentName" value="${studentDto.studentName}"/> <br />
   性别: <input type="text" name="sex" value="${studentDto.sex}"/> <br />

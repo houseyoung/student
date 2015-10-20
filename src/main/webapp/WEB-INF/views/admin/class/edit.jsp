@@ -12,7 +12,7 @@
     <title>EditClass</title>
 </head>
 <body>
-<form action="${website}/admin/class/edit?id=${classDto.id}" method="post">
+<form action="${website}admin/class/edit?id=${classDto.id}" method="post">
     班级名称: <input type="text" name="className" value="${classDto.className}"/> <br />
     所属系: <input type="text" name="departmentName" value="${classDto.departmentName}"/> <br />
     所属学院: <input type="text" name="schoolName" value="${classDto.schoolName}"/> <br />

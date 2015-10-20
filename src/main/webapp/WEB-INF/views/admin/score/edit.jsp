@@ -12,7 +12,7 @@
   <title>EditScore</title>
 </head>
 <body>
-<form action="${website}/admin/score/edit?id=${scoreDto.id}" method="post">
+<form action="${website}admin/score/edit?id=${scoreDto.id}" method="post">
   课程编号: <input type="text" name="courseId" value="${scoreDto.courseId}"/> <br />
   学号: <input type="text" name="studentId" value="${scoreDto.studentId}"/> <br />
   成绩: <input type="text" name="score" value="${scoreDto.score}"/> <br />

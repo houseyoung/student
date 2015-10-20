@@ -12,7 +12,7 @@
   <title>InsertDepartment</title>
 </head>
 <body>
-<form action="${website}/admin/department/insert" method="post">
+<form action="${website}admin/department/insert" method="post">
   系名称: <input type="text" name="departmentName" /> <br />
   所属学院: <input type="text" name="schoolName" /> <br />
   <input type="submit" value="增加" />

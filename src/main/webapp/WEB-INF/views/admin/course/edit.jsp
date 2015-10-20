@@ -12,7 +12,7 @@
     <title>EditCourse</title>
 </head>
 <body>
-<form action="${website}/admin/course/edit?id=${course.id}" method="post">
+<form action="${website}admin/course/edit?id=${course.id}" method="post">
     课程名称: <input type="text" name="name" value="${course.name}"/> <br />
     课时: <input type="text" name="courseHour" value="${course.courseHour}"/> <br />
     学分: <input type="text" name="credit" value="${course.credit}"/> <br />

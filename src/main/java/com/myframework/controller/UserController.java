@@ -44,7 +44,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String toIndex(HttpServletRequest request)
     {
         if (request.getSession().getAttribute("studentDto") != null){

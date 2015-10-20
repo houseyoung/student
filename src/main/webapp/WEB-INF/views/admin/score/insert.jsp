@@ -12,7 +12,7 @@
   <title>InsertScore</title>
 </head>
 <body>
-<form action="${website}/admin/score/insert" method="post">
+<form action="${website}admin/score/insert" method="post">
   课程编号: <input type="text" name="courseId" /> <br />
   学号: <input type="text" name="studentId" /> <br />
   成绩: <input type="text" name="score" /> <br />

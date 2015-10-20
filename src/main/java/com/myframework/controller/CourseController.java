@@ -20,7 +20,7 @@ public class CourseController {
     private CourseService courseService;
 
     //显示、搜索
-    @RequestMapping(value = {"", "/"})
+    @RequestMapping(value = "")
     public String toList(String keywords, Model model){
         List<Course> listCourse = courseService.listCourse(keywords);
         model.addAttribute("listCourse", listCourse);

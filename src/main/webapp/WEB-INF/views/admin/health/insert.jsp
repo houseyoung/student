@@ -12,7 +12,7 @@
   <title>InsertHealth</title>
 </head>
 <body>
-<form action="${website}/admin/health/insert" method="post">
+<form action="${website}admin/health/insert" method="post">
   学号: <input type="text" name="studentId" /> <br />
   身高: <input type="text" name="height" /> <br />
   体重: <input type="text" name="weight" /> <br />

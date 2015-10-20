@@ -12,7 +12,7 @@
 <body>
 <div style="width: 25%; margin-left: auto; margin-right: auto;">
     <p style="margin: 0;">登录</p>
-    <form action="${website}/user/login" method="post">
+    <form action="${website}user/login" method="post">
         用户名: <input type="text" name="studentId"/> <br/>
         密码: <input type="password" name="password"/> <br/>
         <input type="submit" value="登录"/>

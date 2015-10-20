@@ -12,7 +12,7 @@
   <title>EditSchool</title>
 </head>
 <body>
-<form action="${website}/admin/school/edit?id=${school.id}" method="post">
+<form action="${website}admin/school/edit?id=${school.id}" method="post">
   学院名称: <input type="text" name="name" value="${school.name}"/> <br />
   所属大学: <input type="text" name="university" value="${school.university}"/> <br />
   <input type="submit" value="修改" />

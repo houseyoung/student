@@ -11,7 +11,7 @@
 </head>
 <body>
 <div style="width: 25%; margin-left: auto; margin-right: auto;">
-    <form action="${website}/user/editpassword" method="post">
+    <form action="${website}user/editpassword" method="post">
         <%--TODO: 输入两次密码检查是否一致--%>
         新密码: <input type="password" name="password"/> <br/>
         <input type="submit" value="修改"/>

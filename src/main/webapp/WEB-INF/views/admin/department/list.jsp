@@ -13,9 +13,9 @@
   <title>DepartmentList</title>
 </head>
 <body>
-<button onclick="location='${website}/admin/department/insert'">增加</button>
+<button onclick="location='${website}admin/department/insert'">增加</button>
 <p>
-<form method=post action="${website}/admin/department">
+<form method=post action="${website}admin/department">
   <input type="text" name="keywords"><input type="submit" value="搜索">
 </form>
 <p>

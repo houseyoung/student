@@ -13,9 +13,9 @@
   <title>HealthList</title>
 </head>
 <body>
-<button onclick="location='${website}/admin/health/insert'">增加</button>
+<button onclick="location='${website}admin/health/insert'">增加</button>
 <p>
-<form method=post action="${website}/admin/health">
+<form method=post action="${website}admin/health">
   <input type="text" name="keywords"><input type="submit" value="搜索">
 </form>
 <p>
@@ -36,8 +36,8 @@
       <td>${healthDto.height}</td>
       <td>${healthDto.weight}</td>
       <td>${healthDto.nutrition}</td>
-      <td><button onclick="location='${website}/admin/health/edit?id=${healthDto.id}'">修改</button></td>
-      <td><button onclick="location='${website}/admin/health/delete?id=${healthDto.id}'">删除</button></td>
+      <td><button onclick="location='${website}admin/health/edit?id=${healthDto.id}'">修改</button></td>
+      <td><button onclick="location='${website}admin/health/delete?id=${healthDto.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>

@@ -12,7 +12,7 @@
   <title>EditDepartment</title>
 </head>
 <body>
-<form action="${website}/admin/department/edit?id=${departmentDto.id}" method="post">
+<form action="${website}admin/department/edit?id=${departmentDto.id}" method="post">
   系名称: <input type="text" name="departmentName" value="${departmentDto.departmentName}"/> <br />
   所属学院: <input type="text" name="schoolName" value="${departmentDto.schoolName}"/> <br />
   <input type="submit" value="修改" />

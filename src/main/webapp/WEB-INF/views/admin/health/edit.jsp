@@ -12,7 +12,7 @@
   <title>EditHealth</title>
 </head>
 <body>
-<form action="${website}/admin/health/edit?id=${healthDto.id}" method="post">
+<form action="${website}admin/health/edit?id=${healthDto.id}" method="post">
   学号: <input type="text" name="studentId" value="${healthDto.studentId}"/> <br />
   身高: <input type="text" name="height" value="${healthDto.height}"/> <br />
   体重: <input type="text" name="weight" value="${healthDto.weight}"/> <br />

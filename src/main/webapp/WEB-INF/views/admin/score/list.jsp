@@ -13,9 +13,9 @@
   <title>ScoreList</title>
 </head>
 <body>
-<button onclick="location='${website}/admin/score/insert'">增加</button>
+<button onclick="location='${website}admin/score/insert'">增加</button>
 <p>
-<form method=post action="${website}/admin/score">
+<form method=post action="${website}admin/score">
   学号：<input type="text" name="studentId">
   课程名称：<input type="text" name="courseName">
   <input type="submit" value="搜索">
@@ -38,8 +38,8 @@
       <td>${scoreDto.courseId}</td>
       <td>${scoreDto.courseName}</td>
       <td>${scoreDto.score}</td>
-      <td><button onclick="location='${website}/admin/score/edit?id=${scoreDto.id}'">修改</button></td>
-      <td><button onclick="location='${website}/admin/score/delete?id=${scoreDto.id}'">删除</button></td>
+      <td><button onclick="location='${website}admin/score/edit?id=${scoreDto.id}'">修改</button></td>
+      <td><button onclick="location='${website}admin/score/delete?id=${scoreDto.id}'">删除</button></td>
     </tr>
   </c:forEach>
 </table>

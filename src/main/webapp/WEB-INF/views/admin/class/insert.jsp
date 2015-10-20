@@ -12,7 +12,7 @@
     <title>InsertClass</title>
 </head>
 <body>
-<form action="${website}/admin/class/insert" method="post">
+<form action="${website}admin/class/insert" method="post">
     班级名称: <input type="text" name="className" /> <br />
     所属系: <input type="text" name="departmentName" /> <br />
     所属学院: <input type="text" name="SchoolName" /> <br />
