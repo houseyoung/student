@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myframework.mapper.AdminMapper">
+    <resultMap id="adminResultMap" type="Admin">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="role" property="role"/>
+        <result column="class_id" property="classId"/>
+    </resultMap>
+
+    <select id="listAdmin" resultMap="adminResultMap">
+        SELECT * FROM t_admin
+        WHERE role = 1 AND id != #{id}
+        <if test="keywords!=null and keywords!=''">
+            AND username LIKE "%"#{keywords}"%"
+        </if>
+        ORDER BY id
+    </select>
+
+    <select id="listTeacher" resultMap="adminResultMap">
+        SELECT * FROM t_admin
+        WHERE role = 2
+        <if test="keywords!=null and keywords!=''">
+            AND username LIKE "%"#{keywords}"%"
+        </if>
+        ORDER BY id
+    </select>
+
+    <insert id="insertAdmin">
+        INSERT INTO t_admin (id, username, password, name, role)
+        VALUES(#{admin.id}, #{admin.username}, #{admin.password}, #{admin.name}, 1)
+    </insert>
+
+    <insert id="insertTeacher">
+        INSERT INTO t_admin (id, username, password, name, role)
+        VALUES(#{admin.id}, #{admin.name}, #{admin.password}, #{admin.name}, 1)
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM t_admin WHERE id = #{id}
+    </delete>
+
+    <select id="queryById" resultMap="adminResultMap">
+        SELECT * FROM t_admin WHERE id = #{id}
+    </select>
+
+    <!--int类型在返回null时会报错，因而将null转换为0-->
+    <select id="checkLogin" resultType="int">
+        SELECT IFNULL(MAX(id), 0) AS id FROM t_admin
+        WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <select id="showHimself" resultType="Admin">
+        SELECT id AS id,
+        username AS username,
+        name AS name
+        FROM t_admin WHERE id = #{id}
+    </select>
+
+    <update id="editHimself">
+        UPDATE t_admin
+        SET username = #{username},
+        <if test="password!='d41d8cd98f00b204e9800998ecf8427e'">
+            password = #{password},
+        </if>
+        name = #{name}
+        WHERE id = #{admin.id}
+    </update>
+
+    <select id="getIdByUsername" resultType="int">
+        SELECT id FROM t_admin WHERE username = #{username}
+    </select>
+</mapper>

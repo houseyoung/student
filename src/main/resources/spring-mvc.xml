@@ -42,12 +42,21 @@
 
     <!--拦截器-->
     <mvc:interceptors>
+        <!--学生管理拦截器-->
         <mvc:interceptor>
-            <!--学生管理拦截器-->
             <mvc:mapping path="/user/*/**" />
             <bean class="com.myframework.interceptor.UserInterceptor">
                 <!--忽略地址-->
                 <property name="loginUrl" value="/user/login"/>
+                <property name="forbiddenUrl" value="/forbidden"/>
+            </bean>
+        </mvc:interceptor>
+        <!--管理员拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/*/**" />
+            <bean class="com.myframework.interceptor.AdminInterceptor">
+                <!--忽略地址-->
+                <property name="loginUrl" value="/admin/login"/>
                 <property name="forbiddenUrl" value="/forbidden"/>
             </bean>
         </mvc:interceptor>

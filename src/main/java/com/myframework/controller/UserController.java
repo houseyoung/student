@@ -65,6 +65,10 @@ public class UserController {
         if (studentService.checkLogin(studentDto) != 0) {
             //记录登录的学号
             studentId = studentDto.getStudentId();
+
+            //清除管理员登录信息
+            request.getSession().removeAttribute("Admin");
+
             request.getSession().setAttribute("studentDto", studentDto);
             return "redirect:index";
         }
@@ -115,7 +119,7 @@ public class UserController {
         request.getSession().removeAttribute("studentDto");
         //清除记录的学号
         studentId = null;
-        return "redirect:";
+        return "index";
     }
 
     //成绩页

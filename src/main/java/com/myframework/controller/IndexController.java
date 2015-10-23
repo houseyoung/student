@@ -18,17 +18,17 @@ import java.util.List;
 @RequestMapping(value = "")
 public class IndexController {
     @RequestMapping(value = {"", "/", "index"}, method = RequestMethod.GET)
-    public String toLogin()
+    public String toLogin(HttpServletRequest request)
     {
-//        if (request.getSession().getAttribute("role1") != null){
-//            return "role1/role1";
-//        }
-//        else if (request.getSession().getAttribute("role2") != null){
-//            return "role2/role2";
-//        }
-//        else {
+        if (request.getSession().getAttribute("admin") != null){
+            return "admin/index";
+        }
+        else if (request.getSession().getAttribute("studentDto") != null){
+            return "user/index";
+        }
+        else {
             return "index";
-//        }
+        }
     }
 
 //    @RequestMapping(value = "login", method = RequestMethod.POST)
