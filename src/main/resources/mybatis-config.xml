@@ -18,6 +18,7 @@
         <typeAlias alias="Student" type="com.myframework.entity.Student"/>
         <typeAlias alias="StudentDto" type="com.myframework.dto.StudentDto"/>
         <typeAlias alias="Admin" type="com.myframework.entity.Admin"/>
+        <typeAlias alias="AdminDto" type="com.myframework.dto.AdminDto"/>
     </typeAliases>
 
     <!-- 映射Mapper -->

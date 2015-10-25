@@ -1,5 +1,6 @@
 package com.myframework.service.impl;
 
+import com.myframework.dto.AdminDto;
 import com.myframework.entity.Admin;
 import com.myframework.mapper.AdminMapper;
 import com.myframework.service.AdminService;
@@ -65,4 +66,25 @@ public class AdminServiceImpl implements AdminService{
         return adminMapper.getIdByUsername(admin.getUsername());
     }
 
+
+    @Override
+    public List<AdminDto> listInstructor(@Param("keywords") String keywords, @Param("id") int id, @Param("classId") int classId){
+        return adminMapper.listInstructor(keywords, id, classId);
+    }
+
+    @Override
+    public void insertInstructor(@Param("adminDto") AdminDto adminDto){
+        adminDto.setPassword(MD5Util.md5(adminDto.getUsername()));
+        adminMapper.insertInstructor(adminDto);
+    }
+
+    @Override
+    public void updateInstructor(@Param("adminDto") AdminDto adminDto){
+        adminMapper.updateInstructor(adminDto);
+    }
+
+    @Override
+    public AdminDto queryInstructorById(@Param("id") int id) {
+        return adminMapper.queryInstructorById(id);
+    }
 }

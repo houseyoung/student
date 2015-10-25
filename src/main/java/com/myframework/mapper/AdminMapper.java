@@ -1,5 +1,6 @@
 package com.myframework.mapper;
 
+import com.myframework.dto.AdminDto;
 import com.myframework.entity.Admin;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,4 +27,12 @@ public interface AdminMapper {
     public void editHimself(@Param("admin") Admin admin, @Param("username")String username, @Param("password")String password, @Param("name")String name);
 
     public int getIdByUsername(@Param("username")String username);
+
+    public List<AdminDto> listInstructor(@Param("keywords") String keywords, @Param("id") int id, @Param("classId") int classId);
+
+    public void insertInstructor(@Param("adminDto") AdminDto adminDto);
+
+    public void updateInstructor(@Param("adminDto") AdminDto adminDto);
+
+    public AdminDto queryInstructorById(@Param("id") int id);
 }

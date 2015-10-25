@@ -19,6 +19,7 @@
 <a href="${website}admin/health">健康</a><br>
 ----------------------<br>
 <a href="${website}admin/admin">管理员</a><br>
+<a href="${website}admin/instructor">辅导员</a><br>
 <p><button onclick="location='${website}admin/logoff'">退出登录</button>
 </body>
 </html>
