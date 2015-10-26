@@ -9,7 +9,7 @@ import java.util.List;
  * Created by houseyoung on 15/10/10 22:40.
  */
 public interface ScoreService {
-    public List<ScoreDto> listScore(@Param("studentId") String studentId, @Param("courseName") String courseName);
+    public List<ScoreDto> listScore(@Param("classId") int classId, @Param("studentId") String studentId, @Param("courseName") String courseName);
 
     public void insert(@Param("scoreDto") ScoreDto scoreDto);
 

@@ -46,9 +46,8 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public int checkLogin(@Param("admin") Admin admin){
-        admin.setPassword(MD5Util.md5(admin.getPassword()));
-        return adminMapper.checkLogin(admin.getUsername(), admin.getPassword());
+    public int checkRole(@Param("admin") Admin admin){
+        return adminMapper.checkRole(admin.getUsername(), MD5Util.md5(admin.getPassword()));
     }
 
     @Override
@@ -66,10 +65,9 @@ public class AdminServiceImpl implements AdminService{
         return adminMapper.getIdByUsername(admin.getUsername());
     }
 
-
     @Override
-    public List<AdminDto> listInstructor(@Param("keywords") String keywords, @Param("id") int id, @Param("classId") int classId){
-        return adminMapper.listInstructor(keywords, id, classId);
+    public List<AdminDto> listInstructor(@Param("classId") int classId, @Param("keywords") String keywords){
+        return adminMapper.listInstructor(classId, keywords);
     }
 
     @Override
@@ -86,5 +84,10 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public AdminDto queryInstructorById(@Param("id") int id) {
         return adminMapper.queryInstructorById(id);
+    }
+
+    @Override
+    public int getClassIdByUsername(@Param("username")String username){
+        return adminMapper.getClassIdByUsername(username);
     }
 }

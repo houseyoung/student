@@ -18,8 +18,8 @@ public class ScoreServiceImpl implements ScoreService{
     private ScoreMapper scoreMapper;
 
     @Override
-    public List<ScoreDto> listScore(@Param("studentId") String studentId, @Param("courseName") String courseName){
-        return scoreMapper.listScore(studentId, courseName);
+    public List<ScoreDto> listScore(@Param("classId") int classId, @Param("studentId") String studentId, @Param("courseName") String courseName){
+        return scoreMapper.listScore(classId, studentId, courseName);
     }
 
     @Override

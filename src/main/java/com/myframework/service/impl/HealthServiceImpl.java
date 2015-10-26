@@ -20,8 +20,8 @@ public class HealthServiceImpl implements HealthService {
     private HealthMapper healthMapper;
 
     @Override
-    public List<HealthDto> listHealth(@Param("keywords") String keywords){
-        return healthMapper.listHealth(keywords);
+    public List<HealthDto> listHealth(@Param("classId") int classId, @Param("keywords") String keywords){
+        return healthMapper.listHealth(classId, keywords);
     }
 
     @Override

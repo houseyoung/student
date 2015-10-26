@@ -18,8 +18,8 @@ public class ClassServiceImpl implements ClassService{
     private ClassMapper classMapper;
 
     @Override
-    public List<ClassDto> listClass(@Param("keywords") String keywords){
-        return classMapper.listClass(keywords);
+    public List<ClassDto> listClass(@Param("classId") int classId, @Param("keywords") String keywords){
+        return classMapper.listClass(classId, keywords);
     }
 
     @Override

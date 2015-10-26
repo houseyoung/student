@@ -21,6 +21,9 @@
         <if test="courseName!=null and courseName!=''">
             AND t_course.course_name LIKE "%"#{courseName}"%"
         </if>
+        <if test="classId!=null and classId!=''">
+            AND t_student.class_id = #{classId}
+        </if>
         ORDER BY id
     </select>
 

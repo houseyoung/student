@@ -13,11 +13,13 @@
         FROM t_class
         LEFT JOIN t_department ON t_class.department_id = t_department.id
         LEFT JOIN t_school ON t_department.school_id = t_school.id
-        <where>
-            <if test="keywords!=null and keywords!=''">
-                t_class.class_name LIKE "%"#{keywords}"%"
-            </if>
-        </where>
+        WHERE 1 = 1
+        <if test="keywords!=null and keywords!=''">
+            AND t_class.class_name LIKE "%"#{keywords}"%"
+        </if>
+        <if test="classId!=null and classId!=''">
+            AND t_class.id = #{classId}
+        </if>
         ORDER BY id
     </select>
 

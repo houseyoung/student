@@ -9,7 +9,7 @@ import java.util.List;
  * Created by houseyoung on 2015/10/9 8:40.
  */
 public interface ClassService {
-    public List<ClassDto> listClass(@Param("keywords") String keywords);
+    public List<ClassDto> listClass(@Param("classId") int classId, @Param("keywords") String keywords);
 
     public void insert(@Param("classDto") ClassDto classDto);
 

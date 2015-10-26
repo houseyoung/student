@@ -1,6 +1,7 @@
 package com.myframework.controller;
 
 import com.myframework.dto.ScoreDto;
+import com.myframework.service.AdminService;
 import com.myframework.service.ScoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,10 +21,17 @@ public class ScoreController {
     @Resource
     private ScoreService scoreService;
 
+    @Resource
+    private AdminService adminService;
+
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String studentId, String courseName, Model model){
-        List<ScoreDto> listScore = scoreService.listScore(studentId, courseName);
+    public String toList(String studentId, String courseName, Model model, HttpServletRequest request){
+        //通过Session获取Username，再通过Username获取ClassID
+        String username = (String)request.getSession().getAttribute("instructor");
+        int classId = adminService.getClassIdByUsername(username);
+
+        List<ScoreDto> listScore = scoreService.listScore(classId, studentId, courseName);
         model.addAttribute("listScore", listScore);
         return "admin/score/list";
     }

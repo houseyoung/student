@@ -21,13 +21,16 @@ public class AdminController {
     private AdminService adminService;
 
     //记录登录的ID
-    private int id = 0;
+    private int id;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String toLogin(HttpServletRequest request)
     {
         if (request.getSession().getAttribute("admin") != null){
             return "redirect:admin/index";
+        }
+        else if (request.getSession().getAttribute("instructor") != null){
+            return "redirect:index1";
         }
         else {
             //清除记录的ID
@@ -42,6 +45,9 @@ public class AdminController {
         if (request.getSession().getAttribute("admin") != null){
             return "redirect:index";
         }
+        else if (request.getSession().getAttribute("instructor") != null){
+            return "redirect:index1";
+        }
         else {
             //清除记录的ID
             id = 0;
@@ -50,16 +56,30 @@ public class AdminController {
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(Admin admin, Model model, HttpServletRequest request) {
-        if (adminService.checkLogin(admin) != 0) {
+    public String login(Admin admin, Admin instructor, Model model, HttpServletRequest request) {
+        if (adminService.checkRole(admin) == 1) {
             //记录登录的ID
             id = adminService.getIdByUsername(admin);
 
-            //清除学生登录信息
+            //清除学生、辅导员登录信息
             request.getSession().removeAttribute("studentDto");
+            request.getSession().removeAttribute("instructor");
 
-            request.getSession().setAttribute("admin", admin);
+            //在Session中记录Username，使得在其他类中可以通过Username得到其他信息
+            request.getSession().setAttribute("admin", admin.getUsername());
             return "redirect:index";
+        }
+        else if (adminService.checkRole(instructor) == 2) {
+            //记录登录的ID
+            id = adminService.getIdByUsername(instructor);
+
+            //清除学生、辅导员登录信息
+            request.getSession().removeAttribute("studentDto");
+            request.getSession().removeAttribute("admin");
+
+            //在Session中记录Username，使得在其他类中可以通过Username得到其他信息
+            request.getSession().setAttribute("instructor", instructor.getUsername());
+            return "redirect:index1";
         }
         else {
             model.addAttribute("login_err", "登录失败!");
@@ -67,16 +87,23 @@ public class AdminController {
         }
     }
 
-    //首页
+    //管理员首页
     @RequestMapping(value = "index")
     public String toIndex(){
         return "admin/index";
+    }
+
+    //辅导员首页
+    @RequestMapping(value = "index1")
+    public String toIndex1(){
+        return "admin/index1";
     }
 
     //登出
     @RequestMapping(value = {"logoff"}, method = RequestMethod.GET)
     public String logoff(HttpServletRequest request) {
         request.getSession().removeAttribute("admin");
+        request.getSession().removeAttribute("instructor");
         //清除记录的ID
         id = 0;
         return "index";

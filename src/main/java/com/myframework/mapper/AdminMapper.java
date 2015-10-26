@@ -20,7 +20,7 @@ public interface AdminMapper {
 
     public void update(@Param("admin") Admin admin);
 
-    public int checkLogin(@Param("username")String username, @Param("password")String password);
+    public int checkRole(@Param("username")String username, @Param("password")String password);
 
     public Admin showHimself(@Param("id") int id);
 
@@ -28,11 +28,13 @@ public interface AdminMapper {
 
     public int getIdByUsername(@Param("username")String username);
 
-    public List<AdminDto> listInstructor(@Param("keywords") String keywords, @Param("id") int id, @Param("classId") int classId);
+    public List<AdminDto> listInstructor(@Param("classId") int classId, @Param("keywords") String keywords);
 
     public void insertInstructor(@Param("adminDto") AdminDto adminDto);
 
     public void updateInstructor(@Param("adminDto") AdminDto adminDto);
 
     public AdminDto queryInstructorById(@Param("id") int id);
+
+    public int getClassIdByUsername(@Param("username")String username);
 }

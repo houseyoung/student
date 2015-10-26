@@ -66,8 +66,9 @@ public class UserController {
             //记录登录的学号
             studentId = studentDto.getStudentId();
 
-            //清除管理员登录信息
-            request.getSession().removeAttribute("Admin");
+            //清除管理员、辅导员登录信息
+            request.getSession().removeAttribute("admin");
+            request.getSession().removeAttribute("instructor");
 
             request.getSession().setAttribute("studentDto", studentDto);
             return "redirect:index";

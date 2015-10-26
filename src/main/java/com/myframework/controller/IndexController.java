@@ -23,6 +23,9 @@ public class IndexController {
         if (request.getSession().getAttribute("admin") != null){
             return "admin/index";
         }
+        else if (request.getSession().getAttribute("instructor") != null){
+            return "admin/index1";
+        }
         else if (request.getSession().getAttribute("studentDto") != null){
             return "user/index";
         }
@@ -30,23 +33,6 @@ public class IndexController {
             return "index";
         }
     }
-
-//    @RequestMapping(value = "login", method = RequestMethod.POST)
-//    public String login(User role1, User role2, Model model, HttpServletRequest request) {
-//        String pwd = role1.getPassword();
-//        if (userService.checkRole(role1) == 1) {
-//            request.getSession().setAttribute("role1", role1);
-//            return "redirect:role1";
-//        }
-//        else if (userService.checkRole(role2) == 2) {
-//            request.getSession().setAttribute("role2", role2);
-//            return "redirect:role2";
-//        }
-//        else {
-//            model.addAttribute("login_err", "登录失败!");
-//            return "index";
-//        }
-//    }
 
     @RequestMapping(value = "forbidden")
     public String toForbidden(){

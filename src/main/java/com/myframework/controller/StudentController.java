@@ -1,6 +1,8 @@
 package com.myframework.controller;
 
 import com.myframework.dto.StudentDto;
+import com.myframework.entity.Admin;
+import com.myframework.service.AdminService;
 import com.myframework.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -19,10 +23,17 @@ public class StudentController {
     @Resource
     private StudentService studentService;
 
+    @Resource
+    private AdminService adminService;
+
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String keywords, Model model){
-        List<StudentDto> listStudent = studentService.listStudent(keywords);
+    public String toList(String keywords, Model model, HttpServletRequest request){
+        //通过Session获取Username，再通过Username获取ClassID
+        String username = (String)request.getSession().getAttribute("instructor");
+        int classId = adminService.getClassIdByUsername(username);
+
+        List<StudentDto> listStudent = studentService.listStudent(classId, keywords);
         model.addAttribute("listStudent", listStudent);
         return "admin/student/list";
     }

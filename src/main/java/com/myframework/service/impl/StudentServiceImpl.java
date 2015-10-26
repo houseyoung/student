@@ -20,8 +20,8 @@ public class StudentServiceImpl implements StudentService{
     private StudentMapper studentMapper;
 
     @Override
-    public List<StudentDto> listStudent(@Param("keywords") String keywords){
-        return studentMapper.listStudent(keywords);
+    public List<StudentDto> listStudent(@Param("classId") int classId, @Param("keywords") String keywords){
+        return studentMapper.listStudent(classId, keywords);
     }
 
     @Override
