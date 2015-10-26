@@ -1,5 +1,6 @@
 package com.myframework.controller;
 
+import com.myframework.dto.AdminDto;
 import com.myframework.entity.Admin;
 import com.myframework.service.AdminService;
 import org.springframework.stereotype.Controller;
@@ -155,6 +156,31 @@ public class AdminController {
     public String editHimself(Admin admin, String username, String password, String name){
         admin.setId(id);
         adminService.editHimself(admin, username, password, name);
+        return "redirect:";
+    }
+
+    //查看辅导员个人信息
+    @RequestMapping(value = "instructor/showhimself")
+    public String toShowInstructorHimself(Model model){
+        AdminDto showInstructorHimself = adminService.showInstructorHimself(id);
+        model.addAttribute("showInstructorHimself", showInstructorHimself);
+        return "admin/instructor/showhimself";
+    }
+
+    //辅导员修改个人信息
+    @RequestMapping(value = "instructor/edithimself", method = RequestMethod.GET)
+    public String toEditInstructorHimself(Model model){
+        //显示原有信息
+        AdminDto showInstructorHimself = adminService.showInstructorHimself(id);
+        model.addAttribute("showInstructorHimself", showInstructorHimself);
+
+        return "admin/instructor/edithimself";
+    }
+
+    @RequestMapping(value = "instructor/edithimself", method = RequestMethod.POST)
+    public String editInstructorHimself(Admin admin, String username, String password, String name){
+        admin.setId(id);
+        adminService.editInstructorHimself(admin, username, password, name);
         return "redirect:";
     }
 }

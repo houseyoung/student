@@ -37,4 +37,8 @@ public interface AdminMapper {
     public AdminDto queryInstructorById(@Param("id") int id);
 
     public int getClassIdByUsername(@Param("username")String username);
+
+    public AdminDto showInstructorHimself(@Param("id") int id);
+
+    public void editInstructorHimself(@Param("admin") Admin admin, @Param("username")String username, @Param("password")String password, @Param("name")String name);
 }

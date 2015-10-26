@@ -132,4 +132,29 @@
     <select id="getClassIdByUsername" resultType="int">
         SELECT class_id FROM t_admin WHERE username = #{username}
     </select>
+
+    <select id="showInstructorHimself" resultType="AdminDto">
+        SELECT
+        t_admin.id AS id,
+        t_admin.username AS username,
+        t_admin.name AS name,
+        t_class.class_name AS className,
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
+        FROM t_admin
+        LEFT JOIN t_class ON t_admin.class_id = t_class.id
+        LEFT JOIN t_department ON t_class.department_id = t_department.id
+        LEFT JOIN t_school ON t_department.school_id = t_school.id
+        WHERE t_admin.id = #{id}
+    </select>
+
+    <update id="editInstructorHimself">
+        UPDATE t_admin
+        SET username = #{username},
+        <if test="password!='d41d8cd98f00b204e9800998ecf8427e'">
+            password = #{password},
+        </if>
+        name = #{name}
+        WHERE id = #{admin.id}
+    </update>
 </mapper>

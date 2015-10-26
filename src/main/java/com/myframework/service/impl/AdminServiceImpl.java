@@ -90,4 +90,14 @@ public class AdminServiceImpl implements AdminService{
     public int getClassIdByUsername(@Param("username")String username){
         return adminMapper.getClassIdByUsername(username);
     }
+
+    @Override
+    public AdminDto showInstructorHimself(@Param("id") int id) {
+        return adminMapper.showInstructorHimself(id);
+    }
+
+    @Override
+    public void editInstructorHimself(@Param("admin") Admin admin, @Param("username")String username, @Param("password")String password, @Param("name")String name) {
+        adminMapper.editInstructorHimself(admin, username, MD5Util.md5(password), name);
+    }
 }
