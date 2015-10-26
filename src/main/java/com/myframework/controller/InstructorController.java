@@ -21,17 +21,15 @@ public class InstructorController {
     @Resource
     private AdminService adminService;
 
-    //记录登录的ID
-    private int id = 0;
-    //记录登录者的ClassID
-    private int classId = 0;
-
     //显示、搜索
     @RequestMapping(value = {"instructor", "instructor/"})
     public String toList(String keywords, Model model, HttpServletRequest request){
         //通过Session获取Username，再通过Username获取ClassID
         String username = (String)request.getSession().getAttribute("instructor");
-        int classId = adminService.getClassIdByUsername(username);
+        int classId = 0;
+        if(username != null) {
+            classId = adminService.getClassIdByUsername(username);
+        }
 
         List<AdminDto> listInstructor = adminService.listInstructor(classId, keywords);
         model.addAttribute("listInstructor", listInstructor);

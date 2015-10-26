@@ -29,7 +29,10 @@ public class ScoreController {
     public String toList(String studentId, String courseName, Model model, HttpServletRequest request){
         //通过Session获取Username，再通过Username获取ClassID
         String username = (String)request.getSession().getAttribute("instructor");
-        int classId = adminService.getClassIdByUsername(username);
+        int classId = 0;
+        if(username != null) {
+            classId = adminService.getClassIdByUsername(username);
+        }
 
         List<ScoreDto> listScore = scoreService.listScore(classId, studentId, courseName);
         model.addAttribute("listScore", listScore);

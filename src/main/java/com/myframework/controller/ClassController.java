@@ -29,7 +29,11 @@ public class ClassController {
     public String toList(String keywords, Model model, HttpServletRequest request){
         //通过Session获取Username，再通过Username获取ClassID
         String username = (String)request.getSession().getAttribute("instructor");
-        int classId = adminService.getClassIdByUsername(username);
+        int classId = 0;
+        if(username != null) {
+            classId = adminService.getClassIdByUsername(username);
+        }
+
         List<ClassDto> listClass = classService.listClass(classId, keywords);
         model.addAttribute("listClass", listClass);
         return "admin/class/list";
