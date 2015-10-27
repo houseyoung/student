@@ -72,7 +72,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void insertInstructor(@Param("adminDto") AdminDto adminDto){
-        adminDto.setPassword(MD5Util.md5(adminDto.getUsername()));
+        adminDto.setPassword(MD5Util.md5(adminDto.getPassword()));
         adminMapper.insertInstructor(adminDto);
     }
 
