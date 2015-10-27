@@ -37,8 +37,11 @@
         <property name="maxUploadSize" value="1048576" />
     </bean>
 
-    <!--静态资源-->
+    <!--静态资源路径-->
     <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!--上传文件路径-->
+    <mvc:resources mapping="/upload/**" location="/upload/" />
 
     <!--拦截器-->
     <mvc:interceptors>
