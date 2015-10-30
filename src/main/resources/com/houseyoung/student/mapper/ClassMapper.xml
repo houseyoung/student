@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.houseyoung.student.mapper.ClassMapper">
+    <select id="listClass" resultType="ClassDto">
+        SELECT
+        t_class.id AS id,
+        t_department.id AS departmentId,
+        t_class.class_name AS className,
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
+        FROM t_class
+        LEFT JOIN t_department ON t_class.department_id = t_department.id
+        LEFT JOIN t_school ON t_department.school_id = t_school.id
+        WHERE 1 = 1
+        <if test="keywords!=null and keywords!=''">
+            AND t_class.class_name LIKE "%"#{keywords}"%"
+        </if>
+        <if test="classId!=null and classId!=''">
+            AND t_class.id = #{classId}
+        </if>
+        ORDER BY id
+    </select>
+
+    <select id="queryById" resultType="ClassDto">
+        SELECT
+        t_class.id AS id,
+        t_department.id AS departmentId,
+        t_class.class_name AS className,
+        t_department.department_name AS departmentName,
+        t_school.school_name AS schoolName
+        FROM t_class
+        LEFT JOIN t_department ON t_class.department_id = t_department.id
+        LEFT JOIN t_school ON t_department.school_id = t_school.id
+        WHERE t_class.id = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO t_class (class_name, department_id)
+        VALUES (#{classDto.className},
+        (SELECT t_department.id FROM t_department
+          WHERE department_name = #{classDto.departmentName}
+          AND school_id = (SELECT id FROM t_school WHERE school_name = #{classDto.schoolName})))
+    </insert>
+
+    <update id="update">
+        UPDATE t_class
+        SET class_name = #{classDto.className},
+        department_id = (SELECT t_department.id FROM t_department
+          WHERE department_name = #{classDto.departmentName}
+          AND school_id = (SELECT id FROM t_school WHERE school_name = #{classDto.schoolName}))
+       WHERE id = #{classDto.id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_class WHERE id = #{id}
+    </delete>
+</mapper>

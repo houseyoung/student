@@ -5,20 +5,20 @@
 <configuration>
     <!-- 命名空间 -->
     <typeAliases>
-        <typeAlias alias="Class" type="com.myframework.entity.Class"/>
-        <typeAlias alias="ClassDto" type="com.myframework.dto.ClassDto"/>
-        <typeAlias alias="Course" type="com.myframework.entity.Course"/>
-        <typeAlias alias="Department" type="com.myframework.entity.Department"/>
-        <typeAlias alias="DepartmentDto" type="com.myframework.dto.DepartmentDto"/>
-        <typeAlias alias="Health" type="com.myframework.entity.Health"/>
-        <typeAlias alias="HealthDto" type="com.myframework.dto.HealthDto"/>
-        <typeAlias alias="School" type="com.myframework.entity.School"/>
-        <typeAlias alias="Score" type="com.myframework.entity.Score"/>
-        <typeAlias alias="ScoreDto" type="com.myframework.dto.ScoreDto"/>
-        <typeAlias alias="Student" type="com.myframework.entity.Student"/>
-        <typeAlias alias="StudentDto" type="com.myframework.dto.StudentDto"/>
-        <typeAlias alias="Admin" type="com.myframework.entity.Admin"/>
-        <typeAlias alias="AdminDto" type="com.myframework.dto.AdminDto"/>
+        <typeAlias alias="Class" type="com.houseyoung.student.entity.Class"/>
+        <typeAlias alias="ClassDto" type="com.houseyoung.student.dto.ClassDto"/>
+        <typeAlias alias="Course" type="com.houseyoung.student.entity.Course"/>
+        <typeAlias alias="Department" type="com.houseyoung.student.entity.Department"/>
+        <typeAlias alias="DepartmentDto" type="com.houseyoung.student.dto.DepartmentDto"/>
+        <typeAlias alias="Health" type="com.houseyoung.student.entity.Health"/>
+        <typeAlias alias="HealthDto" type="com.houseyoung.student.dto.HealthDto"/>
+        <typeAlias alias="School" type="com.houseyoung.student.entity.School"/>
+        <typeAlias alias="Score" type="com.houseyoung.student.entity.Score"/>
+        <typeAlias alias="ScoreDto" type="com.houseyoung.student.dto.ScoreDto"/>
+        <typeAlias alias="Student" type="com.houseyoung.student.entity.Student"/>
+        <typeAlias alias="StudentDto" type="com.houseyoung.student.dto.StudentDto"/>
+        <typeAlias alias="Admin" type="com.houseyoung.student.entity.Admin"/>
+        <typeAlias alias="AdminDto" type="com.houseyoung.student.dto.AdminDto"/>
     </typeAliases>
 
     <!-- 映射Mapper -->

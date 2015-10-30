@@ -48,7 +48,7 @@
         <!--学生功能拦截器-->
         <mvc:interceptor>
             <mvc:mapping path="/user/*/**" />
-            <bean class="com.myframework.interceptor.UserInterceptor">
+            <bean class="com.houseyoung.student.interceptor.UserInterceptor">
                 <!--忽略地址-->
                 <property name="loginUrl" value="/user/login"/>
                 <property name="forbiddenUrl" value="/forbidden"/>
@@ -61,7 +61,7 @@
             <mvc:mapping path="/admin/instructor/**" />
             <mvc:mapping path="/admin/score/**" />
             <mvc:mapping path="/admin/student/**" />
-            <bean class="com.myframework.interceptor.InstructorInterceptor">
+            <bean class="com.houseyoung.student.interceptor.InstructorInterceptor">
                 <!--忽略地址-->
                 <property name="loginUrl" value="/admin/login"/>
                 <property name="forbiddenUrl" value="/forbidden"/>
@@ -73,7 +73,7 @@
             <mvc:mapping path="/admin/course/**" />
             <mvc:mapping path="/admin/department/**" />
             <mvc:mapping path="/admin/school/**" />
-            <bean class="com.myframework.interceptor.AdminInterceptor">
+            <bean class="com.houseyoung.student.interceptor.AdminInterceptor">
                 <!--忽略地址-->
                 <property name="loginUrl" value="/admin/login"/>
                 <property name="forbiddenUrl" value="/forbidden"/>

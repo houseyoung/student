@@ -96,7 +96,7 @@
     <!--获取${website}地址-->
     <filter>
         <filter-name>ConstantsFilter</filter-name>
-        <filter-class>com.myframework.filter.ConstantsFilter</filter-class>
+        <filter-class>com.houseyoung.student.filter.ConstantsFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>ConstantsFilter</filter-name>

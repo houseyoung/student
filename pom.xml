@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>MyFramework</groupId>
-    <artifactId>MyFramework</artifactId>
+    <groupId>student</groupId>
+    <artifactId>student</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <properties>
@@ -147,7 +147,7 @@
     </dependencies>
 
     <build>
-        <finalName>MyFramework</finalName>
+        <finalName>student</finalName>
 
         <!--Maven-Tomcat插件，在Linux下自动将项目部署至Tomcat下-->
         <plugins>
@@ -160,7 +160,7 @@
                     <server>tomcat</server>
                     <username>tomcat</username>
                     <password>tomcat</password>
-                    <path>/MyFramework</path>
+                    <path>/student</path>
                 </configuration>
             </plugin>
         </plugins>

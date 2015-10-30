@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 10/24/2015 00:52:59 AM
+ Date: 10/27/2015 22:33:25 PM
 */
 
 SET NAMES utf8;
@@ -30,13 +30,13 @@ CREATE TABLE `t_admin` (
   `class_id` int(10) DEFAULT NULL COMMENT '班级ID（仅班级管理员需要）',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `t_admin`
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', null), ('3', 'test', '098f6bcd4621d373cade4e832627b4f6', '123', '1', null);
+INSERT INTO `t_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', null), ('3', 'test', '098f6bcd4621d373cade4e832627b4f6', '123', '1', null), ('7', 'class1', '827ccb0eea8a706c4c34a16891f84e7b', 'class1', '2', '1'), ('8', 'class2', 'b14c9a12b183cc67105f58cfe9d4016a', '2', '2', '2'), ('10', 'class3', '46d847966438222a5956cfae705442f5', 'thr', '2', '3');
 COMMIT;
 
 -- ----------------------------
@@ -48,13 +48,13 @@ CREATE TABLE `t_class` (
   `class_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '班级名称',
   `department_id` int(10) NOT NULL COMMENT '系ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `t_class`
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_class` VALUES ('1', '软件1班', '1'), ('2', '软件2班', '1'), ('3', '软件3班', '1'), ('7', '图书馆1班', '8'), ('9', '计算机1班', '4'), ('13', '计算机3班', '4');
+INSERT INTO `t_class` VALUES ('1', '软件1班', '1'), ('2', '软件2班', '1'), ('3', '软件3班', '1'), ('7', '图书馆1班', '8'), ('9', '计算机1班', '4'), ('13', '计算机3班', '4'), ('14', '生物1班', '9');
 COMMIT;
 
 -- ----------------------------
@@ -87,13 +87,13 @@ CREATE TABLE `t_department` (
   `department_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '系名称',
   `school_id` int(10) NOT NULL COMMENT '学院ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `t_department`
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_department` VALUES ('1', '软件工程', '1'), ('4', '计算机应用技术', '2'), ('8', '图书馆学', '2');
+INSERT INTO `t_department` VALUES ('1', '软件工程', '1'), ('4', '计算机应用技术', '2'), ('8', '图书馆学', '2'), ('9', '生物学', '8');
 COMMIT;
 
 -- ----------------------------
@@ -125,13 +125,13 @@ CREATE TABLE `t_school` (
   `school_name` varchar(50) COLLATE utf8_turkish_ci NOT NULL COMMENT '学院名称',
   `university` varchar(50) COLLATE utf8_turkish_ci NOT NULL COMMENT '学校名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- ----------------------------
 --  Records of `t_school`
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_school` VALUES ('1', '信息与软件工程学院', '东北师范大学'), ('2', '计算机科学与信息技术学院', '东北师范大学'), ('7', '传媒科学学院', '东北师范大学');
+INSERT INTO `t_school` VALUES ('1', '信息与软件工程学院', '东北师范大学'), ('2', '计算机科学与信息技术学院', '东北师范大学'), ('7', '传媒科学学院', '东北师范大学'), ('8', '生命科学学院', '东北师范大学');
 COMMIT;
 
 -- ----------------------------
@@ -185,12 +185,8 @@ DROP PROCEDURE IF EXISTS `1`;
 delimiter ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `1`()
     DETERMINISTIC
-INSERT INTO t_class (class_name, department_id)
-        VALUES ("计算机哈哈哈",
-        (SELECT t_department.id FROM t_department
-          WHERE department_name = "计算机应用技术"
-          AND t_school.school_name = "计算机科学与信息技术学院"
-          ))
+SELECT IFNULL(MAX(role), 0) AS role FROM t_admin
+        WHERE username = 'class1' AND password = '66e78e01d4c2a7711e0c901e2160d6c5'
  ;;
 delimiter ;
 
