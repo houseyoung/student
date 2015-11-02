@@ -3,6 +3,8 @@ package com.houseyoung.student.controller;
 import com.houseyoung.student.dto.HealthDto;
 import com.houseyoung.student.dto.ScoreDto;
 import com.houseyoung.student.dto.StudentDto;
+import com.houseyoung.student.entity.Course;
+import com.houseyoung.student.service.CourseService;
 import com.houseyoung.student.service.StudentService;
 import com.houseyoung.student.service.HealthService;
 import com.houseyoung.student.service.ScoreService;
@@ -29,6 +31,9 @@ public class UserController {
 
     @Resource
     private HealthService healthService;
+
+    @Resource
+    private CourseService courseService;
 
     //记录登录的学号
     private String studentId;
@@ -136,5 +141,13 @@ public class UserController {
         List<HealthDto> listHimself = healthService.listHimself(studentId);
         model.addAttribute("listHimself", listHimself);
         return "user/health";
+    }
+
+    //课程页
+    @RequestMapping(value = "course")
+    public String toCourse(Model model){
+        List<Course> listHimself = courseService.listHimself(studentId);
+        model.addAttribute("listHimself", listHimself);
+        return "user/course";
     }
 }

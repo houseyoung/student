@@ -18,4 +18,6 @@ public interface CourseService {
     public Course queryById(@Param("id") int id);
 
     public void update(@Param("course") Course course);
+
+    public List<Course> listHimself(@Param("studentId") String studentId);
 }

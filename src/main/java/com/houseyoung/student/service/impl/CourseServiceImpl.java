@@ -41,4 +41,9 @@ public class CourseServiceImpl implements CourseService {
     public void update(@Param("course") Course course){
         courseMapper.update(course);
     }
+
+    @Override
+    public List<Course> listHimself(@Param("studentId") String studentId) {
+        return courseMapper.listHimself(studentId);
+    }
 }

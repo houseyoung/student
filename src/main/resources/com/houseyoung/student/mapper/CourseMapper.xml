@@ -47,4 +47,18 @@
         place = #{course.place}
         WHERE id = #{course.id}
     </update>
+
+    <select id="listHimself" resultType="Course">
+        SELECT
+        t_course.id AS id,
+        t_course.course_name AS name,
+        t_course.course_hour AS courseHour,
+        t_course.credit AS credit,
+        t_course.teacher_name AS teacherName,
+        t_course.place AS place
+        FROM t_course
+        LEFT JOIN t_score ON t_course.id = t_score.course_id
+        LEFT JOIN t_student ON t_score.student_id = t_student.student_id
+        WHERE t_student.student_id = #{studentId}
+    </select>
 </mapper>
