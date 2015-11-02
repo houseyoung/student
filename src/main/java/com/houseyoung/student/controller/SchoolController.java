@@ -21,10 +21,15 @@ public class SchoolController {
 
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String keywords, Model model){
-        List<School> listSchool = schoolService.listSchool(keywords);
-        model.addAttribute("listSchool", listSchool);
-        return "admin/school/list";
+    public String toList(String keywords, Model model) throws Exception{
+        try {
+            List<School> listSchool = schoolService.listSchool(keywords);
+            model.addAttribute("listSchool", listSchool);
+            return "admin/school/list";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/school/list";
+        }
     }
 
     //增加
@@ -34,28 +39,33 @@ public class SchoolController {
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(School school){
-        schoolService.insert(school);
-        return "redirect:";
+    public String insert(School school, Model model) throws Exception{
+        try {
+            schoolService.insert(school);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/school/insert";
+        }
     }
 
     //删除
     @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String toDelete(Integer id){
+    public String toDelete(Integer id) throws Exception{
         schoolService.delete(id);
         return "redirect:";
     }
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model){
+    public String toEdit(Integer id, Model model) throws Exception{
         School school = schoolService.queryById(id);
         model.addAttribute("school", school);
         return "admin/school/edit";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String edit(School school){
+    public String edit(School school) throws Exception{
         schoolService.update(school);
         return "redirect:";
     }
