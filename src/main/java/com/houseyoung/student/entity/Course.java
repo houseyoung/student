@@ -1,21 +1,36 @@
 package com.houseyoung.student.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by houseyoung on 2015/10/9 14:43.
  */
+@Entity
+@Table(name = "t_course")
 public class Course {
-    private int id;
+    @Id
+    private Integer id;
+    
     private String name;
-    private int courseHour;
-    private int credit;
+
+    @Column(name = "course_hour")
+    private Integer courseHour;
+
+    private Integer credit;
+
+    @Column(name = "teacher_name")
     private String teacherName;
+
     private String place;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,19 +42,19 @@ public class Course {
         this.name = name;
     }
 
-    public int getCourseHour() {
+    public Integer getCourseHour() {
         return courseHour;
     }
 
-    public void setCourseHour(int courseHour) {
+    public void setCourseHour(Integer courseHour) {
         this.courseHour = courseHour;
     }
 
-    public int getCredit() {
+    public Integer getCredit() {
         return credit;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(Integer credit) {
         this.credit = credit;
     }
 

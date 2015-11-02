@@ -1,26 +1,48 @@
 package com.houseyoung.student.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by houseyoung on 15/10/8 20:38.
  */
+@Entity
+@Table(name = "t_student")
 public class Student {
-    private int id;
+    @Id
+    private Integer id;
+    
+    @Column(name = "student_id")
     private String studentId;
+    
     private String password;
+    
     private String name;
+    
     private String sex;
-    private int classId;
-    private int departmentId;
-    private int schoolId;
+    
+    @Column(name = "class_id")
+    private Integer classId;
+    
+    @Column(name = "department_id")
+    private Integer departmentId;
+    
+    @Column(name = "school_id")
+    private Integer schoolId;
+    
     private String birthday;
+    
     private String hometown;
-    private String interest;
+    
+    private String Integererest;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,27 +78,27 @@ public class Student {
         this.sex = sex;
     }
 
-    public int getClassId() {
+    public Integer getClassId() {
         return classId;
     }
 
-    public void setClassId(int classId) {
+    public void setClassId(Integer classId) {
         this.classId = classId;
     }
 
-    public int getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 
-    public int getSchoolId() {
+    public Integer getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(int schoolId) {
+    public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
     }
 
@@ -97,10 +119,10 @@ public class Student {
     }
 
     public String getInterest() {
-        return interest;
+        return Integererest;
     }
 
-    public void setInterest(String interest) {
-        this.interest = interest;
+    public void setInterest(String Integererest) {
+        this.Integererest = Integererest;
     }
 }

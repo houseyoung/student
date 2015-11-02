@@ -1,25 +1,33 @@
 package com.houseyoung.student.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by houseyoung on 15/10/10 22:37.
  */
+@Entity
+@Table(name = "t_score")
 public class Score {
-    private int id;
-    private int score;
+    @Id
+    private Integer id;
+    
+    private Integer score;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 }

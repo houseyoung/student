@@ -1,13 +1,26 @@
 package com.houseyoung.student.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by houseyoung on 15/10/11 23:03.
  */
+@Entity
+@Table(name = "t_health")
 public class Health {
+    @Id
     private int id;
+
     private int height;
-    private int weight;
+
+    private Integer weight;
+
+    @Column(name = "student_id")
     private String studentId;
+
     private String nutrition;
 
     public int getId() {
