@@ -9,21 +9,21 @@ import java.util.List;
  * Created by houseyoung on 15/10/8 20:42.
  */
 public interface StudentService {
-    public List<StudentDto> listStudent(@Param("classId") int classId, @Param("keywords") String keywords);
+    public List<StudentDto> listStudent(int classId, String keywords);
 
-    public void insert(@Param("studentDto") StudentDto studentDto);
+    public void insert(StudentDto studentDto);
 
-    public void delete(@Param("id") int id);
+    public void delete(int id);
 
-    public StudentDto queryById(@Param("id") int id);
+    public StudentDto queryById(int id);
 
-    public void update(@Param("studentDto") StudentDto studentDto);
+    public void update(StudentDto studentDto);
 
-    public StudentDto showHimself(@Param("studentId") String studentId);
+    public StudentDto showHimself(String studentId);
 
-    public int checkLogin(@Param("studentDto") StudentDto studentDto);
+    public int checkLogin(StudentDto studentDto);
 
-    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password);
+    public void editPassword(StudentDto studentDto, String password);
 
-    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest);
+    public void editInterest(StudentDto studentDto, String interest);
 }

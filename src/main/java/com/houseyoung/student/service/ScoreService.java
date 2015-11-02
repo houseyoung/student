@@ -9,15 +9,15 @@ import java.util.List;
  * Created by houseyoung on 15/10/10 22:40.
  */
 public interface ScoreService {
-    public List<ScoreDto> listScore(@Param("classId") int classId, @Param("studentId") String studentId, @Param("courseName") String courseName);
+    public List<ScoreDto> listScore(int classId, String studentId, String courseName);
 
-    public void insert(@Param("scoreDto") ScoreDto scoreDto);
+    public void insert(ScoreDto scoreDto);
 
-    public void delete(@Param("id") int id);
+    public void delete(int id);
 
-    public ScoreDto queryById(@Param("id") int id);
+    public ScoreDto queryById(int id);
 
-    public void update(@Param("scoreDto") ScoreDto scoreDto);
+    public void update(ScoreDto scoreDto);
 
-    public List<ScoreDto> listHimself(@Param("studentId") String studentId);
+    public List<ScoreDto> listHimself(String studentId);
 }

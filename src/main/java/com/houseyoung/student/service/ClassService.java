@@ -9,13 +9,13 @@ import java.util.List;
  * Created by houseyoung on 2015/10/9 8:40.
  */
 public interface ClassService {
-    public List<ClassDto> listClass(@Param("classId") int classId, @Param("keywords") String keywords);
+    public List<ClassDto> listClass(int classId, String keywords);
 
-    public void insert(@Param("classDto") ClassDto classDto);
+    public void insert(ClassDto classDto);
 
-    public void delete(@Param("id") int id);
+    public void delete(int id);
 
-    public ClassDto queryById(@Param("id") int id);
+    public ClassDto queryById(int id);
 
-    public void update(@Param("classDto") ClassDto classDto);
+    public void update(ClassDto classDto);
 }
