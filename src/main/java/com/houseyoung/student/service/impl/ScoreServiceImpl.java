@@ -18,32 +18,32 @@ public class ScoreServiceImpl implements ScoreService{
     private ScoreMapper scoreMapper;
 
     @Override
-    public List<ScoreDto> listScore(@Param("classId") int classId, @Param("studentId") String studentId, @Param("courseName") String courseName){
+    public List<ScoreDto> listScore(int classId, String studentId, String courseName){
         return scoreMapper.listScore(classId, studentId, courseName);
     }
 
     @Override
-    public void insert(@Param("scoreDto") ScoreDto scoreDto){
+    public void insert(ScoreDto scoreDto){
         scoreMapper.insert(scoreDto);
     }
 
     @Override
-    public void delete(@Param("id") int id)  {
+    public void delete(int id)  {
         scoreMapper.delete(id);
     }
 
     @Override
-    public ScoreDto queryById(@Param("id") int id) {
+    public ScoreDto queryById(int id) {
         return scoreMapper.queryById(id);
     }
 
     @Override
-    public void update(@Param("scoreDto") ScoreDto scoreDto){
+    public void update(ScoreDto scoreDto){
         scoreMapper.update(scoreDto);
     }
 
     @Override
-    public List<ScoreDto> listHimself(@Param("studentId") String studentId) {
+    public List<ScoreDto> listHimself(String studentId) {
         return scoreMapper.listHimself(studentId);
     }
 

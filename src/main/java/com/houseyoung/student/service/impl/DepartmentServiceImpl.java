@@ -18,27 +18,27 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentMapper departmentMapper;
 
     @Override
-    public List<DepartmentDto> listDepartment(@Param("keywords") String keywords){
+    public List<DepartmentDto> listDepartment(String keywords){
         return departmentMapper.listDepartment(keywords);
     }
 
     @Override
-    public void insert(@Param("departmentDto") DepartmentDto departmentDto){
+    public void insert(DepartmentDto departmentDto){
         departmentMapper.insert(departmentDto);
     }
 
     @Override
-    public void delete(@Param("id") int id)  {
+    public void delete(int id)  {
         departmentMapper.delete(id);
     }
 
     @Override
-    public DepartmentDto queryById(@Param("id") int id) {
+    public DepartmentDto queryById(int id) {
         return departmentMapper.queryById(id);
     }
 
     @Override
-    public void update(@Param("departmentDto") DepartmentDto departmentDto){
+    public void update(DepartmentDto departmentDto){
         departmentMapper.update(departmentDto);
     }
 }

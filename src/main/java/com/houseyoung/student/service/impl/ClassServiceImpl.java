@@ -18,27 +18,61 @@ public class ClassServiceImpl implements ClassService{
     private ClassMapper classMapper;
 
     @Override
-    public List<ClassDto> listClass(@Param("classId") int classId, @Param("keywords") String keywords){
-        return classMapper.listClass(classId, keywords);
+    public List<ClassDto> listClass(@Param("classId") int classId, @Param("keywords") String keywords) throws Exception{
+        try {
+            return classMapper.listClass(classId, keywords);
+        } catch (Exception e){
+            throw new Exception("系统内部异常");
+        }
     }
 
     @Override
-    public void insert(@Param("classDto") ClassDto classDto){
-        classMapper.insert(classDto);
+    public void insert(@Param("classDto") ClassDto classDto) throws Exception{
+        try {
+            if (classDto.getClassName() == null || classDto.getClassName() == ""){
+                throw new Exception("学院名不可为空");
+            }
+            //TODO: 判断系、学院是否存在
+            classMapper.insert(classDto);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
     @Override
-    public void delete(@Param("id") int id)  {
-        classMapper.delete(id);
+    public void delete(@Param("id") int id) throws Exception{
+        try {
+            if (id <= 0) {
+                throw new Exception("ID不合法");
+            }
+            classMapper.delete(id);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
     @Override
-    public ClassDto queryById(@Param("id") int id) {
-        return classMapper.queryById(id);
+    public ClassDto queryById(@Param("id") int id) throws Exception{
+        try {
+            if (id <= 0) {
+                throw new Exception("ID不合法");
+            }
+            return classMapper.queryById(id);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
     @Override
-    public void update(@Param("classDto") ClassDto classDto){
-        classMapper.update(classDto);
+    public void update(@Param("classDto") ClassDto classDto) throws Exception{
+        try {
+            if (classDto.getClassName() == null || classDto.getClassName() == "") {
+                throw new Exception("学院名不可为空");
+            }
+            //TODO: 判断系、学院是否存在
+            classMapper.update(classDto);
+        } catch (Exception e){
+            throw e;
+        }
     }
 }

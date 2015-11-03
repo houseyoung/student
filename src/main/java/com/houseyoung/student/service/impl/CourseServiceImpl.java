@@ -18,32 +18,32 @@ public class CourseServiceImpl implements CourseService {
     private CourseMapper courseMapper;
 
     @Override
-    public List<Course> listCourse(@Param("keywords") String keywords){
+    public List<Course> listCourse(String keywords){
         return courseMapper.listCourse(keywords);
     }
 
     @Override
-    public void insert(@Param("course") Course course){
+    public void insert(Course course){
         courseMapper.insert(course);
     }
 
     @Override
-    public void delete(@Param("id") int id)  {
+    public void delete(int id)  {
         courseMapper.delete(id);
     }
 
     @Override
-    public Course queryById(@Param("id") int id) {
+    public Course queryById(int id) {
         return courseMapper.queryById(id);
     }
 
     @Override
-    public void update(@Param("course") Course course){
+    public void update(Course course){
         courseMapper.update(course);
     }
 
     @Override
-    public List<Course> listHimself(@Param("studentId") String studentId) {
+    public List<Course> listHimself(String studentId) {
         return courseMapper.listHimself(studentId);
     }
 }

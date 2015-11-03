@@ -19,7 +19,7 @@ public class SchoolServiceImpl implements SchoolService{
     private SchoolMapper schoolMapper;
 
     @Override
-    public List<School> listSchool(@Param("keywords") String keywords) throws Exception{
+    public List<School> listSchool(String keywords) throws Exception{
         try {
             return schoolMapper.listSchool(keywords);
         } catch (Exception e){
@@ -28,7 +28,7 @@ public class SchoolServiceImpl implements SchoolService{
     }
 
     @Override
-    public void insert(@Param("school") School school) throws Exception{
+    public void insert(School school) throws Exception{
         try {
             if (school.getName() == null || school.getName() == ""){
                 throw new Exception("学院名不可为空");
@@ -41,7 +41,7 @@ public class SchoolServiceImpl implements SchoolService{
     }
 
     @Override
-    public void delete(@Param("id") int id) throws Exception{
+    public void delete(int id) throws Exception{
         try {
             if (id <= 0){
                 throw new Exception("ID不合法");
@@ -53,7 +53,7 @@ public class SchoolServiceImpl implements SchoolService{
     }
 
     @Override
-    public School queryById(@Param("id") int id) throws Exception{
+    public School queryById(int id) throws Exception{
         try {
             if (id <= 0){
                 throw new Exception("ID不合法");
@@ -65,7 +65,7 @@ public class SchoolServiceImpl implements SchoolService{
     }
 
     @Override
-    public void update(@Param("school") School school) throws Exception{
+    public void update(School school) throws Exception{
         try {
             if (school.getName() == null || school.getName() == ""){
                 throw new Exception("学院名不可为空");

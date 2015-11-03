@@ -19,49 +19,49 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
     @Override
-    public List<StudentDto> listStudent(@Param("classId") int classId, @Param("keywords") String keywords){
+    public List<StudentDto> listStudent(int classId, String keywords){
         return studentMapper.listStudent(classId, keywords);
     }
 
     @Override
-    public void insert(@Param("studentDto") StudentDto studentDto){
+    public void insert(StudentDto studentDto){
         studentDto.setPassword(MD5Util.md5(studentDto.getStudentId()));
         studentMapper.insert(studentDto);
     }
 
     @Override
-    public void delete(@Param("id") int id)  {
+    public void delete(int id)  {
         studentMapper.delete(id);
     }
 
     @Override
-    public StudentDto queryById(@Param("id") int id) {
+    public StudentDto queryById(int id) {
         return studentMapper.queryById(id);
     }
 
     @Override
-    public void update(@Param("studentDto") StudentDto studentDto){
+    public void update(StudentDto studentDto){
         studentMapper.update(studentDto);
     }
 
     @Override
-    public StudentDto showHimself(@Param("studentId") String studentId) {
+    public StudentDto showHimself(String studentId) {
         return studentMapper.showHimself(studentId);
     }
 
     @Override
-    public int checkLogin(@Param("studentDto") StudentDto studentDto){
+    public int checkLogin(StudentDto studentDto){
         studentDto.setPassword(MD5Util.md5(studentDto.getPassword()));
         return studentMapper.checkLogin(studentDto.getStudentId(), studentDto.getPassword());
     }
 
     @Override
-    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password) {
+    public void editPassword(StudentDto studentDto, @Param("password")String password) {
         studentMapper.editPassword(studentDto, MD5Util.md5(password));
     }
 
     @Override
-    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest) {
+    public void editInterest(StudentDto studentDto, @Param("interest")String interest) {
         studentMapper.editInterest(studentDto, interest);
     }
 }

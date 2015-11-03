@@ -18,32 +18,32 @@ public class HealthServiceImpl implements HealthService {
     private HealthMapper healthMapper;
 
     @Override
-    public List<HealthDto> listHealth(@Param("classId") int classId, @Param("keywords") String keywords){
+    public List<HealthDto> listHealth(int classId, String keywords){
         return healthMapper.listHealth(classId, keywords);
     }
 
     @Override
-    public void insert(@Param("healthDto") HealthDto healthDto){
+    public void insert(HealthDto healthDto){
         healthMapper.insert(healthDto);
     }
 
     @Override
-    public void delete(@Param("id") int id)  {
+    public void delete(int id)  {
         healthMapper.delete(id);
     }
 
     @Override
-    public HealthDto queryById(@Param("id") int id) {
+    public HealthDto queryById(int id) {
         return healthMapper.queryById(id);
     }
 
     @Override
-    public void update(@Param("healthDto") HealthDto healthDto){
+    public void update(HealthDto healthDto){
         healthMapper.update(healthDto);
     }
 
     @Override
-    public List<HealthDto> listHimself(@Param("studentId") String studentId) {
+    public List<HealthDto> listHimself(String studentId) {
         return healthMapper.listHimself(studentId);
     }
 }
