@@ -24,7 +24,7 @@
   学号: <input type="text" name="studentId" /> <br />
   身高: <input type="text" name="height" /> <br />
   体重: <input type="text" name="weight" /> <br />
-  营养情况: <input type="text" name="nutrition" /> <br />
+  营养状况: <input type="text" name="nutrition" /> <br />
   <input type="submit" value="增加" />
   <input type="reset" value="重置" />
 </form>

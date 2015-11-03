@@ -137,17 +137,27 @@ public class UserController {
 
     //健康页
     @RequestMapping(value = "health")
-    public String toHealth(Model model){
-        List<HealthDto> listHimself = healthService.listHimself(studentId);
-        model.addAttribute("listHimself", listHimself);
-        return "user/health";
+    public String toHealth(Model model) throws Exception{
+        try {
+            List<HealthDto> listHimself = healthService.listHimself(studentId);
+            model.addAttribute("listHimself", listHimself);
+            return "user/health";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/health";
+        }
     }
 
     //课程页
     @RequestMapping(value = "course")
-    public String toCourse(Model model){
-        List<Course> listHimself = courseService.listHimself(studentId);
-        model.addAttribute("listHimself", listHimself);
-        return "user/course";
+    public String toCourse(Model model) throws Exception{
+        try {
+            List<Course> listHimself = courseService.listHimself(studentId);
+            model.addAttribute("listHimself", listHimself);
+            return "user/course";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/course";
+        }
     }
 }

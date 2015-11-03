@@ -9,15 +9,15 @@ import java.util.List;
  * Created by houseyoung on 2015/10/9 14:45.
  */
 public interface CourseMapper {
-    public List<Course> listCourse(@Param("keywords") String keywords);
+    public List<Course> listCourse(@Param("keywords") String keywords) throws Exception;
 
-    public void insert(@Param("course") Course course);
+    public void insert(@Param("course") Course course) throws Exception;
 
-    public void delete(@Param("id") int id);
+    public void delete(@Param("id") int id) throws Exception;
 
-    public Course queryById(@Param("id") int id);
+    public Course queryById(@Param("id") int id) throws Exception;
 
-    public void update(@Param("course") Course course);
+    public void update(@Param("course") Course course) throws Exception;
 
-    public List<Course> listHimself(@Param("studentId") String studentId);
+    public List<Course> listHimself(@Param("studentId") String studentId) throws Exception;
 }

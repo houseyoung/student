@@ -36,7 +36,7 @@ public class Student {
     
     private String hometown;
     
-    private String Integererest;
+    private String interest;
 
     public Integer getId() {
         return id;
@@ -119,10 +119,10 @@ public class Student {
     }
 
     public String getInterest() {
-        return Integererest;
+        return interest;
     }
 
-    public void setInterest(String Integererest) {
-        this.Integererest = Integererest;
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 }

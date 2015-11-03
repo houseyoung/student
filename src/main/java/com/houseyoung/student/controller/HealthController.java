@@ -26,49 +26,79 @@ public class HealthController {
 
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String keywords, Model model, HttpServletRequest request){
-        //通过Session获取Username，再通过Username获取ClassID
-        String username = (String)request.getSession().getAttribute("instructor");
-        int classId = 0;
-        if(username != null) {
-            classId = adminService.getClassIdByUsername(username);
-        }
+    public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取Username，再通过Username获取ClassID
+            String username = (String) request.getSession().getAttribute("instructor");
+            int classId = 0;
+            if (username != null) {
+                classId = adminService.getClassIdByUsername(username);
+            }
 
-        List<HealthDto> listHealth = healthService.listHealth(classId, keywords);
-        model.addAttribute("listHealth", listHealth);
-        return "admin/health/list";
+            List<HealthDto> listHealth = healthService.listHealth(classId, keywords);
+            model.addAttribute("listHealth", listHealth);
+            return "admin/health/list";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/health/list";
+        }
     }
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
-    public String toInsert(){
-        return "admin/health/insert";
+    public String toInsert(Model model) throws Exception{
+        try {
+            return "admin/health/insert";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/health/list";
+        }
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(HealthDto healthDto){
-        healthService.insert(healthDto);
-        return "redirect:";
+    public String insert(HealthDto healthDto, Model model) throws Exception{
+        try {
+            healthService.insert(healthDto);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/health/insert";
+        }
     }
 
     //删除
     @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String toDelete(Integer id){
-        healthService.delete(id);
-        return "redirect:";
+    public String toDelete(Integer id, Model model) throws Exception{
+        try {
+            healthService.delete(id);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/health/list";
+        }
     }
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model){
-        HealthDto healthDto = healthService.queryById(id);
-        model.addAttribute("healthDto", healthDto);
-        return "admin/health/edit";
+    public String toEdit(Integer id, Model model) throws Exception{
+        try {
+            HealthDto healthDto = healthService.queryById(id);
+            model.addAttribute("healthDto", healthDto);
+            return "admin/health/edit";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/health/list";
+        }
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String edit(HealthDto healthDto){
-        healthService.update(healthDto);
-        return "redirect:";
+    public String edit(HealthDto healthDto, Model model) throws Exception{
+        try {
+            healthService.update(healthDto);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/health/edit";
+        }
     }
 }

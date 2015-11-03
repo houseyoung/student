@@ -30,7 +30,7 @@ public class ClassServiceImpl implements ClassService{
     public void insert(@Param("classDto") ClassDto classDto) throws Exception{
         try {
             if (classDto.getClassName() == null || classDto.getClassName() == ""){
-                throw new Exception("学院名不可为空");
+                throw new Exception("班级名不可为空");
             }
             //TODO: 判断系、学院是否存在
             classMapper.insert(classDto);
@@ -67,7 +67,7 @@ public class ClassServiceImpl implements ClassService{
     public void update(@Param("classDto") ClassDto classDto) throws Exception{
         try {
             if (classDto.getClassName() == null || classDto.getClassName() == "") {
-                throw new Exception("学院名不可为空");
+                throw new Exception("班级名不可为空");
             }
             //TODO: 判断系、学院是否存在
             classMapper.update(classDto);

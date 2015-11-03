@@ -26,49 +26,79 @@ public class ClassController {
 
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String keywords, Model model, HttpServletRequest request){
-        //通过Session获取Username，再通过Username获取ClassID
-        String username = (String)request.getSession().getAttribute("instructor");
-        int classId = 0;
-        if(username != null) {
-            classId = adminService.getClassIdByUsername(username);
-        }
+    public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取Username，再通过Username获取ClassID
+            String username = (String) request.getSession().getAttribute("instructor");
+            int classId = 0;
+            if (username != null) {
+                classId = adminService.getClassIdByUsername(username);
+            }
 
-        List<ClassDto> listClass = classService.listClass(classId, keywords);
-        model.addAttribute("listClass", listClass);
-        return "admin/class/list";
+            List<ClassDto> listClass = classService.listClass(classId, keywords);
+            model.addAttribute("listClass", listClass);
+            return "admin/class/list";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/class/list";
+        }
     }
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
-    public String toInsert(){
-        return "admin/class/insert";
+    public String toInsert(Model model) throws Exception{
+        try {
+            return "admin/class/insert";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/class/list";
+        }
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(ClassDto classDto){
-        classService.insert(classDto);
-        return "redirect:";
+    public String insert(ClassDto classDto, Model model) throws Exception{
+        try {
+            classService.insert(classDto);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/class/insert";
+        }
     }
 
     //删除
     @RequestMapping(value = "delete", method = RequestMethod.GET)
-    public String toDelete(Integer id){
-        classService.delete(id);
-        return "redirect:";
+    public String toDelete(Integer id, Model model) throws Exception{
+        try {
+            classService.delete(id);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/class/list";
+        }
     }
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model){
-        ClassDto classDto = classService.queryById(id);
-        model.addAttribute("classDto", classDto);
-        return "admin/class/edit";
+    public String toEdit(Integer id, Model model) throws Exception {
+        try {
+            ClassDto classDto = classService.queryById(id);
+            model.addAttribute("classDto", classDto);
+            return "admin/class/edit";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/class/list";
+        }
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String edit(ClassDto classDto){
-        classService.update(classDto);
-        return "redirect:";
+    public String edit(ClassDto classDto, Model model) throws Exception{
+        try {
+            classService.update(classDto);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/class/edit";
+        }
     }
 }

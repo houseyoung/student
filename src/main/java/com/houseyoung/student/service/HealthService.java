@@ -9,15 +9,15 @@ import java.util.List;
  * Created by houseyoung on 15/10/11 23:05.
  */
 public interface HealthService {
-    public List<HealthDto> listHealth(int classId, String keywords);
+    public List<HealthDto> listHealth(int classId, String keywords) throws Exception;
 
-    public void insert(HealthDto healthDto);
+    public void insert(HealthDto healthDto) throws Exception;
 
-    public void delete(int id);
+    public void delete(int id) throws Exception;
 
-    public HealthDto queryById(int id);
+    public HealthDto queryById(int id) throws Exception;
 
-    public void update(HealthDto healthDto);
+    public void update(HealthDto healthDto) throws Exception;
 
-    public List<HealthDto> listHimself(String studentId);
+    public List<HealthDto> listHimself(String studentId) throws Exception;
 }

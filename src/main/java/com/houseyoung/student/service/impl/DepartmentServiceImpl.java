@@ -18,27 +18,61 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentMapper departmentMapper;
 
     @Override
-    public List<DepartmentDto> listDepartment(String keywords){
-        return departmentMapper.listDepartment(keywords);
+    public List<DepartmentDto> listDepartment(String keywords) throws Exception{
+        try {
+            return departmentMapper.listDepartment(keywords);
+        } catch (Exception e){
+            throw new Exception("系统内部异常");
+        }
     }
 
     @Override
-    public void insert(DepartmentDto departmentDto){
-        departmentMapper.insert(departmentDto);
+    public void insert(DepartmentDto departmentDto) throws Exception{
+        try {
+            if (departmentDto.getDepartmentName() == null || departmentDto.getDepartmentName() == "") {
+                throw new Exception("系名不可为空");
+            }
+            //TODO: 判断学院是否存在
+            departmentMapper.insert(departmentDto);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
     @Override
-    public void delete(int id)  {
-        departmentMapper.delete(id);
+    public void delete(int id) throws Exception{
+        try {
+            if (id <= 0) {
+                throw new Exception("ID不合法");
+            }
+            departmentMapper.delete(id);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
     @Override
-    public DepartmentDto queryById(int id) {
-        return departmentMapper.queryById(id);
+    public DepartmentDto queryById(int id) throws Exception{
+        try {
+            if (id <= 0) {
+                throw new Exception("ID不合法");
+            }
+            return departmentMapper.queryById(id);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
     @Override
-    public void update(DepartmentDto departmentDto){
-        departmentMapper.update(departmentDto);
+    public void update(DepartmentDto departmentDto) throws Exception{
+        try {
+            if (departmentDto.getDepartmentName() == null || departmentDto.getDepartmentName() == "") {
+                throw new Exception("系名不可为空");
+            }
+            //TODO: 判断学院是否存在
+            departmentMapper.update(departmentDto);
+        } catch (Exception e){
+            throw e;
+        }
     }
 }

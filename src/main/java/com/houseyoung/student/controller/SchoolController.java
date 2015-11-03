@@ -34,8 +34,13 @@ public class SchoolController {
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
-    public String toInsert(){
-        return "admin/school/insert";
+    public String toInsert(Model model) throws Exception{
+        try {
+            return "admin/school/insert";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/school/list";
+        }
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)

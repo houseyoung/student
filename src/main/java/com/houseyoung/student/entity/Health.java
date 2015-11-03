@@ -12,9 +12,9 @@ import javax.persistence.Table;
 @Table(name = "t_health")
 public class Health {
     @Id
-    private int id;
+    private Integer id;
 
-    private int height;
+    private Integer height;
 
     private Integer weight;
 
@@ -23,27 +23,27 @@ public class Health {
 
     private String nutrition;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
