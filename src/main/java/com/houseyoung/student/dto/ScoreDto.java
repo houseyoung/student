@@ -4,26 +4,26 @@ package com.houseyoung.student.dto;
  * Created by houseyoung on 15/10/10 22:38.
  */
 public class ScoreDto {
-    private int id;
-    private int score;
+    private Integer id;
+    private Integer score;
     private String studentName;
     private String courseName;
     private String courseId;
     private String studentId;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 

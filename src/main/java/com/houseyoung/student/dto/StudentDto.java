@@ -4,14 +4,14 @@ package com.houseyoung.student.dto;
  * Created by houseyoung on 15/10/9 20:55.
  */
 public class StudentDto {
-    private int id;
+    private Integer id;
     private String studentId;
     private String password;
     private String studentName;
     private String sex;
-    private int classId;
-    private int departmentId;
-    private int schoolId;
+    private Integer classId;
+    private Integer departmentId;
+    private Integer schoolId;
     private String birthday;
     private String hometown;
     private String interest;
@@ -19,11 +19,11 @@ public class StudentDto {
     private String departmentName;
     private String schoolName;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -59,27 +59,27 @@ public class StudentDto {
         this.sex = sex;
     }
 
-    public int getClassId() {
+    public Integer getClassId() {
         return classId;
     }
 
-    public void setClassId(int classId) {
+    public void setClassId(Integer classId) {
         this.classId = classId;
     }
 
-    public int getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 
-    public int getSchoolId() {
+    public Integer getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(int schoolId) {
+    public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
     }
 

@@ -4,34 +4,34 @@ package com.houseyoung.student.dto;
  * Created by houseyoung on 15/10/11 23:04.
  */
 public class HealthDto {
-    private int id;
-    private int height;
-    private int weight;
+    private Integer id;
+    private Integer height;
+    private Integer weight;
     private String studentId;
     private String nutrition;
     private String studentName;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 

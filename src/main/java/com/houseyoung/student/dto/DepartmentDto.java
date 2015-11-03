@@ -4,24 +4,24 @@ package com.houseyoung.student.dto;
  * Created by houseyoung on 15/10/8 22:27.
  */
 public class DepartmentDto {
-    private int id;
-    private int schoolId;
+    private Integer id;
+    private Integer schoolId;
     private String departmentName;
     private String schoolName;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getSchoolId() {
+    public Integer getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(int schoolId) {
+    public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
     }
 

@@ -4,39 +4,39 @@ package com.houseyoung.student.dto;
  * Created by houseyoung on 15/10/25 22:49.
  */
 public class AdminDto {
-    private int id;
-    private int role;
-    private int classId;
+    private Integer id;
+    private Integer role;
+    private Integer classId;
     private String username;
     private String password;
     private String name;
     private String className;
-    private int departmentId;
-    private int schoolId;
+    private Integer departmentId;
+    private Integer schoolId;
     private String departmentName;
     private String schoolName;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
-    public int getClassId() {
+    public Integer getClassId() {
         return classId;
     }
 
-    public void setClassId(int classId) {
+    public void setClassId(Integer classId) {
         this.classId = classId;
     }
 
@@ -72,19 +72,19 @@ public class AdminDto {
         this.className = className;
     }
 
-    public int getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 
-    public int getSchoolId() {
+    public Integer getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(int schoolId) {
+    public void setSchoolId(Integer schoolId) {
         this.schoolId = schoolId;
     }
 

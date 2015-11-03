@@ -4,25 +4,25 @@ package com.houseyoung.student.dto;
  * Created by houseyoung on 2015/10/9 8:39.
  */
 public class ClassDto {
-    private int id;
-    private int departmentId;
+    private Integer id;
+    private Integer departmentId;
     private String className;
     private String departmentName;
     private String schoolName;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 
