@@ -8,6 +8,14 @@
 <html>
 <head>
     <title>EditPassword</title>
+    <script type="text/javascript">
+        //错误提示
+        var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
+
+        if(error != null && error != '') {
+            alert(error);
+        }
+    </script>
 </head>
 <body>
 <div style="width: 25%; margin-left: auto; margin-right: auto;">

@@ -11,6 +11,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>ClassList</title>
+    <script type="text/javascript">
+        //错误提示
+        var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
+
+        if(error != null && error != '') {
+            alert(error);
+        }
+    </script>
 </head>
 <body>
 <button onclick="location='${website}admin/class/insert'">增加</button>
