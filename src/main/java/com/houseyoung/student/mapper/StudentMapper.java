@@ -9,21 +9,21 @@ import java.util.List;
  * Created by houseyoung on 15/10/8 20:44.
  */
 public interface StudentMapper {
-    public List<StudentDto> listStudent(@Param("classId") int classId, @Param("keywords") String keywords);
+    public List<StudentDto> listStudent(@Param("classId") int classId, @Param("keywords") String keywords) throws Exception;
 
-    public void insert(@Param("studentDto") StudentDto studentDto);
+    public void insert(@Param("studentDto") StudentDto studentDto) throws Exception;
 
-    public void delete(@Param("id") int id);
+    public void delete(@Param("id") int id) throws Exception;
 
-    public StudentDto queryById(@Param("id") int id);
+    public StudentDto queryById(@Param("id") int id) throws Exception;
 
-    public void update(@Param("studentDto") StudentDto studentDto);
+    public void update(@Param("studentDto") StudentDto studentDto) throws Exception;
 
-    public StudentDto showHimself(@Param("studentId") String studentId);
+    public StudentDto showHimself(@Param("studentId") String studentId) throws Exception;
 
-    public int checkLogin(@Param("studentId")String studentId, @Param("password")String password);
+    public int checkLogin(@Param("studentId")String studentId, @Param("password")String password) throws Exception;
 
-    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password);
+    public void editPassword(@Param("studentDto") StudentDto studentDto, @Param("password")String password) throws Exception;
 
-    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest);
+    public void editInterest(@Param("studentDto") StudentDto studentDto, @Param("interest")String interest) throws Exception;
 }

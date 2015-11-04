@@ -39,100 +39,144 @@ public class UserController {
     private String studentId;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String toLogin(HttpServletRequest request)
-    {
-        if (request.getSession().getAttribute("studentDto") != null){
-            return "redirect:user/index";
-        }
-        else {
-            //清除记录的学号
-            studentId = null;
+    public String toLogin(HttpServletRequest request, Model model) throws Exception{
+        try {
+            if (request.getSession().getAttribute("studentDto") != null) {
+                return "redirect:user/index";
+            } else {
+                //清除记录的学号
+                studentId = null;
+                return "user/login";
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "user/login";
         }
     }
 
     @RequestMapping(value = {"/", "login"}, method = RequestMethod.GET)
-    public String toIndex(HttpServletRequest request)
-    {
-        if (request.getSession().getAttribute("studentDto") != null){
-            return "redirect:index";
-        }
-        else {
-            //清除记录的学号
-            studentId = null;
+    public String toIndex(HttpServletRequest request, Model model) throws Exception{
+        try {
+            if (request.getSession().getAttribute("studentDto") != null) {
+                return "redirect:index";
+            } else {
+                //清除记录的学号
+                studentId = null;
+                return "user/login";
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "user/login";
         }
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String login(StudentDto studentDto, Model model, HttpServletRequest request) {
-        if (studentService.checkLogin(studentDto) != 0) {
-            //记录登录的学号
-            studentId = studentDto.getStudentId();
+    public String login(StudentDto studentDto, Model model, HttpServletRequest request) throws Exception{
+        try {
+            if (studentService.checkLogin(studentDto) != 0) {
+                //记录登录的学号
+                studentId = studentDto.getStudentId();
 
-            //清除管理员、辅导员登录信息
-            request.getSession().removeAttribute("admin");
-            request.getSession().removeAttribute("instructor");
+                //清除管理员、辅导员登录信息
+                request.getSession().removeAttribute("admin");
+                request.getSession().removeAttribute("instructor");
 
-            request.getSession().setAttribute("studentDto", studentDto);
-            return "redirect:index";
-        }
-        else {
-            model.addAttribute("login_err", "登录失败!");
+                request.getSession().setAttribute("studentDto", studentDto);
+                return "redirect:index";
+            } else {
+                model.addAttribute("error", "登录失败!");
+                return "user/login";
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "user/login";
         }
     }
 
     //首页
     @RequestMapping(value = "index")
-    public String toIndex(Model model){
-        StudentDto showHimself = studentService.showHimself(studentId);
-        model.addAttribute("showHimself", showHimself);
-        return "user/index";
+    public String toIndex(Model model) throws Exception{
+        try {
+            StudentDto showHimself = studentService.showHimself(studentId);
+            model.addAttribute("showHimself", showHimself);
+            return "user/index";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/index";
+        }
     }
 
     //修改密码
     @RequestMapping(value = "editpassword", method = RequestMethod.GET)
-    public String toEditPassword(){
-        return "user/editpassword";
+    public String toEditPassword(Model model) throws Exception{
+        try {
+            return "user/editpassword";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/index";
+        }
     }
 
     @RequestMapping(value = "editpassword", method = RequestMethod.POST)
-    public String editPassword(StudentDto studentDto, String password){
-        studentDto.setStudentId(studentId);
-        studentService.editPassword(studentDto, password);
-        return "redirect:";
+    public String editPassword(StudentDto studentDto, String password, Model model) throws Exception{
+        try {
+            studentDto.setStudentId(studentId);
+            studentService.editPassword(studentDto, password);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/editpassword";
+        }
     }
 
     //修改兴趣
     @RequestMapping(value = "editinterest", method = RequestMethod.GET)
-    public String toEditInterest(){
-
-        return "user/editinterest";
+    public String toEditInterest(Model model) throws Exception{
+        try {
+            return "user/editinterest";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/index";
+        }
     }
 
     @RequestMapping(value = "editinterest", method = RequestMethod.POST)
-    public String editInterest(StudentDto studentDto, String interest){
-        studentDto.setStudentId(studentId);
-        studentService.editInterest(studentDto, interest);
-        return "redirect:";
+    public String editInterest(StudentDto studentDto, String interest, Model model) throws Exception{
+        try {
+            studentDto.setStudentId(studentId);
+            studentService.editInterest(studentDto, interest);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/editinterest";
+        }
     }
 
     //登出
     @RequestMapping(value = {"logoff"}, method = RequestMethod.GET)
-    public String logoff(HttpServletRequest request) {
-        request.getSession().removeAttribute("studentDto");
-        //清除记录的学号
-        studentId = null;
-        return "index";
+    public String logoff(HttpServletRequest request, Model model) throws Exception{
+        try {
+            request.getSession().removeAttribute("studentDto");
+            //清除记录的学号
+            studentId = null;
+            return "index";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "index";
+        }
     }
 
     //成绩页
     @RequestMapping(value = "score")
-    public String toScore(Model model){
-        List<ScoreDto> listHimself = scoreService.listHimself(studentId);
-        model.addAttribute("listHimself", listHimself);
-        return "user/score";
+    public String toScore(Model model) throws Exception{
+        try {
+            List<ScoreDto> listHimself = scoreService.listHimself(studentId);
+            model.addAttribute("listHimself", listHimself);
+            return "user/score";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "user/list";
+        }
     }
 
     //健康页
@@ -144,7 +188,7 @@ public class UserController {
             return "user/health";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "user/health";
+            return "user/list";
         }
     }
 
@@ -157,7 +201,7 @@ public class UserController {
             return "user/course";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "user/course";
+            return "user/list";
         }
     }
 }

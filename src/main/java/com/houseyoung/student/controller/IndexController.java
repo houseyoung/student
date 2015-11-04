@@ -1,6 +1,7 @@
 package com.houseyoung.student.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,18 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "")
 public class IndexController {
     @RequestMapping(value = {"", "/", "index"}, method = RequestMethod.GET)
-    public String toLogin(HttpServletRequest request)
-    {
-        if (request.getSession().getAttribute("admin") != null){
-            return "admin/index";
-        }
-        else if (request.getSession().getAttribute("instructor") != null){
-            return "admin/index1";
-        }
-        else if (request.getSession().getAttribute("studentDto") != null){
-            return "user/index";
-        }
-        else {
+    public String toLogin(HttpServletRequest request, Model model) throws Exception{
+        try {
+            if (request.getSession().getAttribute("admin") != null) {
+                return "admin/index";
+            } else if (request.getSession().getAttribute("instructor") != null) {
+                return "admin/index1";
+            } else if (request.getSession().getAttribute("studentDto") != null) {
+                return "user/index";
+            } else {
+                return "index";
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "index";
         }
     }
