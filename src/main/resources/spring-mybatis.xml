@@ -17,52 +17,19 @@
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
-          destroy-method="close" >
-        <property name="driverClassName">
-            <value>${jdbc_driverClassName}</value>
-        </property>
-        <property name="url">
-            <value>${jdbc_url}</value>
-        </property>
-        <property name="username">
-            <value>${jdbc_username}</value>
-        </property>
-        <property name="password">
-            <value>${jdbc_password}</value>
-        </property>
-        <!-- 连接池最大使用连接数 -->
-        <property name="maxActive">
-            <value>20</value>
-        </property>
-        <!-- 初始化连接大小 -->
-        <property name="initialSize">
-            <value>1</value>
-        </property>
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait">
-            <value>60000</value>
-        </property>
-        <!-- 连接池最大空闲 -->
-        <property name="maxIdle">
-            <value>20</value>
-        </property>
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle">
-            <value>3</value>
-        </property>
-        <!-- 自动清除无用连接 -->
-        <property name="removeAbandoned">
-            <value>true</value>
-        </property>
-        <!-- 清除无用连接的等待时间 -->
-        <property name="removeAbandonedTimeout">
-            <value>180</value>
-        </property>
-        <!-- 连接属性 -->
-        <property name="connectionProperties">
-            <value>clientEncoding=UTF-8</value>
-        </property>
+    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="username" value="root"/>
+        <property name="password" value="woxihuanni"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db_student?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="idleConnectionTestPeriod" value="60"/>
+        <property name="idleMaxAge" value="240"/>
+        <property name="maxConnectionsPerPartition" value="60"/>
+        <property name="minConnectionsPerPartition" value="20"/>
+        <property name="partitionCount" value="3"/>
+        <property name="acquireIncrement" value="10"/>
+        <property name="statementCacheSize" value="50"/>
+        <property name="releaseHelperThreads" value="3"/>
     </bean>
 
     <!-- mybatis文件配置，扫描所有mapper文件 -->
