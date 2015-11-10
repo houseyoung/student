@@ -5,14 +5,6 @@
 	<title>管理员登录</title>
 	<%@include file="../common/head.jsp"%>
 	<link rel="stylesheet" href="${website}resources/css/admin/login/login.css" />
-	<script type="text/javascript">
-		//错误提示
-		var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
-
-		if(error != null && error != '') {
-			alert(error);
-		}
-	</script>
 </head>
 <body class="login-background">
 <div class="page container clearfix">

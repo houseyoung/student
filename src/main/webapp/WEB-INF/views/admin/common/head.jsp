@@ -16,3 +16,11 @@
 <script type="text/javascript" src="assets/plugins/charts-flot/excanvas.min.js"></script>
 <![endif]-->
 <script type="text/javascript" src="${website}resources/tool/jquery/jquery.js"></script>
+<script type="text/javascript">
+    //错误提示
+    var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
+
+    if(error != null && error != '') {
+        alert(error);
+    }
+</script>

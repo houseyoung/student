@@ -117,4 +117,6 @@
       }
     }
   });
+
+  $("#sidebar").css("min-height", ($(document).height()-72));
 </script>
