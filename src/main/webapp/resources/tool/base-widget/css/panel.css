@@ -1,0 +1,76 @@
+/*-----------------------------------------------------------------------------
+* @Description:     面板
+* @Version:         1.0.0
+* @author:          cuiy(361151713@qq.com)
+* @date             2015.9.16
+* ==NOTES:=============================================
+* v1.0.0(2015.9.16):
+*---------------------------------------------------------------------------*/
+
+.panel-info .panel-heading {
+    color: #ffffff;
+    background-color: #76c4ed;
+    border-color: #76c4ed;
+    border-radius: 0;
+    padding: 8px 15px;
+}
+.panel-info .panel-heading > h4{
+    font-size: 16px;
+}
+.panel-info .panel-body {
+    padding: 15px;
+    border-radius: 0;
+}
+.panel-info {
+    border-color: #bce8f1;
+    border-radius: 0;
+}
+.panel-footer{
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.btn-toolbar .btn-default{
+    border-radius: 0;
+    font-size: 12px;
+}
+.btn-toolbar .btn-primary{
+    color: #ffffff;
+    background-color: #4f8edc;
+    border-color: #4f8edc;
+    border-radius: 0;
+    font-size: 12px;
+    border: 0;
+}
+.btn-toolbar .btn-primary:hover{
+    background-color: #2d78d5;
+}
+.panel-body .btn-success{
+    color: #ffffff;
+    background-color: #85c744;
+    border-color: #85c744;
+    border-radius: 0;
+    font-size: 12px;
+}
+.panel-body .btn-primary{
+    color: #ffffff;
+    background-color: #436e90;
+    border-color: #436e90;
+    border-radius: 0;
+    font-size: 12px;
+}
+.panel-body .btn-success:hover{
+    background-color: #83b95b;
+}
+.panel-body .panel-tool-bar{
+    position: relative;
+}
+.panel-body .btn-danger{
+    color: #ffffff;
+    border-radius: 0;
+    font-size: 12px;
+}
+.panel-body .btn-info{
+    color: #fff;
+    font-size: 12px;
+    border-radius: 0;
+}

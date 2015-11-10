@@ -28,35 +28,14 @@
     </bean>
 
     <!--对模型视图添加前后缀-->
-    <!--使用Tiles，此段废弃-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/views/" p:suffix=".jsp"/>
-
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id = "viewResolver">-->
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
-        <!--<property name="prefix" value="/WEB-INF/views/"/>-->
-        <!--<property name="suffix" value=".jsp"/>-->
-        <!--<property name="order" value="1"></property>-->
-    <!--</bean>-->
 
     <!--文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--最大上传大小(字节)-->
         <property name="maxUploadSize" value="1048576" />
     </bean>
-
-    <!--Tiles-->
-    <!--<bean id="defaultViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">-->
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>-->
-    <!--</bean>-->
-    <!--<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">-->
-        <!--<property name="definitions">-->
-            <!--<list>-->
-                <!--<value>/WEB-INF/tiles.xml</value>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-
 
     <!--静态资源路径-->
     <mvc:resources mapping="/resources/**" location="/resources/" />
@@ -65,40 +44,41 @@
     <mvc:resources mapping="/upload/**" location="/upload/" />
 
     <!--拦截器-->
-    <mvc:interceptors>
-        <!--学生功能拦截器-->
-        <mvc:interceptor>
-            <mvc:mapping path="/user/*/**" />
-            <bean class="com.houseyoung.student.interceptor.UserInterceptor">
-                <!--忽略地址-->
-                <property name="loginUrl" value="/user/login"/>
-                <property name="forbiddenUrl" value="/forbidden"/>
-            </bean>
-        </mvc:interceptor>
-        <!--辅导员功能拦截器-->
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/class/**" />
-            <mvc:mapping path="/admin/health/**" />
-            <mvc:mapping path="/admin/instructor/**" />
-            <mvc:mapping path="/admin/score/**" />
-            <mvc:mapping path="/admin/student/**" />
-            <bean class="com.houseyoung.student.interceptor.InstructorInterceptor">
-                <!--忽略地址-->
-                <property name="loginUrl" value="/admin/login"/>
-                <property name="forbiddenUrl" value="/forbidden"/>
-            </bean>
-        </mvc:interceptor>
-        <!--管理员功能拦截器-->
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/admin/**" />
-            <mvc:mapping path="/admin/course/**" />
-            <mvc:mapping path="/admin/department/**" />
-            <mvc:mapping path="/admin/school/**" />
-            <bean class="com.houseyoung.student.interceptor.AdminInterceptor">
-                <!--忽略地址-->
-                <property name="loginUrl" value="/admin/login"/>
-                <property name="forbiddenUrl" value="/forbidden"/>
-            </bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <!--TODO:为了方便套页，暂时注释掉，套页后再加回-->
+    <!--<mvc:interceptors>-->
+        <!--&lt;!&ndash;学生功能拦截器&ndash;&gt;-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/user/*/**" />-->
+            <!--<bean class="com.houseyoung.student.interceptor.UserInterceptor">-->
+                <!--&lt;!&ndash;忽略地址&ndash;&gt;-->
+                <!--<property name="loginUrl" value="/user/login"/>-->
+                <!--<property name="forbiddenUrl" value="/forbidden"/>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+        <!--&lt;!&ndash;辅导员功能拦截器&ndash;&gt;-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/admin/class/**" />-->
+            <!--<mvc:mapping path="/admin/health/**" />-->
+            <!--<mvc:mapping path="/admin/instructor/**" />-->
+            <!--<mvc:mapping path="/admin/score/**" />-->
+            <!--<mvc:mapping path="/admin/student/**" />-->
+            <!--<bean class="com.houseyoung.student.interceptor.InstructorInterceptor">-->
+                <!--&lt;!&ndash;忽略地址&ndash;&gt;-->
+                <!--<property name="loginUrl" value="/admin/login"/>-->
+                <!--<property name="forbiddenUrl" value="/forbidden"/>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+        <!--&lt;!&ndash;管理员功能拦截器&ndash;&gt;-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/admin/admin/**" />-->
+            <!--<mvc:mapping path="/admin/course/**" />-->
+            <!--<mvc:mapping path="/admin/department/**" />-->
+            <!--<mvc:mapping path="/admin/school/**" />-->
+            <!--<bean class="com.houseyoung.student.interceptor.AdminInterceptor">-->
+                <!--&lt;!&ndash;忽略地址&ndash;&gt;-->
+                <!--<property name="loginUrl" value="/admin/login"/>-->
+                <!--<property name="forbiddenUrl" value="/forbidden"/>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 </beans>

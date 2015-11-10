@@ -1,16 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: houseyoung
-  Date: 15/11/9
-  Time: 22:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<footer role="contentinfo">
+  <div class="clearfix footer">
+    <ul class="list-unstyled list-inline pull-left">
+      <li>&copy;东北师范大学信息与软件工程学院</li>
+    </ul>
+  </div>
+</footer>

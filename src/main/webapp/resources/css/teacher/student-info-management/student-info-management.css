@@ -1,0 +1,18 @@
+.add{
+	position: absolute;
+	right: 20px;
+	top: 5px;
+}
+.btn-primary, .btn-primary.add {
+    background-color: #436e90;
+    border-color: #436e90;
+    border-radius: 0;
+    color: #ffffff;
+    font-size: 12px;
+}
+.save{
+	margin-right: 40px;
+}
+.row.foot{
+	margin-bottom: 20px;
+}

@@ -1,6 +1,7 @@
 package com.houseyoung.student.service;
 
 import com.houseyoung.student.dto.StudentDto;
+import com.houseyoung.student.entity.Student;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

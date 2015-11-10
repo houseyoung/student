@@ -12,6 +12,6 @@
 <body>
 <a href="${website}admin">管理员登录</a><br>
 ----------------------<br>
-<a href="${website}user">学生登录</a><br>
+<a href="${website}student">学生登录</a><br>
 </body>
 </html>
