@@ -24,17 +24,12 @@ public class AdminLoginController {
     @Resource
     private AdminService adminService;
 
-    //记录登录的ID
-    private int id;
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String toLogin(HttpServletRequest request, Model model) throws Exception{
         try {
             if (request.getSession().getAttribute("admin") != null) {
                 return "redirect:admin/index";
             } else {
-                //清除记录的ID
-                id = 0;
                 return "admin/login/login";
             }
         } catch (Exception e) {
@@ -49,8 +44,6 @@ public class AdminLoginController {
             if (request.getSession().getAttribute("admin") != null) {
                 return "redirect:index";
             } else {
-                //清除记录的ID
-                id = 0;
                 return "admin/login/login";
             }
         } catch (Exception e) {
@@ -63,8 +56,6 @@ public class AdminLoginController {
     public String login(Admin admin, Admin instructor, Model model, HttpServletRequest request) throws Exception{
         try {
             if (adminService.checkRole(admin) == 1) {
-                //记录登录的ID
-                id = adminService.getIdByUsername(admin);
 
                 //清除学生、辅导员登录信息
                 request.getSession().removeAttribute("studentDto");
@@ -94,19 +85,17 @@ public class AdminLoginController {
         }
     }
 
-//    //登出
-//    @RequestMapping(value = {"logoff"}, method = RequestMethod.GET)
-//    public String logoff(HttpServletRequest request, Model model) throws Exception{
-//        try {
-//            request.getSession().removeAttribute("admin");
-//            //清除记录的ID
-//            id = 0;
-//            return "index";
-//        } catch (Exception e) {
-//            model.addAttribute("error", e.getMessage());
-//            return "index";
-//        }
-//    }
+    //登出
+    @RequestMapping(value = {"logoff"}, method = RequestMethod.GET)
+    public String logoff(HttpServletRequest request, Model model) throws Exception{
+        try {
+            request.getSession().removeAttribute("admin");
+            return "index";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "index";
+        }
+    }
 //
 //    //显示、搜索
 //    @RequestMapping(value = {"admin", "admin/"})

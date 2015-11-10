@@ -27,7 +27,7 @@ public interface AdminService {
     public void editHimself(Admin admin, String username, String password, String name) throws Exception;
 
     //通过Username获取ID，以解决Controller无法得到当前登录ID的问题
-    public int getIdByUsername(@Param("admin") Admin admin) throws Exception;
+    public int getIdByUsername(String username) throws Exception;
 
     public List<AdminDto> listInstructor(int classId,  String keywords) throws Exception;
 

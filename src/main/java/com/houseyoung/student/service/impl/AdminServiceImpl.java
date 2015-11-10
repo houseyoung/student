@@ -129,9 +129,9 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public int getIdByUsername(Admin admin) throws Exception{
+    public int getIdByUsername(String username) throws Exception{
         try {
-            return adminMapper.getIdByUsername(admin.getUsername());
+            return adminMapper.getIdByUsername(username);
         } catch (Exception e){
             throw new Exception("系统内部异常");
         }

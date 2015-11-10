@@ -94,6 +94,18 @@ public class StudentLoginController {
             return "student/index";
         }
     }
+
+    //登出
+    @RequestMapping(value = {"logoff"}, method = RequestMethod.GET)
+    public String logoff(HttpServletRequest request, Model model) throws Exception{
+        try {
+            request.getSession().removeAttribute("studentDto");
+            return "index";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "index";
+        }
+    }
 //
 //    //修改密码
 //    @RequestMapping(value = "editpassword", method = RequestMethod.GET)
@@ -141,19 +153,7 @@ public class StudentLoginController {
 //        }
 //    }
 //
-//    //登出
-//    @RequestMapping(value = {"logoff"}, method = RequestMethod.GET)
-//    public String logoff(HttpServletRequest request, Model model) throws Exception{
-//        try {
-//            request.getSession().removeAttribute("studentDto");
-//            //清除记录的学号
-//            studentId = null;
-//            return "index";
-//        } catch (Exception e) {
-//            model.addAttribute("error", e.getMessage());
-//            return "index";
-//        }
-//    }
+
 //
 //    //成绩页
 //    @RequestMapping(value = "score")

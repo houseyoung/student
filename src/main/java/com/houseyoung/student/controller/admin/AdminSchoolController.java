@@ -1,6 +1,8 @@
 package com.houseyoung.student.controller.admin;
 
+import com.houseyoung.student.entity.Admin;
 import com.houseyoung.student.entity.School;
+import com.houseyoung.student.service.AdminService;
 import com.houseyoung.student.service.SchoolService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -20,12 +23,25 @@ import java.util.List;
 @RequestMapping(value = "admin/school")
 public class AdminSchoolController {
     @Resource
+    private AdminService adminService;
+
+    @Resource
     private SchoolService schoolService;
 
     //显示、搜索
     @RequestMapping(value = "")
-    public String toList(String keywords, Model model) throws Exception{
+    public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
         try {
+            //显示右上角个人信息
+            String username = (String) request.getSession().getAttribute("admin");
+            int id = 0;
+            if (username != null) {
+                id = adminService.getIdByUsername(username);
+            }
+            Admin showHimself = adminService.showHimself(id);
+            model.addAttribute("showHimself", showHimself);
+
+
             List<School> listSchool = schoolService.listSchool(keywords);
             model.addAttribute("listSchool", listSchool);
             return "admin/school/list";
@@ -37,8 +53,18 @@ public class AdminSchoolController {
 
     //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
-    public String toInsert(Model model) throws Exception{
+    public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
+            //显示右上角个人信息
+            String username = (String) request.getSession().getAttribute("admin");
+            int id = 0;
+            if (username != null) {
+                id = adminService.getIdByUsername(username);
+            }
+            Admin showHimself = adminService.showHimself(id);
+            model.addAttribute("showHimself", showHimself);
+
+
             return "admin/school/insert";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
@@ -71,8 +97,12 @@ public class AdminSchoolController {
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model) throws Exception{
+    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception{
         try {
+            //显示右上角个人信息
+            Admin showHimself = adminService.showHimself(id);
+            model.addAttribute("showHimself", showHimself);
+
             School school = schoolService.queryById(id);
             model.addAttribute("school", school);
             return "admin/school/edit";
