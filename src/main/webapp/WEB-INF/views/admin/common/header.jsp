@@ -3,7 +3,7 @@
   <a class="logo-text menu-list-logo" href="javascript:;"><i class="fa fa-book"></i>学生资料管理系统</a>
   <ul class="nav navbar-nav hello pull-right">
     <li class="J_headMenu">
-      <a class="menu-list" href="javascript:;">你好，${showHimself.username}！<span class="caret"></span></a>
+      <a class="menu-list" href="javascript:;">你好，${username}！<span class="caret"></span></a>
       <ul class="dropdown-menu arrow J_headSubMenu" aria-labelledby="dLabel">
         <li><a href="#"><i class="fa fa-user"></i>&nbsp;修改个人信息</a></li>
         <li class="divider"></li>

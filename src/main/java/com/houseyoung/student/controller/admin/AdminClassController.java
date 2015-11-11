@@ -1,9 +1,8 @@
 package com.houseyoung.student.controller.admin;
 
-import com.houseyoung.student.entity.Admin;
-import com.houseyoung.student.entity.School;
+import com.houseyoung.student.dto.ClassDto;
+import com.houseyoung.student.service.ClassService;
 import com.houseyoung.student.service.AdminService;
-import com.houseyoung.student.service.SchoolService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * AdminSchoolController
+ * AdminClassController
  *
  * @author: yangch
- * @time: 2015/11/10 19:13
+ * @time: 2015/11/11 9:15
  */
 @Controller
-@RequestMapping(value = "admin/school")
-public class AdminSchoolController {
+@RequestMapping(value = "/admin/class")
+public class AdminClassController {
     @Resource
-    private AdminService adminService;
-
-    @Resource
-    private SchoolService schoolService;
+    private ClassService classService;
 
     //显示、搜索
     @RequestMapping(value = "")
@@ -36,12 +32,13 @@ public class AdminSchoolController {
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            List<School> listSchool = schoolService.listSchool(keywords);
-            model.addAttribute("listSchool", listSchool);
-            return "admin/school/list";
+            //管理员的ClassID=0
+            List<ClassDto> listClass = classService.listClass(0, keywords);
+            model.addAttribute("listClass", listClass);
+            return "admin/class/list";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/school/list";
+            return "admin/class/list";
         }
     }
 
@@ -53,21 +50,21 @@ public class AdminSchoolController {
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            return "admin/school/insert";
+            return "admin/class/insert";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/school/list";
+            return "admin/class/list";
         }
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(School school, Model model) throws Exception{
+    public String insert(ClassDto classDto, Model model) throws Exception{
         try {
-            schoolService.insert(school);
+            classService.insert(classDto);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/school/insert";
+            return "admin/class/insert";
         }
     }
 
@@ -75,39 +72,39 @@ public class AdminSchoolController {
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
-            schoolService.delete(id);
+            classService.delete(id);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/school/list";
+            return "admin/class/list";
         }
     }
 
     //修改
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception{
+    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception {
         try {
             //显示右上角个人信息
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            School school = schoolService.queryById(id);
-            model.addAttribute("school", school);
-            return "admin/school/edit";
+            ClassDto classDto = classService.queryById(id);
+            model.addAttribute("classDto", classDto);
+            return "admin/class/edit";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/school/list";
+            return "admin/class/list";
         }
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String edit(School school, Model model) throws Exception{
+    public String edit(ClassDto classDto, Model model) throws Exception{
         try {
-            schoolService.update(school);
+            classService.update(classDto);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/school/edit";
+            return "admin/class/edit";
         }
     }
 }

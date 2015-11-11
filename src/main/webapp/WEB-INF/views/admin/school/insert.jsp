@@ -6,7 +6,7 @@
 	<head>
 		<title>学院基本信息管理</title>
 		<%@ include file="../common/head.jsp" %>
-		<link rel="stylesheet" href="${website}/resources/css/admin/student-info-management/student-info-management.css" />
+		<link rel="stylesheet" href="${website}resources/css/admin/student-info-management/student-info-management.css" />
 	</head>
 	<body>
 		<%@ include file="../common/header.jsp" %>

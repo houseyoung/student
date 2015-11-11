@@ -6,7 +6,7 @@
 	<head>
 		<title>学院基本信息管理</title>
 		<%@ include file="../common/head.jsp" %>
-		<link rel="stylesheet" href="/resources/css/admin/student-info-management/student-info-management.css" />
+		<link rel="stylesheet" href="${website}resources/css/admin/student-info-management/student-info-management.css" />
 	</head>
 	<body>
 		<%@ include file="../common/header.jsp" %>
@@ -54,7 +54,7 @@
 											</thead>
 											<tbody>
 											<c:forEach var="school" items="${listSchool}">
-												<tr data-student-id="${school.id}">
+												<tr>
 									    			<td>${school.id}</td>
 									    			<td>${school.name}</td>
 									    			<td>${school.university}</td>
@@ -75,7 +75,7 @@
 				</div><!-- container -->
 			</div><!-- holder -->
 		</div><!-- page -->		
-			<%@ include file="../common/footer.jsp" %>
+		<%@ include file="../common/footer.jsp" %>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('.J_del').click(function(){
