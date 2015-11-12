@@ -24,9 +24,6 @@ public class AdminScoreController {
     @Resource
     private ScoreService scoreService;
 
-    @Resource
-    private AdminService adminService;
-
     //ÏÔÊ¾¡¢ËÑË÷
     @RequestMapping(value = {"", "list"})
     public String toList(String studentId, String courseName, Model model, HttpServletRequest request) throws Exception{
