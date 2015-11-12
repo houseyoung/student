@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>成绩信息管理</title>
+		<title>学生信息管理</title>
 		<%@ include file="../common/head.jsp" %>
 		<link rel="stylesheet" href="${website}/resources/css/admin/student-info-management/student-info-management.css" />
 	</head>
@@ -18,30 +18,25 @@
 						<div class="col-sm-12">
 							<ol class="breadcrumb">
 								<li><a href="#"><i class="fa fa-home"></i>&nbsp;管理员</a></li>
-								<li class="active">成绩信息管理</li>
+								<li><a href="#">学生信息管理</a></li>
+								<li class="active">学生基本信息管理</li>
 							</ol>
 						</div>
 						<div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>成绩信息列表</h4>
-									<a class="btn btn-primary add" href="${website}admin/score/insert"><i class="fa fa-plus"></i>&nbsp;添加</a>
+									<h4>学生基本信息列表</h4>
+									<a class="btn btn-primary add" href="${website}admin/student_info/insert"><i class="fa fa-plus"></i>&nbsp;添加</a>
 								</div>
 								<div class="panel-body">
-									<form class="form-horizontal" action="${website}admin/score" method="post">
+									<form class="form-horizontal" action="${website}admin/student_info" method="post">
 										<div class="form-group">
-											<div class="col-sm-1 col-sm-offset-1">
-												<label class="control-label">学号</label>
+											<div class="col-sm-1 col-sm-offset-3">
+												<label class="control-label">关键字</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="studentId" value="">
+												<input type="text" class="form-control" name="keywords" value="">
 										    </div>
-										    <div class="col-sm-1">
-												<label class="control-label">课程名称</label>
-											</div>
-											<div class="col-sm-3">
-												<input type="text" class="form-control" name="courseName" value="">
-										    </div>										    
 											<div class="col-sm-1">
 										    	<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i>&nbsp;搜索</button>
 										    </div>
@@ -51,30 +46,36 @@
 										<table class="table table-hover table-bordered">
 											<thead>
 												<tr>
-													<th>成绩编号</th>
 													<th>学号</th>
 													<th>姓名</th>
-													<th>课程编号</th>
-													<th>课程名称</th>
-													<th>成绩</th>
+													<th>性别</th>
+													<th>所属班级</th>
+													<th>所属系</th>
+													<th>所属学院</th>
+													<th>生日</th>
+													<th>籍贯</th>
+													<th>兴趣</th>
 													<th>操作</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="scoreDto" items="${listScore}">
+												<c:forEach var="studentDto" items="${listStudent}">
 												<tr>
-													<td>${scoreDto.id}</td>
-													<td>${scoreDto.studentId}</td>
-													<td>${scoreDto.studentName}</td>
-													<td>${scoreDto.courseId}</td>
-													<td>${scoreDto.courseName}</td>
-													<td>${scoreDto.score}</td>
+													<td>${studentDto.studentId}</td>
+													<td>${studentDto.studentName}</td>
+													<td>${studentDto.sex}</td>
+													<td>${studentDto.className}</td>
+													<td>${studentDto.departmentName}</td>
+													<td>${studentDto.schoolName}</td>
+													<td>${studentDto.birthday}</td>
+													<td>${studentDto.hometown}</td>
+													<td>${studentDto.interest}</td>
 									    			<td>
-									    				<a class="btn btn-primary btn-xs" href="${website}admin/score/edit?id=${scoreDto.id}"><i class="fa fa-pencil"></i>&nbsp;编辑</a>
-									    				<a class="btn btn-primary btn-xs J_del" href="${website}admin/score/delete?id=${scoreDto.id}"><i class="fa fa-times"></i>&nbsp;删除</a>
+									    				<a class="btn btn-primary btn-xs" href="${website}admin/student_info/edit?id=${studentDto.id}"><i class="fa fa-pencil"></i>&nbsp;编辑</a>
+									    				<a class="btn btn-primary btn-xs J_del" href="${website}admin/student_info/delete?id=${studentDto.id}"><i class="fa fa-times"></i>&nbsp;删除</a>
 									    			</td>
 									    		</tr>
-											</c:forEach>
+												</c:forEach>
 											</tbody>
 										</table>
 									</div>

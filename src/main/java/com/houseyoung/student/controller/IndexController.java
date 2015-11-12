@@ -17,10 +17,22 @@ public class IndexController {
     public String toLogin(HttpServletRequest request, Model model) throws Exception{
         try {
             if (request.getSession().getAttribute("admin") != null) {
+                //显示右上角个人信息
+                String username = (String) request.getSession().getAttribute("admin");
+                model.addAttribute("username", username);
+
                 return "admin/index";
             } else if (request.getSession().getAttribute("instructor") != null) {
+                //显示右上角个人信息
+                String username = (String) request.getSession().getAttribute("instructor");
+                model.addAttribute("username", username);
+
                 return "admin/index1";
             } else if (request.getSession().getAttribute("studentDto") != null) {
+                //显示右上角个人信息
+                String username = (String) request.getSession().getAttribute("studentDto");
+                model.addAttribute("username", username);
+
                 return "user/index";
             } else {
                 return "index";
@@ -31,6 +43,7 @@ public class IndexController {
         }
     }
 
+    //访问被拒绝页
     @RequestMapping(value = "forbidden")
     public String toForbidden(){
         return "forbidden";

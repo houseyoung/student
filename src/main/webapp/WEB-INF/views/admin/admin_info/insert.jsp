@@ -4,52 +4,53 @@
 <!doctype html>
 <html>
 <head>
-	<title>成绩信息管理</title>
+	<title>教职工信息管理</title>
 	<%@ include file="../common/head.jsp" %>
 	<link rel="stylesheet" href="${website}/resources/css/admin/student-info-management/student-info-management.css" />
 </head>
 <body>
-	<%@ include file="../common/header.jsp" %>
-	<div class="page clearfix">
-		<%@ include file="../common/sidebar.jsp" %>
+<%@ include file="../common/header.jsp" %>
+<div class="page clearfix">
+	<%@ include file="../common/sidebar.jsp" %>
 			<div class="holder">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
 							<ol class="breadcrumb">
 								<li><a href="#"><i class="fa fa-home"></i>&nbsp;管理员</a></li>
-								<li class="active">成绩信息管理</li>
+								<li><a href="#">教职工信息管理</a></li>
+								<li class="active">管理员权限管理</li>
 							</ol>
 						</div>
 						<div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>添加成绩信息</h4>
+									<h4>添加管理员</h4>
 								</div>
-								<form class="form-horizontal" action="${website}admin/score/insert" method="post">
+								<form class="form-horizontal" action="${website}admin/admin_info/insert" method="post">
 									<div class="panel-body">
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
-												<label class="control-label">课程编号</label>
+												<label class="control-label">用户名</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="courseId" value="">
+												<input type="text" class="form-control" name="username" value="">
 										    </div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
-												<label class="control-label">学号</label>
+												<label class="control-label">密码</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="studentId" value="">
+												<input type="password" class="form-control" name="password" value="">
 										    </div>
 										</div>
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
-												<label class="control-label">成绩</label>
+												<label class="control-label">姓名</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="score" value="">
+												<input type="text" class="form-control" name="name" value="">
 										    </div>
 										</div>
 									</div>
@@ -68,6 +69,6 @@
 				</div><!-- container -->
 			</div><!-- holder -->
 		</div><!-- page -->
-	<%@ include file="../common/footer.jsp" %>
+		<%@ include file="../common/footer.jsp" %>
 	</body>
 </html>

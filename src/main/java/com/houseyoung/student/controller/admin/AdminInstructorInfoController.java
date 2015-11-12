@@ -1,7 +1,6 @@
 package com.houseyoung.student.controller.admin;
 
-import com.houseyoung.student.dto.ClassDto;
-import com.houseyoung.student.service.ClassService;
+import com.houseyoung.student.dto.AdminDto;
 import com.houseyoung.student.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,98 +12,98 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * AdminClassController
+ * AdminInstructorInfoController
  *
  * @author: yangch
- * @time: 2015/11/11 9:15
+ * @time: 2015/11/12 14:59
  */
 @Controller
-@RequestMapping(value = "/admin/class")
-public class AdminClassController {
+@RequestMapping(value = "admin/instructor_info")
+public class AdminInstructorInfoController {
     @Resource
-    private ClassService classService;
+    private AdminService adminService;
 
-    //æ˜¾ç¤ºã€æœç´¢
+    //ÏÔÊ¾¡¢ËÑË÷
     @RequestMapping(value = {"", "list"})
     public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
         try {
-            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
+            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            //ç®¡ç†å‘˜çš„ClassID=0
-            List<ClassDto> listClass = classService.listClass(0, keywords);
-            model.addAttribute("listClass", listClass);
-            return "admin/class/list";
+            //¹ÜÀíÔ±µÄClassID=0
+            List<AdminDto> listInstructor = adminService.listInstructor(0, keywords);
+            model.addAttribute("listInstructor", listInstructor);
+            return "admin/instructor_info/list";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/instructor_info/list";
         }
     }
 
-    //å¢åŠ 
+    //Ôö¼Ó
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
-            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
+            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            return "admin/class/insert";
+            return "admin/instructor_info/insert";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/instructor_info/list";
         }
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(ClassDto classDto, Model model) throws Exception{
+    public String insert(AdminDto adminDto, Model model) throws Exception{
         try {
-            classService.insert(classDto);
+            adminService.insertInstructor(adminDto);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/insert";
+            return "admin/instructor_info/insert";
         }
     }
 
-    //åˆ é™¤
+    //É¾³ı
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
-            classService.delete(id);
+            adminService.delete(id);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/instructor_info/list";
         }
     }
 
-    //ä¿®æ”¹
+    //ĞŞ¸Ä
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception {
+    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception{
         try {
-            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
+            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            ClassDto classDto = classService.queryById(id);
-            model.addAttribute("classDto", classDto);
-            return "admin/class/edit";
+            AdminDto adminDto = adminService.queryInstructorById(id);
+            model.addAttribute("adminDto", adminDto);
+            return "admin/instructor_info/edit";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/instructor_info/list";
         }
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String edit(ClassDto classDto, Model model) throws Exception{
+    public String edit(AdminDto adminDto, Model model) throws Exception{
         try {
-            classService.update(classDto);
+            adminService.updateInstructor(adminDto);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/edit";
+            return "admin/instructor_info/edit";
         }
     }
 }

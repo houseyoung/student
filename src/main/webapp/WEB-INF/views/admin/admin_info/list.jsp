@@ -4,44 +4,39 @@
 <!doctype html>
 <html>
 	<head>
-		<title>成绩信息管理</title>
+		<title>教职工信息管理</title>
 		<%@ include file="../common/head.jsp" %>
 		<link rel="stylesheet" href="${website}/resources/css/admin/student-info-management/student-info-management.css" />
 	</head>
 	<body>
-		<%@ include file="../common/header.jsp" %>
-		<div class="page clearfix">
-			<%@ include file="../common/sidebar.jsp" %>
+	<%@ include file="../common/header.jsp" %>
+	<div class="page clearfix">
+		<%@ include file="../common/sidebar.jsp" %>
 			<div class="holder">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
 							<ol class="breadcrumb">
 								<li><a href="#"><i class="fa fa-home"></i>&nbsp;管理员</a></li>
-								<li class="active">成绩信息管理</li>
+								<li><a href="#">教职工信息管理</a></li>
+								<li class="active">管理员信息管理</li>
 							</ol>
 						</div>
 						<div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>成绩信息列表</h4>
-									<a class="btn btn-primary add" href="${website}admin/score/insert"><i class="fa fa-plus"></i>&nbsp;添加</a>
+									<h4>管理员列表</h4>
+									<a class="btn btn-primary add" href="${website}admin/admin_info/insert"><i class="fa fa-plus"></i>&nbsp;添加</a>
 								</div>
 								<div class="panel-body">
-									<form class="form-horizontal" action="${website}admin/score" method="post">
+									<form class="form-horizontal" action="${website}admin/admin_info" method="post">
 										<div class="form-group">
-											<div class="col-sm-1 col-sm-offset-1">
-												<label class="control-label">学号</label>
+											<div class="col-sm-1 col-sm-offset-3">
+												<label class="control-label">关键字</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="studentId" value="">
+												<input type="text" class="form-control" name="keywords" value="">
 										    </div>
-										    <div class="col-sm-1">
-												<label class="control-label">课程名称</label>
-											</div>
-											<div class="col-sm-3">
-												<input type="text" class="form-control" name="courseName" value="">
-										    </div>										    
 											<div class="col-sm-1">
 										    	<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i>&nbsp;搜索</button>
 										    </div>
@@ -51,31 +46,32 @@
 										<table class="table table-hover table-bordered">
 											<thead>
 												<tr>
-													<th>成绩编号</th>
-													<th>学号</th>
+													<th>管理员编号</th>
+													<th>用户名</th>
 													<th>姓名</th>
-													<th>课程编号</th>
-													<th>课程名称</th>
-													<th>成绩</th>
 													<th>操作</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="scoreDto" items="${listScore}">
 												<tr>
-													<td>${scoreDto.id}</td>
-													<td>${scoreDto.studentId}</td>
-													<td>${scoreDto.studentName}</td>
-													<td>${scoreDto.courseId}</td>
-													<td>${scoreDto.courseName}</td>
-													<td>${scoreDto.score}</td>
+													<td>${showHimself.id}</td>
+													<td>${showHimself.username}</td>
+													<td>${showHimself.name}</td>
+													<td><a class="btn btn-primary btn-xs" href="${website}admin/admin_info/edithimself"><i class="fa fa-pencil"></i>&nbsp;修改个人信息</a></td>
+												</tr>
+												<c:forEach var="admin" items="${listAdmin}">
+												<tr>
+													<td>${admin.id}</td>
+													<td>${admin.username}</td>
+													<td>${admin.name}</td>
 									    			<td>
-									    				<a class="btn btn-primary btn-xs" href="${website}admin/score/edit?id=${scoreDto.id}"><i class="fa fa-pencil"></i>&nbsp;编辑</a>
-									    				<a class="btn btn-primary btn-xs J_del" href="${website}admin/score/delete?id=${scoreDto.id}"><i class="fa fa-times"></i>&nbsp;删除</a>
-									    			</td>
+														<c:if test="${admin.id != id}">
+									    				<a class="btn btn-primary btn-xs J_del" href="${website}admin/admin_info/delete?id=${admin.id}"><i class="fa fa-times"></i>&nbsp;删除</a>
+														</c:if>
+													</td>
 									    		</tr>
-											</c:forEach>
 											</tbody>
+											</c:forEach>
 										</table>
 									</div>
 								</div>

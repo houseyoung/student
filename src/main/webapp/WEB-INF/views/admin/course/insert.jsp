@@ -24,7 +24,7 @@
 						<div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>编辑课程信息</h4>
+									<h4>添加课程</h4>
 								</div>
 								<form class="form-horizontal" action="${website}admin/course/insert" method="post">
 									<div class="panel-body">

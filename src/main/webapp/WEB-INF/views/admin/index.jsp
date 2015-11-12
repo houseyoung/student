@@ -1,33 +1,35 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: houseyoung
-  Date: 15/10/23
-  Time: 22:23
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!doctype html>
 <html>
-<head>
-    <title>AdminIndex</title>
-    <script type="text/javascript">
-        //错误提示
-        var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
+	<head>
+		<title>管理员主页</title>
+		<%@ include file="common/head.jsp" %>
+		<link rel="stylesheet" href="${website}resources/css/admin/student-info-management/student-info-management.css" />
+	</head>
+	<body>
+		<%@ include file="common/header.jsp" %>
+		<div class="page clearfix">
+			<%@ include file="common/sidebar.jsp" %>
+			<div class="holder">
+				<div class="container">
+					<div class="row">
 
-        if(error != null && error != '') {
-            alert(error);
-        }
-    </script>
-</head>
-<body>
-<a href="${website}admin/school">学院</a><br>
-<a href="${website}admin/department">系</a><br>
-<a href="${website}admin/class">班级</a><br>
-<a href="${website}admin/course">课程</a><br>
-<a href="${website}admin/score">成绩</a><br>
-<a href="${website}admin/student">学生</a><br>
-<a href="${website}admin/health">健康</a><br>
-----------------------<br>
-<a href="${website}admin/admin">管理员</a><br>
-<a href="${website}admin/instructor">辅导员</a><br>
-<p><button onclick="location='${website}admin/logoff'">退出登录</button>
-</body>
+					</div><!-- row -->
+				</div><!-- container -->
+			</div><!-- holder -->
+		</div><!-- page -->
+		<%@ include file="common/footer.jsp" %>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.J_del').click(function(){
+					var 
+						tr = $(this).parent().parent();
+
+					tr.remove();
+				});
+			});
+		</script>
+	</body>
 </html>

@@ -152,9 +152,6 @@ public class AdminServiceImpl implements AdminService{
             if (adminDto.getUsername() == null || adminDto.getUsername() == "") {
                 throw new Exception("用户名不可为空");
             }
-            if (adminDto.getPassword() == null || adminDto.getPassword() == "") {
-                throw new Exception("密码不可为空");
-            }
             if (adminDto.getName() == null || adminDto.getName() == "") {
                 throw new Exception("姓名不可为空");
             }
@@ -171,7 +168,7 @@ public class AdminServiceImpl implements AdminService{
             //TODO: 判断所属班级是否存在
             //TODO: 判断所属系是否存在
             //TODO: 判断所属学院是否存在
-            adminDto.setPassword(MD5Util.md5(adminDto.getPassword()));
+            adminDto.setPassword(MD5Util.md5(adminDto.getUsername()));
             adminMapper.insertInstructor(adminDto);
         } catch (Exception e){
             throw e;

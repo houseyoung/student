@@ -1,7 +1,7 @@
 package com.houseyoung.student.controller.admin;
 
-import com.houseyoung.student.dto.ClassDto;
-import com.houseyoung.student.service.ClassService;
+import com.houseyoung.student.dto.ScoreDto;
+import com.houseyoung.student.service.ScoreService;
 import com.houseyoung.student.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,98 +13,101 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * AdminClassController
+ * AdminScoreController
  *
  * @author: yangch
- * @time: 2015/11/11 9:15
+ * @time: 2015/11/12 13:57
  */
 @Controller
-@RequestMapping(value = "/admin/class")
-public class AdminClassController {
+@RequestMapping(value = "admin/score")
+public class AdminScoreController {
     @Resource
-    private ClassService classService;
+    private ScoreService scoreService;
 
-    //ÊòæÁ§∫„ÄÅÊêúÁ¥¢
+    @Resource
+    private AdminService adminService;
+
+    //œ‘ æ°¢À—À˜
     @RequestMapping(value = {"", "list"})
-    public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
+    public String toList(String studentId, String courseName, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÊòæÁ§∫Âè≥‰∏äËßí‰∏™‰∫∫‰ø°ÊÅØ
+            //œ‘ æ”“…œΩ«∏ˆ»À–≈œ¢
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            //ÁÆ°ÁêÜÂëòÁöÑClassID=0
-            List<ClassDto> listClass = classService.listClass(0, keywords);
-            model.addAttribute("listClass", listClass);
-            return "admin/class/list";
+            //π‹¿Ì‘±µƒClassID=0
+            List<ScoreDto> listScore = scoreService.listScore(0, studentId, courseName);
+            model.addAttribute("listScore", listScore);
+            return "admin/score/list";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/score/list";
         }
     }
 
-    //Â¢ûÂä†
+    //‘ˆº”
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÊòæÁ§∫Âè≥‰∏äËßí‰∏™‰∫∫‰ø°ÊÅØ
+            //œ‘ æ”“…œΩ«∏ˆ»À–≈œ¢
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            return "admin/class/insert";
+            return "admin/score/insert";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/score/list";
         }
     }
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public String insert(ClassDto classDto, Model model) throws Exception{
+    public String insert(ScoreDto scoreDto, Model model) throws Exception{
         try {
-            classService.insert(classDto);
+            scoreService.insert(scoreDto);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/insert";
+            return "admin/score/insert";
         }
     }
 
-    //Âà†Èô§
+    //…æ≥˝
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
-            classService.delete(id);
+            scoreService.delete(id);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/score/list";
         }
     }
 
-    //‰øÆÊîπ
+    //–ﬁ∏ƒ
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception {
+    public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÊòæÁ§∫Âè≥‰∏äËßí‰∏™‰∫∫‰ø°ÊÅØ
+            //œ‘ æ”“…œΩ«∏ˆ»À–≈œ¢
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            ClassDto classDto = classService.queryById(id);
-            model.addAttribute("classDto", classDto);
-            return "admin/class/edit";
+            ScoreDto scoreDto = scoreService.queryById(id);
+            model.addAttribute("scoreDto", scoreDto);
+            return "admin/score/edit";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/list";
+            return "admin/score/list";
         }
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String edit(ClassDto classDto, Model model) throws Exception{
+    public String edit(ScoreDto scoreDto, Model model) throws Exception{
         try {
-            classService.update(classDto);
+            scoreService.update(scoreDto);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "admin/class/edit";
+            return "admin/score/edit";
         }
     }
 }

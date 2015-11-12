@@ -1,31 +1,73 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: houseyoung
-  Date: 15/10/10
-  Time: 23:09
---%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!doctype html>
 <html>
 <head>
-  <title>EditScore</title>
-  <script type="text/javascript">
-    //错误提示
-    var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
-
-    if(error != null && error != '') {
-      alert(error);
-    }
-  </script>
+	<title>成绩信息管理</title>
+	<%@ include file="../common/head.jsp" %>
+	<link rel="stylesheet" href="${website}/resources/css/admin/student-info-management/student-info-management.css" />
 </head>
 <body>
-<form action="${website}admin/score/edit?id=${scoreDto.id}" method="post">
-  课程编号: <input type="text" name="courseId" value="${scoreDto.courseId}"/> <br />
-  学号: <input type="text" name="studentId" value="${scoreDto.studentId}"/> <br />
-  成绩: <input type="text" name="score" value="${scoreDto.score}"/> <br />
-  <input type="submit" value="修改" />
-  <input type="reset" value="重置" />
-</form>
-</body>
+	<%@ include file="../common/header.jsp" %>
+	<div class="page clearfix">
+		<%@ include file="../common/sidebar.jsp" %>
+			<div class="holder">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<ol class="breadcrumb">
+								<li><a href="#"><i class="fa fa-home"></i>&nbsp;管理员</a></li>
+								<li class="active">成绩信息管理</li>
+							</ol>
+						</div>
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>编辑成绩信息</h4>
+								</div>
+								<form class="form-horizontal" action="${website}admin/score/edit?id=${scoreDto.id}" method="post">
+									<div class="panel-body">
+										<div class="form-group">
+											<div class="col-sm-1 col-sm-offset-3">
+												<label class="control-label">课程编号</label>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" name="courseId" value="${scoreDto.courseId}">
+										    </div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-1 col-sm-offset-3">
+												<label class="control-label">学号</label>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" name="studentId" value="${scoreDto.studentId}">
+										    </div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-1 col-sm-offset-3">
+												<label class="control-label">成绩</label>
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" name="score" value="${scoreDto.score}">
+										    </div>
+										</div>
+									</div>
+									<div class="row foot">
+							      		<div class="col-sm-6 col-sm-offset-4">
+							      			<div class="btn-toolbar">
+								      			<button class="btn-primary btn save" type="submit"><i class="fa fa-save"></i>&nbsp;保存</button>
+								      			<button class="btn-primary btn" type="reset"><i class="fa fa-undo"></i>&nbsp;重置</button>
+							      			</div>
+							      		</div>
+							      	</div>
+								</form>
+							</div>
+						</div>
+					</div><!-- row -->
+				</div><!-- container -->
+			</div><!-- holder -->
+		</div><!-- page -->
+	<%@ include file="../common/footer.jsp" %>
+	</body>
 </html>

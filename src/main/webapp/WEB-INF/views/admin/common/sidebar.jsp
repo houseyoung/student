@@ -11,21 +11,21 @@
     </a>
     <ul class="sub-menu J_subMenu">
       <li>
-        <a href="javascript:;"><span>基本信息管理</span></a>
+        <a href="${website}admin/student_info"><span>基本信息管理</span></a>
       </li>
       <li>
-        <a href="javascript:;"><span>健康状况信息管理</span></a>
+        <a href="${website}admin/health"><span>健康状况信息管理</span></a>
       </li>
     </ul>
   </li>
-  <li class="J_menu-li">
-    <a href="javascript:;">
+  <li class="">
+    <a href="${website}admin/course">
       <i class="fa fa-hand-o-right"></i>
       <span>课程信息管理</span>
     </a>
   </li>
-  <li class="J_menu-li">
-    <a href="javascript:;">
+  <li class="">
+    <a href="${website}admin/score">
       <i class="fa fa-hand-o-right"></i>
       <span>成绩信息管理</span>
     </a>
@@ -40,13 +40,13 @@
     </a>
     <ul class="sub-menu J_subMenu">
       <li>
-        <a href="javascript:;"><span>学院信息管理</span></a>
+        <a href="${website}admin/school"><span>学院信息管理</span></a>
       </li>
       <li>
-        <a href="javascript:;"><span>系信息管理</span></a>
+        <a href="${website}admin/department"><span>系信息管理</span></a>
       </li>
       <li>
-        <a href="javascript:;"><span>班级信息管理</span></a>
+        <a href="${website}admin/class"><span>班级信息管理</span></a>
       </li>
     </ul>
   </li>
@@ -60,10 +60,10 @@
     </a>
     <ul class="sub-menu J_subMenu">
       <li>
-        <a href="javascript:;"><span>管理员权限管理</span></a>
+        <a href="${website}admin/admin_info"><span>管理员信息管理</span></a>
       </li>
       <li>
-        <a href="javascript:;"><span>辅导员权限管理</span></a>
+        <a href="${website}admin/instructor_info"><span>辅导员信息管理</span></a>
       </li>
     </ul>
   </li>
@@ -99,7 +99,7 @@
       var
               that = this,
               li = $(ev).parent('li')
-      siblingLi = li.siblings('li'),
+              siblingLi = li.siblings('li'),
               siblingUl = siblingLi.children('ul'),
               subMenu = $(ev).next('ul'),
               subMenuLi = subMenu.children('li');

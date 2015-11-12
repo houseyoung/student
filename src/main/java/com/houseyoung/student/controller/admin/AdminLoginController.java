@@ -28,7 +28,11 @@ public class AdminLoginController {
     public String toLogin(HttpServletRequest request, Model model) throws Exception{
         try {
             if (request.getSession().getAttribute("admin") != null) {
-                return "redirect:admin/index";
+                //显示右上角个人信息
+                String username = (String) request.getSession().getAttribute("admin");
+                model.addAttribute("username", username);
+
+                return "admin/index";
             } else {
                 return "admin/login/login";
             }
@@ -42,7 +46,11 @@ public class AdminLoginController {
     public String toLogin1(HttpServletRequest request, Model model) throws Exception{
         try {
             if (request.getSession().getAttribute("admin") != null) {
-                return "redirect:index";
+                //显示右上角个人信息
+                String username = (String) request.getSession().getAttribute("admin");
+                model.addAttribute("username", username);
+
+                return "admin/index";
             } else {
                 return "admin/login/login";
             }
@@ -76,8 +84,12 @@ public class AdminLoginController {
 
     //管理员首页
     @RequestMapping(value = "index")
-    public String toIndex(Model model) throws Exception{
+    public String toIndex(Model model, HttpServletRequest request) throws Exception{
         try {
+            //显示右上角个人信息
+            String username = (String) request.getSession().getAttribute("admin");
+            model.addAttribute("username", username);
+
             return "admin/index";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

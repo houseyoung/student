@@ -24,7 +24,7 @@ public class AdminCourseController {
     private CourseService courseService;
 
     //显示、搜索
-    @RequestMapping(value = "")
+    @RequestMapping(value = {"", "list"})
     public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
         try {
             //显示右上角个人信息

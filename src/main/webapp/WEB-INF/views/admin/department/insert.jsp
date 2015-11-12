@@ -25,7 +25,7 @@
 						<div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>编辑系信息</h4>
+									<h4>添加系</h4>
 								</div>
 								<form class="form-horizontal" action="${website}admin/department/insert" method="post">
 									<div class="panel-body">
