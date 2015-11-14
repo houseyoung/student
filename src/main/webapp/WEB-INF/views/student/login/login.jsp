@@ -4,59 +4,27 @@
 	<head>
 		<title>学生登录</title>
 		<%@ include file="../common/head.jsp" %>
-		<link rel="stylesheet" href="${website}/resources/css/admin/login/login.css" />
+		<link rel="stylesheet" href="${website}/resources/css/student/login/login.css" />
 	</head>
 	<body class="login-background">
 		<div class="page container clearfix">
-			<div class="row">
-				<div class="login-heading">
-					<h3 class="text-center">学生资料管理系统</h3>
-				</div>
-			</div>
 			<form method="post" action="${website}student/login">
-				<div class="row">
-					<div class="login-body login-box">
-						<div class="title">
-							<h4 class="text-center margin-top-25 margin-bottom-30">欢迎学生登录
-							</h4>
-						</div> 
-						<div class="form-group">
-							<div class="input-group">
-								<span class="input-group-addon">
-									<span class="fa fa-user"></span>
-								</span>
-								<input class="form-control" type="text" name="studentId" value="">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<span class="input-group-addon">
-									<span class="fa fa-lock"></span>
-								</span>
-								<input class="form-control" type="password" name="password" value="">
-							</div>
-						</div>
-						<div class="checkbox pull-right margin-top-0 margin-bottom-15">
-							<label>
-								<input class="height-18" type="checkbox" name="remenber" value="0">
-								记住我的登录信息
-							</label>
-						</div>
-						<button class="btn btn-primary btn-block" type="submit">登录</button>
-					</div>
-				</div>
-				<div class="row">
-					<div class="login-footer clearfix">
-						<div class="tip-info pull-left">
-							<b>出现错误？</b>
-							<p>请联系管理员</p>
-						</div>
-						<div class="pull-right">
-							<button class="btn btn-default reset-btn" type="reset">重置
-							</button>
-						</div>
-					</div>
-				</div>
+				<div class="row-fluid login-wrapper">  
+					<h3 style="margin-bottom:40px;color:#fff;">学生资料管理系统</h3>	
+			        <div class="span4 box">
+			            <div class="content-wrap">
+			                <h6>欢迎登录</h6>
+			                <input class="span12" name="studentId" type="text" placeholder="请填写学号" />
+			                <input class="span12" name="password" type="password" placeholder="请填写登录密码" />
+			                <a href="#" class="forgot">忘记密码?</a>
+			                <div class="remember">
+			                    <input id="remember-me" type="checkbox" style="margin-left:14px;" />
+			                    <label for="remember-me">记住密码</label>
+			                </div>
+							<button class="btn btn-primary login" type="submit">登录</button>
+			            </div>
+			        </div>
+		    	</div>
 			</form>
 		</div>
 	</body>

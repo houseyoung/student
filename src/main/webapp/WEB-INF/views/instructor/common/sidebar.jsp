@@ -1,28 +1,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- <nav class="J_sidebar">     -->
     <ul class="nav nav-pills sidebar pull-left" id="sidebar">
+        <li class="J_menu-li">
+            <a href="javascript:;">
+                <i class="fa fa-hand-o-right"></i> 
+                <span>学生信息管理</span> 
+                <span class="angle pull-right">
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </a>
+            <ul class="sub-menu J_subMenu">
+                <li>
+                    <a href="javascript:;"><span>基本信息管理</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>健康状况信息管理</span></a>
+                </li>
+            </ul>
+        </li>
         <li class="">
             <a href="javascript:;">
                 <i class="fa fa-hand-o-right"></i> 
-                <span>个人信息管理</span> 
+                <span>课程信息管理</span>
+            </a>
+        </li>        
+        <li class="">
+            <a href="javascript:;">
+                <i class="fa fa-hand-o-right"></i> 
+                <span>成绩信息管理</span>
             </a>
         </li>
         <li class="">
             <a href="javascript:;">
                 <i class="fa fa-hand-o-right"></i> 
-                <span>查看成绩信息</span>
-            </a>
-        </li>   
-        <li class="">
-            <a href="javascript:;">
-                <i class="fa fa-hand-o-right"></i> 
-                <span>查看课程信息</span>
-            </a>
-        </li>       
-        <li class="">
-            <a href="javascript:;">
-                <i class="fa fa-hand-o-right"></i> 
-                <span>查看健康信息</span>
+                <span>班级信息管理</span>
             </a>
         </li>
     </ul>

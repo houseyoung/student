@@ -3,11 +3,11 @@
   	<a class="logo-text menu-list-logo" href="javascript:;"><i class="fa fa-book"></i>学生资料管理系统</a>
 	<ul class="nav navbar-nav hello pull-right">
 		<li class="J_headMenu">
-	  		<a class="menu-list" href="javascript:;">你好，${studentName}！<span class="caret"></span></a>
+	  		<a class="menu-list" href="javascript:;">你好，${username}！<span class="caret"></span></a>
 	  		<ul class="dropdown-menu arrow J_headSubMenu" aria-labelledby="dLabel">
-		    	<li><a href="#"><i class="fa fa-user"></i>&nbsp;修改密码</a></li>
+		    	<li><a href="${website}instructor/instructor_info/edithimself"><i class="fa fa-user"></i>&nbsp;修改个人信息</a></li>
 		    	<li class="divider"></li>
-		    	<li><a href="${website}student/logoff"><i class="fa fa-sign-out"></i>&nbsp;退出登录</a></li>
+		    	<li><a href="${website}instructor/logoff"><i class="fa fa-sign-out"></i>&nbsp;退出登录</a></li>
 		  	</ul>
 	  	</li>
 	</ul>
