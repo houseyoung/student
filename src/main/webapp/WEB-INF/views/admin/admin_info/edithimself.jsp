@@ -27,7 +27,7 @@
 								<div class="panel-heading">
 									<h4>修改个人信息</h4>
 								</div>
-								<form class="form-horizontal" action="${website}admin/admin_info/edithimself" method="post">
+								<form id="defaultForm" class="form-horizontal" action="${website}admin/admin_info/edithimself" method="post">
 									<div class="panel-body">
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
@@ -70,5 +70,37 @@
 			</div><!-- holder -->
 		</div><!-- page -->
 		<%@ include file="../common/footer.jsp" %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#defaultForm')
+				.bootstrapValidator({
+					feedbackIcons: {
+						valid: 'glyphicon glyphicon-ok',
+						invalid: 'glyphicon glyphicon-remove',
+						validating: 'glyphicon glyphicon-refresh'
+					},
+					fields: {
+						username: {
+							validators: {
+								notEmpty: {
+									message: '用户名不能为空'
+								}
+							}
+						},
+						name: {
+							validators: {
+								notEmpty: {
+									message: '姓名不能为空'
+								}
+							}
+						},
+					}
+				})
+				.on('success.form.bv', function(e) {
+					var $form = $(e.target);
+					$form[0].submit();
+				});
+	});
+</script>
 	</body>
 </html>

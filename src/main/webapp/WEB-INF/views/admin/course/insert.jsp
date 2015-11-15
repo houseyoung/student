@@ -26,7 +26,7 @@
 								<div class="panel-heading">
 									<h4>添加课程</h4>
 								</div>
-								<form class="form-horizontal" action="${website}admin/course/insert" method="post">
+								<form id="defaultForm" class="form-horizontal" action="${website}admin/course/insert" method="post">
 									<div class="panel-body">
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
@@ -83,7 +83,60 @@
 					</div><!-- row -->
 				</div><!-- container -->
 			</div><!-- holder -->
-		</div><!-- page -->		
-			<!--#include file="/pages/admin/common/footer.html"-->
+		</div><!-- page -->
+		<%@ include file="../common/footer.jsp" %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#defaultForm')
+						.bootstrapValidator({
+							feedbackIcons: {
+								valid: 'glyphicon glyphicon-ok',
+								invalid: 'glyphicon glyphicon-remove',
+								validating: 'glyphicon glyphicon-refresh'
+							},
+							fields: {
+								name: {
+									validators: {
+										notEmpty: {
+											message: '课程名称不能为空'
+										}
+									}
+								},
+								courseHour: {
+									validators: {
+										notEmpty: {
+											message: '课时不能为空'
+										}
+									}
+								},
+								credit: {
+									validators: {
+										notEmpty: {
+											message: '学分不能为空'
+										}
+									}
+								},
+								teacherName: {
+									validators: {
+										notEmpty: {
+											message: '授课教师不能为空'
+										}
+									}
+								},
+								place: {
+									validators: {
+										notEmpty: {
+											message: '授课地点不能为空'
+										}
+									}
+								},
+							}
+						})
+						.on('success.form.bv', function(e) {
+							var $form = $(e.target);
+							$form[0].submit();
+						});
+			});
+		</script>
 	</body>
 </html>

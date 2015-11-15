@@ -27,7 +27,7 @@
 								<div class="panel-heading">
 									<h4>添加学院</h4>
 								</div>
-								<form class="form-horizontal" action="${website}admin/school/insert" method="post">
+								<form id="defaultForm" class="form-horizontal" action="${website}admin/school/insert" method="post">
 									<div class="panel-body">
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
@@ -62,5 +62,37 @@
 			</div><!-- holder -->
 		</div><!-- page -->
 		<%@ include file="../common/footer.jsp" %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#defaultForm')
+						.bootstrapValidator({
+							feedbackIcons: {
+								valid: 'glyphicon glyphicon-ok',
+								invalid: 'glyphicon glyphicon-remove',
+								validating: 'glyphicon glyphicon-refresh'
+							},
+							fields: {
+								name: {
+									validators: {
+										notEmpty: {
+											message: '学院名称不能为空'
+										}
+									}
+								},
+								university: {
+									validators: {
+										notEmpty: {
+											message: '所属大学不能为空'
+										}
+									}
+								}
+							}
+						})
+						.on('success.form.bv', function(e) {
+							var $form = $(e.target);
+							$form[0].submit();
+						});
+			});
+		</script>
 	</body>
 </html>

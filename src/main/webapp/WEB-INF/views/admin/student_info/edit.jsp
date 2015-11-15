@@ -27,7 +27,7 @@
 								<div class="panel-heading">
 									<h4>编辑学生基本信息</h4>
 								</div>
-								<form class="form-horizontal" action="${website}admin/student_info/edit?id=${studentDto.id}" method="post">
+								<form id="defaultForm" class="form-horizontal" action="${website}admin/student_info/edit?id=${studentDto.id}" method="post">
 									<div class="panel-body">
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
@@ -118,5 +118,86 @@
 			</div><!-- holder -->
 		</div><!-- page -->
 		<%@ include file="../common/footer.jsp" %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#defaultForm')
+						.bootstrapValidator({
+							feedbackIcons: {
+								valid: 'glyphicon glyphicon-ok',
+								invalid: 'glyphicon glyphicon-remove',
+								validating: 'glyphicon glyphicon-refresh'
+							},
+							fields: {
+								studentId: {
+									validators: {
+										notEmpty: {
+											message: '学号不能为空'
+										}
+									}
+								},
+								studentName: {
+									validators: {
+										notEmpty: {
+											message: '姓名不能为空'
+										}
+									}
+								},
+								sex: {
+									validators: {
+										notEmpty: {
+											message: '性别不能为空'
+										}
+									}
+								},
+								className: {
+									validators: {
+										notEmpty: {
+											message: '所属班级不能为空'
+										}
+									}
+								},
+								departmentName: {
+									validators: {
+										notEmpty: {
+											message: '所属系不能为空'
+										}
+									}
+								},
+								schoolName: {
+									validators: {
+										notEmpty: {
+											message: '所属学院不能为空'
+										}
+									}
+								},
+								birthday: {
+									validators: {
+										notEmpty: {
+											message: '生日不能为空'
+										}
+									}
+								},
+								hometown: {
+									validators: {
+										notEmpty: {
+											message: '籍贯不能为空'
+										}
+									}
+								},
+								interest: {
+									validators: {
+										notEmpty: {
+											message: '兴趣不能为空'
+										}
+									}
+								}
+							}
+						})
+						.on('success.form.bv', function(e) {
+							var $form = $(e.target);
+							$form[0].submit();
+						});
+			});
+		</script>
 	</body>
 </html>

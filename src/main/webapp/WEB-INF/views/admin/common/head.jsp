@@ -7,6 +7,7 @@
 <link rel="icon" href="${website}resources/img/common/favicon.ico" />
 <link rel="stylesheet" href="${website}resources/css/base/reset.css" />
 <link rel="stylesheet" href="${website}resources/tool/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="${website}resources/tool/bootstrap/css/bootstrapValidator.css" />
 <link rel="stylesheet" href="${website}resources/tool/base-widget/css/font-awesome.css" />
 <link rel="stylesheet" href="${website}resources/css/admin/common/common.css" />
 <!--[if lt IE 9]>
@@ -16,6 +17,7 @@
 <script type="text/javascript" src="assets/plugins/charts-flot/excanvas.min.js"></script>
 <![endif]-->
 <script type="text/javascript" src="${website}resources/tool/jquery/jquery.js"></script>
+<script type="text/javascript" src="${website}resources/tool/bootstrap/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
     //错误提示
     var error = '<%=request.getAttribute("error") == null ? "" : request.getAttribute("error")%>'
