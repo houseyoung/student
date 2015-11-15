@@ -5,6 +5,7 @@ import com.houseyoung.student.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,18 +17,22 @@ import javax.servlet.http.HttpServletRequest;
  * @time: 2015/11/10 17:49
  */
 @Controller
-@RequestMapping(value = "student")
+@RequestMapping(value = "student/student_info")
 public class StudentInfoController {
     @Resource
     private StudentService studentService;
 
-    //个人信息页
-    @RequestMapping(value = "studentinfo")
+    //去个人信息页
+    @RequestMapping(value = {"", "list"})
     public String toIndex(Model model, HttpServletRequest request) throws Exception{
         try {
             //通过Session获取StudentID
             String studentId = (String) request.getSession().getAttribute("studentDto");
             StudentDto showHimself = studentService.showHimself(studentId);
+
+            //显示右上角个人信息
+            model.addAttribute("studentName", showHimself.getStudentName());
+
             model.addAttribute("showHimself", showHimself);
             return "student/student_info/list";
         } catch (Exception e) {
@@ -35,4 +40,73 @@ public class StudentInfoController {
             return "student/student_info/list";
         }
     }
+
+    //去修改兴趣页
+    @RequestMapping(value = "editinterest", method = RequestMethod.GET)
+    public String toEditInterest(Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取StudentID
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            StudentDto showHimself = studentService.showHimself(studentId);
+
+            //显示右上角个人信息
+            model.addAttribute("studentName", showHimself.getStudentName());
+
+            model.addAttribute("interest", showHimself.getInterest());
+            return "student/student_info/editinterest";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info/list";
+        }
+    }
+
+    @RequestMapping(value = "editinterest", method = RequestMethod.POST)
+    public String editInterest(StudentDto studentDto, String interest, Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取StudentID
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            //显示右上角个人信息
+            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+
+            studentDto.setStudentId(studentId);
+            studentService.editInterest(studentDto, interest);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info/editinterest";
+        }
+    }
+
+    //去修改密码页
+    @RequestMapping(value = "editpassword", method = RequestMethod.GET)
+    public String toEditPassword(Model model, HttpServletRequest request) throws Exception{
+        try {
+            //显示右上角个人信息
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+
+            return "student/student_info/editpassword";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info/list";
+        }
+    }
+
+    @RequestMapping(value = "editpassword", method = RequestMethod.POST)
+    public String editPassword(StudentDto studentDto, String password, Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取StudentID
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            //显示右上角个人信息
+            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+
+            studentDto.setStudentId(studentId);
+            studentService.editPassword(studentDto, password);
+            return "redirect:";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info";
+        }
+    }
+
 }

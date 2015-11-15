@@ -13,39 +13,39 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * AdminAdminInfoController
+ * AdminInfoController
  *
  * @author: yangch
  * @time: 2015/11/12 15:20
  */
 @Controller
 @RequestMapping(value = "admin/admin_info")
-public class AdminAdminInfoController {
+public class AdminInfoController {
     @Resource
     private AdminService adminService;
 
-    //显示、搜索
+    //锟斤拷示锟斤拷锟斤拷锟斤拷
     @RequestMapping(value = {"", "list"})
     public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
         try {
-            //通过Session获取Username，再通过Username获取id
+            //通锟斤拷Session锟斤拷取Username锟斤拷锟斤拷通锟斤拷Username锟斤拷取id
             String username = (String) request.getSession().getAttribute("admin");
             int id = 0;
             if (username != null) {
                 id = adminService.getIdByUsername(username);
             }
 
-            //显示右上角个人信息
+            //锟斤拷示锟斤拷锟较角革拷锟斤拷锟斤拷息
             model.addAttribute("username", username);
 
-            //输出登录人ID至前端
+            //锟斤拷锟斤拷锟铰硷拷锟絀D锟斤拷前锟斤拷
             model.addAttribute("id", id);
 
-            //显示除自己外其他人的信息
+            //锟斤拷示锟斤拷锟皆硷拷锟斤拷锟斤拷锟斤拷锟剿碉拷锟斤拷息
             List<Admin> listAdmin = adminService.listAdmin(keywords, id);
             model.addAttribute("listAdmin", listAdmin);
 
-            //显示自己的信息
+            //锟斤拷示锟皆硷拷锟斤拷锟斤拷息
             Admin showHimself = adminService.showHimself(id);
             model.addAttribute("showHimself", showHimself);
 
@@ -56,11 +56,11 @@ public class AdminAdminInfoController {
         }
     }
 
-    //增加
+    //锟斤拷锟斤拷
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
-            //显示右上角个人信息
+            //锟斤拷示锟斤拷锟较角革拷锟斤拷锟斤拷息
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
@@ -82,7 +82,7 @@ public class AdminAdminInfoController {
         }
     }
 
-    //删除
+    //删锟斤拷
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
@@ -94,21 +94,21 @@ public class AdminAdminInfoController {
         }
     }
 
-    //修改个人信息
+    //锟睫改革拷锟斤拷锟斤拷息
     @RequestMapping(value = "edithimself", method = RequestMethod.GET)
     public String toEditHimself(Model model, HttpServletRequest request) throws Exception{
         try {
-            //通过Session获取Username，再通过Username获取id
+            //通锟斤拷Session锟斤拷取Username锟斤拷锟斤拷通锟斤拷Username锟斤拷取id
             String username = (String) request.getSession().getAttribute("admin");
             int id = 0;
             if (username != null) {
                 id = adminService.getIdByUsername(username);
             }
 
-            //显示右上角个人信息
+            //锟斤拷示锟斤拷锟较角革拷锟斤拷锟斤拷息
             model.addAttribute("username", username);
 
-            //显示原有信息
+            //锟斤拷示原锟斤拷锟斤拷息
             Admin showHimself = adminService.showHimself(id);
             model.addAttribute("showHimself", showHimself);
             return "admin/admin_info/edithimself";
@@ -126,7 +126,7 @@ public class AdminAdminInfoController {
                 id = adminService.getIdByUsername(username);
             }
 
-            //显示右上角个人信息
+            //锟斤拷示锟斤拷锟较角革拷锟斤拷锟斤拷息
             model.addAttribute("username", username);
 
             admin.setId(id);

@@ -53,7 +53,7 @@
 													<td>${showHimself.hometown}</td>
 													<td>${showHimself.interest}</td>
 									    			<td>
-									    				<a class="btn btn-primary btn-xs" href="#"><i class="fa fa-pencil"></i>&nbsp;修改兴趣</a>
+									    				<a class="btn btn-primary btn-xs" href="${website}student/student_info/editinterest"><i class="fa fa-pencil"></i>&nbsp;修改兴趣</a>
 									    			</td>
 									    		</tr>
 											</tbody>
