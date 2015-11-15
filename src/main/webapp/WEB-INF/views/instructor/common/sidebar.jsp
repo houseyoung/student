@@ -11,27 +11,27 @@
             </a>
             <ul class="sub-menu J_subMenu">
                 <li>
-                    <a href="javascript:;"><span>基本信息管理</span></a>
+                    <a href="${website}instructor/student_info"><span>基本信息管理</span></a>
                 </li>
                 <li>
-                    <a href="javascript:;"><span>健康状况信息管理</span></a>
+                    <a href="${website}instructor/health"><span>健康状况信息管理</span></a>
                 </li>
             </ul>
         </li>
         <li class="">
-            <a href="javascript:;">
+            <a href="${website}instructor/course">
                 <i class="fa fa-hand-o-right"></i> 
                 <span>课程信息管理</span>
             </a>
         </li>        
         <li class="">
-            <a href="javascript:;">
+            <a href="${website}instructor/score">
                 <i class="fa fa-hand-o-right"></i> 
                 <span>成绩信息管理</span>
             </a>
         </li>
         <li class="">
-            <a href="javascript:;">
+            <a href="${website}instructor/class">
                 <i class="fa fa-hand-o-right"></i> 
                 <span>班级信息管理</span>
             </a>
