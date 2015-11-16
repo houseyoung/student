@@ -24,28 +24,28 @@ public class AdminInfoController {
     @Resource
     private AdminService adminService;
 
-    //��ʾ������
+    //显示、搜索
     @RequestMapping(value = {"", "list"})
     public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ͨ��Session��ȡUsername����ͨ��Username��ȡid
+            //通过Session获取Username，再通过Username获取ID
             String username = (String) request.getSession().getAttribute("admin");
             int id = 0;
             if (username != null) {
                 id = adminService.getIdByUsername(username);
             }
 
-            //��ʾ���ϽǸ�����Ϣ
+            //显示右上角个人信息
             model.addAttribute("username", username);
 
-            //�����¼��ID��ǰ��
+            //输出登录人ID至前端
             model.addAttribute("id", id);
 
-            //��ʾ���Լ��������˵���Ϣ
+            //显示除自己外其他人的信息
             List<Admin> listAdmin = adminService.listAdmin(keywords, id);
             model.addAttribute("listAdmin", listAdmin);
 
-            //��ʾ�Լ�����Ϣ
+            //显示自己的信息
             Admin showHimself = adminService.showHimself(id);
             model.addAttribute("showHimself", showHimself);
 
@@ -56,11 +56,11 @@ public class AdminInfoController {
         }
     }
 
-    //����
+    //增加
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
-            //��ʾ���ϽǸ�����Ϣ
+            //显示右上角个人信息
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
@@ -82,7 +82,7 @@ public class AdminInfoController {
         }
     }
 
-    //ɾ��
+    //删除
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
@@ -94,21 +94,21 @@ public class AdminInfoController {
         }
     }
 
-    //�޸ĸ�����Ϣ
+    //修改个人信息
     @RequestMapping(value = "edithimself", method = RequestMethod.GET)
     public String toEditHimself(Model model, HttpServletRequest request) throws Exception{
         try {
-            //ͨ��Session��ȡUsername����ͨ��Username��ȡid
+            //通过Session获取Username，再通过Username获取ID
             String username = (String) request.getSession().getAttribute("admin");
             int id = 0;
             if (username != null) {
                 id = adminService.getIdByUsername(username);
             }
 
-            //��ʾ���ϽǸ�����Ϣ
+            //显示右上角个人信息
             model.addAttribute("username", username);
 
-            //��ʾԭ����Ϣ
+            //显示原有信息
             Admin showHimself = adminService.showHimself(id);
             model.addAttribute("showHimself", showHimself);
             return "admin/admin_info/edithimself";
@@ -126,7 +126,7 @@ public class AdminInfoController {
                 id = adminService.getIdByUsername(username);
             }
 
-            //��ʾ���ϽǸ�����Ϣ
+            //显示右上角个人信息
             model.addAttribute("username", username);
 
             admin.setId(id);

@@ -24,15 +24,15 @@ public class AdminScoreController {
     @Resource
     private ScoreService scoreService;
 
-    //ÏÔÊ¾¡¢ËÑË÷
+    //æ˜¾ç¤ºã€æœç´¢
     @RequestMapping(value = {"", "list"})
     public String toList(String studentId, String courseName, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            //¹ÜÀíÔ±µÄClassID=0
+            //ç®¡ç†å‘˜çš„ClassID=0
             List<ScoreDto> listScore = scoreService.listScore(0, studentId, courseName);
             model.addAttribute("listScore", listScore);
             return "admin/score/list";
@@ -42,11 +42,11 @@ public class AdminScoreController {
         }
     }
 
-    //Ôö¼Ó
+    //å¢åŠ 
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
@@ -68,7 +68,7 @@ public class AdminScoreController {
         }
     }
 
-    //É¾³ı
+    //åˆ é™¤
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
@@ -80,11 +80,11 @@ public class AdminScoreController {
         }
     }
 
-    //ĞŞ¸Ä
+    //ä¿®æ”¹
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 

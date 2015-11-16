@@ -23,15 +23,15 @@ public class AdminInstructorInfoController {
     @Resource
     private AdminService adminService;
 
-    //ÏÔÊ¾¡¢ËÑË÷
+    //æ˜¾ç¤ºã€æœç´¢
     @RequestMapping(value = {"", "list"})
     public String toList(String keywords, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
-            //¹ÜÀíÔ±µÄClassID=0
+            //ç®¡ç†å‘˜çš„ClassID=0
             List<AdminDto> listInstructor = adminService.listInstructor(0, keywords);
             model.addAttribute("listInstructor", listInstructor);
             return "admin/instructor_info/list";
@@ -41,11 +41,11 @@ public class AdminInstructorInfoController {
         }
     }
 
-    //Ôö¼Ó
+    //å¢åŠ 
     @RequestMapping(value = "insert", method = RequestMethod.GET)
     public String toInsert(Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
@@ -67,7 +67,7 @@ public class AdminInstructorInfoController {
         }
     }
 
-    //É¾³ı
+    //åˆ é™¤
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String toDelete(Integer id, Model model) throws Exception{
         try {
@@ -79,11 +79,11 @@ public class AdminInstructorInfoController {
         }
     }
 
-    //ĞŞ¸Ä
+    //ä¿®æ”¹
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String toEdit(Integer id, Model model, HttpServletRequest request) throws Exception{
         try {
-            //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+            //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
             String username = (String) request.getSession().getAttribute("admin");
             model.addAttribute("username", username);
 
