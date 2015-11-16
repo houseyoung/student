@@ -2,6 +2,7 @@ package com.houseyoung.student.interceptor;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,12 +29,14 @@ public class InstructorInterceptor extends HandlerInterceptorAdapter {
 
         //登录后放行其他页
         HttpSession session = request.getSession();
-        if (session.getAttribute("admin") != null || session.getAttribute("instructor") != null) {
+        if (session.getAttribute("instructor") != null) {
             return true;
         }
 
         //非法访问时跳转至错误页
-        response.sendRedirect(request.getContextPath() + forbiddenUrl);
+        //(使用RequestDispatcher.forward跳转，地址栏地址不变)
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(request.getContextPath() + forbiddenUrl);
+        requestDispatcher.forward(request, response);
         return false;
     }
 }

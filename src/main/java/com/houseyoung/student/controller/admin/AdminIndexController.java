@@ -33,7 +33,7 @@ public class AdminIndexController {
     public String logoff(HttpServletRequest request, Model model) throws Exception{
         try {
             request.getSession().removeAttribute("admin");
-            return "index";
+            return "redirect:../index";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "index";

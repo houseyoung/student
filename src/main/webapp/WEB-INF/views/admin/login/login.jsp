@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>管理员登录</title>
+		<title>管理员/辅导员登录</title>
 		<%@ include file="../common/head.jsp"%>
 		<link rel="stylesheet" href="${website}resources/css/admin/login/login.css" />
 	</head>

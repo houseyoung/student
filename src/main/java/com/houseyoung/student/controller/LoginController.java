@@ -29,9 +29,9 @@ public class LoginController {
     @Resource
     private StudentService studentService;
 
-    //去管理员、辅导员登录页
+    //去管理员登录页
     @RequestMapping(value = {"admin", "admin/", "admin/login"}, method = RequestMethod.GET)
-    public String toAdminAndInstructorLogin(HttpServletRequest request, Model model) throws Exception{
+    public String toAdminLogin(HttpServletRequest request, Model model) throws Exception{
         try {
             if (request.getSession().getAttribute("admin") != null) {
                 //显示右上角个人信息
@@ -39,12 +39,31 @@ public class LoginController {
                 model.addAttribute("username", username);
 
                 return "admin/index";
-            } else if (request.getSession().getAttribute("instructor") != null) {
+            } else if (request.getSession().getAttribute("studentDto") != null || request.getSession().getAttribute("instructor") != null){
+                //若已使用学生、管理员身份登录，则跳转至屏蔽页
+                return "forbidden";
+            } else {
+                return "admin/login/login";
+            }
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "admin/login/login";
+        }
+    }
+
+    //去辅导员登录页
+    @RequestMapping(value = {"instructor", "instructor/", "instructor/login"}, method = RequestMethod.GET)
+    public String toInstructorLogin(HttpServletRequest request, Model model) throws Exception{
+        try {
+            if (request.getSession().getAttribute("instructor") != null) {
                 //显示右上角个人信息
                 String username = (String) request.getSession().getAttribute("instructor");
                 model.addAttribute("username", username);
 
                 return "instructor/index";
+            } else if (request.getSession().getAttribute("studentDto") != null || request.getSession().getAttribute("admin") != null){
+                //若已使用学生、管理员身份登录，则跳转至屏蔽页
+                return "forbidden";
             } else {
                 return "admin/login/login";
             }
@@ -59,7 +78,6 @@ public class LoginController {
     public String adminAndInstructorLogin(Admin admin, Admin instructor, Model model, HttpServletRequest request) throws Exception{
         try {
             if (adminService.checkRole(admin) == 1) {
-
                 //清除学生、辅导员登录信息
                 request.getSession().removeAttribute("studentDto");
                 request.getSession().removeAttribute("instructor");
@@ -95,6 +113,9 @@ public class LoginController {
                 model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
 
                 return "student/index";
+            } else if (request.getSession().getAttribute("instructor") != null || request.getSession().getAttribute("admin") != null){
+                //若已使用管理员/辅导员身份登录，则跳转至屏蔽页
+                return "forbidden";
             } else {
                 return "student/login/login";
             }

@@ -17,23 +17,23 @@ public class IndexController {
     public String toLogin(HttpServletRequest request, Model model) throws Exception{
         try {
             if (request.getSession().getAttribute("admin") != null) {
-                //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+                //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
                 String username = (String) request.getSession().getAttribute("admin");
                 model.addAttribute("username", username);
 
                 return "admin/index";
             } else if (request.getSession().getAttribute("instructor") != null) {
-                //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+                //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
                 String username = (String) request.getSession().getAttribute("instructor");
                 model.addAttribute("username", username);
 
-                return "admin/index1";
+                return "instructor/index";
             } else if (request.getSession().getAttribute("studentDto") != null) {
-                //ÏÔÊ¾ÓÒÉÏ½Ç¸öÈËĞÅÏ¢
+                //æ˜¾ç¤ºå³ä¸Šè§’ä¸ªäººä¿¡æ¯
                 String username = (String) request.getSession().getAttribute("studentDto");
                 model.addAttribute("username", username);
 
-                return "user/index";
+                return "student/index";
             } else {
                 return "index";
             }
@@ -43,7 +43,7 @@ public class IndexController {
         }
     }
 
-    //·ÃÎÊ±»¾Ü¾øÒ³
+    //æ‹’ç»è®¿é—®é¡µ
     @RequestMapping(value = "forbidden")
     public String toForbidden(){
         return "forbidden";
