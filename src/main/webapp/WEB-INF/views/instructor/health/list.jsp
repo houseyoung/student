@@ -26,7 +26,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4>学生健康信息列表</h4>
-									<a class="btn btn-primary add" href="#"><i class="fa fa-plus"></i>&nbsp;添加</a>
+									<a class="btn btn-primary add" href="${website}instructor/health/insert"><i class="fa fa-plus"></i>&nbsp;添加</a>
 								</div>
 								<div class="panel-body">
 									<form class="form-horizontal" action="${website}instructor/health" method="post">

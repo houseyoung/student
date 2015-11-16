@@ -39,14 +39,6 @@
 										</div>
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
-												<label class="control-label">姓名</label>
-											</div>
-											<div class="col-sm-3">
-												<input type="text" class="form-control" name="studentName" value="">
-										    </div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-1 col-sm-offset-3">
 												<label class="control-label">身高</label>
 											</div>
 											<div class="col-sm-3">
@@ -100,13 +92,6 @@
 			                    validators: {
 			                        notEmpty: {
 			                            message: '学号不能为空'
-			                        }
-			                    }
-			                },
-			                studentName: {
-			                    validators: {
-			                        notEmpty: {
-			                            message: '姓名不能为空'
 			                        }
 			                    }
 			                },

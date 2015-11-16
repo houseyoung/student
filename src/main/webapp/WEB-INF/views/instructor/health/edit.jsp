@@ -34,15 +34,7 @@
 												<label class="control-label">学号</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="studentId" value="edit?id=${healthDto.studentId}">
-										    </div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-1 col-sm-offset-3">
-												<label class="control-label">姓名</label>
-											</div>
-											<div class="col-sm-3">
-												<input type="text" class="form-control" name="studentName" value="edit?id=${healthDto.studentName}">
+												<input type="text" class="form-control" name="studentId" value="${healthDto.studentId}">
 										    </div>
 										</div>
 										<div class="form-group">
@@ -50,7 +42,7 @@
 												<label class="control-label">身高</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="height" value="edit?id=${healthDto.height}">
+												<input type="text" class="form-control" name="height" value="${healthDto.height}">
 										    </div>
 										</div>
 										<div class="form-group">
@@ -58,7 +50,7 @@
 												<label class="control-label">体重</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="weight" value="edit?id=${healthDto.weight}">
+												<input type="text" class="form-control" name="weight" value="${healthDto.weight}">
 										    </div>
 										</div>
 										<div class="form-group">
@@ -66,7 +58,7 @@
 												<label class="control-label">营养状况</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="nutrition" value="edit?id=${healthDto.nutrition}">
+												<input type="text" class="form-control" name="nutrition" value="${healthDto.nutrition}">
 										    </div>
 										</div>
 									</div>
@@ -100,13 +92,6 @@
 			                    validators: {
 			                        notEmpty: {
 			                            message: '学号不能为空'
-			                        }
-			                    }
-			                },
-			                studentName: {
-			                    validators: {
-			                        notEmpty: {
-			                            message: '姓名不能为空'
 			                        }
 			                    }
 			                },
