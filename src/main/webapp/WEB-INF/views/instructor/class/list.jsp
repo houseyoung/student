@@ -25,7 +25,6 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4>班级信息列表</h4>
-									<a class="btn btn-primary add" href="#"><i class="fa fa-plus"></i>&nbsp;添加</a>
 								</div>
 								<div class="panel-body">
 									<form class="form-horizontal" action="" method="">
@@ -34,7 +33,7 @@
 												<label class="control-label">关键字</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="key" value="">
+												<input type="text" class="form-control" name="keywords" value="">
 										    </div>
 											<div class="col-sm-1">
 										    	<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i>&nbsp;搜索</button>
@@ -56,7 +55,7 @@
 											<c:forEach var="classDto" items="${listClass}">
 												<tr>
 													<td>${classDto.id}</td>
-													<td>${classDto.className}</td>
+													<td>${classDto.classesName}</td>
 													<td>${classDto.departmentName}</td>
 													<td>${classDto.schoolName}</td>
 													<td>

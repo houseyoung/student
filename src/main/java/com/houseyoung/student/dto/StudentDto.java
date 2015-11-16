@@ -15,7 +15,7 @@ public class StudentDto {
     private String birthday;
     private String hometown;
     private String interest;
-    private String className;
+    private String classesName;
     private String departmentName;
     private String schoolName;
 
@@ -107,12 +107,12 @@ public class StudentDto {
         this.interest = interest;
     }
 
-    public String getClassName() {
-        return className;
+    public String getClassesName() {
+        return classesName;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClassesName(String classesName) {
+        this.classesName = classesName;
     }
 
     public String getDepartmentName() {

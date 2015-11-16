@@ -6,7 +6,7 @@
 	<head>
 		<title>学生信息管理</title>
 		<%@ include file="../common/head.jsp" %>
-		<link rel="stylesheet" href="${website}/resources/css/admin/student-info-management/student-info-management.css" />
+		<link rel="stylesheet" href="${website}resources/css/admin/student-info-management/student-info-management.css" />
 	</head>
 	<body>
 		<%@ include file="../common/header.jsp" %>
@@ -64,7 +64,7 @@
 													<td>${studentDto.studentId}</td>
 													<td>${studentDto.studentName}</td>
 													<td>${studentDto.sex}</td>
-													<td>${studentDto.className}</td>
+													<td>${studentDto.classesName}</td>
 													<td>${studentDto.departmentName}</td>
 													<td>${studentDto.schoolName}</td>
 													<td>${studentDto.birthday}</td>

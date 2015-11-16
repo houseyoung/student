@@ -155,7 +155,7 @@ public class AdminServiceImpl implements AdminService{
             if (adminDto.getName() == null || adminDto.getName() == "") {
                 throw new Exception("姓名不可为空");
             }
-            if (adminDto.getClassName() == null || adminDto.getClassName() == "") {
+            if (adminDto.getClassesName() == null || adminDto.getClassesName() == "") {
                 throw new Exception("所属班级不可为空");
             }
             if (adminDto.getDepartmentName() == null || adminDto.getDepartmentName() == "") {
@@ -184,7 +184,7 @@ public class AdminServiceImpl implements AdminService{
             if (adminDto.getName() == null || adminDto.getName() == "") {
                 throw new Exception("姓名不可为空");
             }
-            if (adminDto.getClassName() == null || adminDto.getClassName() == "") {
+            if (adminDto.getClassesName() == null || adminDto.getClassesName() == "") {
                 throw new Exception("所属班级不可为空");
             }
             if (adminDto.getDepartmentName() == null || adminDto.getDepartmentName() == "") {

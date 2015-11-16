@@ -7,7 +7,7 @@
         SELECT
         t_class.id AS id,
         t_department.id AS departmentId,
-        t_class.class_name AS className,
+        t_class.class_name AS classesName,
         t_department.department_name AS departmentName,
         t_school.school_name AS schoolName
         FROM t_class
@@ -27,7 +27,7 @@
         SELECT
         t_class.id AS id,
         t_department.id AS departmentId,
-        t_class.class_name AS className,
+        t_class.class_name AS classesName,
         t_department.department_name AS departmentName,
         t_school.school_name AS schoolName
         FROM t_class
@@ -38,7 +38,7 @@
 
     <insert id="insert">
         INSERT INTO t_class (class_name, department_id)
-        VALUES (#{classDto.className},
+        VALUES (#{classDto.classesName},
         (SELECT t_department.id FROM t_department
           WHERE department_name = #{classDto.departmentName}
           AND school_id = (SELECT id FROM t_school WHERE school_name = #{classDto.schoolName})))
@@ -46,7 +46,7 @@
 
     <update id="update">
         UPDATE t_class
-        SET class_name = #{classDto.className},
+        SET class_name = #{classDto.classesName},
         department_id = (SELECT t_department.id FROM t_department
           WHERE department_name = #{classDto.departmentName}
           AND school_id = (SELECT id FROM t_school WHERE school_name = #{classDto.schoolName}))

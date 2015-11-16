@@ -34,7 +34,7 @@
 												<label class="control-label">班级名称</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="className" value="">
+												<input type="text" class="form-control" name="classesName" value="">
 										    </div>
 										</div>
 										<div class="form-group">
@@ -80,7 +80,7 @@
 								validating: 'glyphicon glyphicon-refresh'
 							},
 							fields: {
-								className: {
+								classesName: {
 									validators: {
 										notEmpty: {
 											message: '班级名称不能为空'

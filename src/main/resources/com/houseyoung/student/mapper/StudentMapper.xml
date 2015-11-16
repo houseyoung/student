@@ -9,7 +9,7 @@
         t_student.student_id AS studentId,
         t_student.student_name AS studentName,
         t_student.sex AS sex,
-		t_class.class_name AS className,
+		t_class.class_name AS classesName,
 		t_department.department_name AS departmentName,
 		t_school.school_name AS schoolName,
 		t_student.birthday AS birthday,
@@ -35,7 +35,7 @@
         t_student.student_id AS studentId,
         t_student.student_name AS studentName,
         t_student.sex AS sex,
-        t_class.class_name AS className,
+        t_class.class_name AS classesName,
         t_department.department_name AS departmentName,
         t_school.school_name AS schoolName,
         t_student.birthday AS birthday,
@@ -56,7 +56,7 @@
         #{studentDto.studentName},
         #{studentDto.sex},
         (SELECT t_class.id FROM t_class
-          WHERE class_name = #{studentDto.className}
+          WHERE class_name = #{studentDto.classesName}
           AND t_class.department_id = (SELECT id FROM t_department
                                         WHERE department_name = #{studentDto.departmentName}
                                         AND t_department.school_id = (SELECT id FROM t_school
@@ -73,7 +73,7 @@
         student_name = #{studentDto.studentName},
         sex = #{studentDto.sex},
         class_id = (SELECT t_class.id FROM t_class
-                     WHERE class_name = #{studentDto.className}
+                     WHERE class_name = #{studentDto.classesName}
                      AND t_class.department_id = (SELECT id FROM t_department
                                                   WHERE department_name = #{studentDto.departmentName}
                                                   AND t_department.school_id = (SELECT id FROM t_school
@@ -94,7 +94,7 @@
         t_student.student_id AS studentId,
         t_student.student_name AS studentName,
         t_student.sex AS sex,
-        t_class.class_name AS className,
+        t_class.class_name AS classesName,
         t_department.department_name AS departmentName,
         t_school.school_name AS schoolName,
         t_student.birthday AS birthday,

@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
             if (studentDto.getSex() == null || studentDto.getSex() == "") {
                 throw new Exception("性别不可为空");
             }
-            if (studentDto.getClassName() == null || studentDto.getClassName() == "") {
+            if (studentDto.getClassesName() == null || studentDto.getClassesName() == "") {
                 throw new Exception("所属班级不可为空");
             }
             if (studentDto.getDepartmentName() == null || studentDto.getDepartmentName() == "") {
@@ -95,7 +95,7 @@ public class StudentServiceImpl implements StudentService {
             if (studentDto.getSex() == null || studentDto.getSex() == "") {
                 throw new Exception("性别不可为空");
             }
-            if (studentDto.getClassName() == null || studentDto.getClassName() == "") {
+            if (studentDto.getClassesName() == null || studentDto.getClassesName() == "") {
                 throw new Exception("所属班级不可为空");
             }
             if (studentDto.getDepartmentName() == null || studentDto.getDepartmentName() == "") {

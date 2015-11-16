@@ -24,7 +24,7 @@
   用户名: <input type="text" name="username" /> <br />
   密码: <input type="password" name="password" /> <br />
   姓名: <input type="text" name="name" /> <br />
-  所属班级: <input type="text" name="className" /> <br />
+  所属班级: <input type="text" name="classesName" /> <br />
   所属系: <input type="text" name="departmentName" /> <br />
   所属学院: <input type="text" name="schoolName" /> <br />
   <input type="submit" value="增加" />

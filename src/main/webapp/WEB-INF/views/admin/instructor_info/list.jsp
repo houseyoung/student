@@ -61,7 +61,7 @@
 													<td>${instructor.id}</td>
 													<td>${instructor.username}</td>
 													<td>${instructor.name}</td>
-													<td>${instructor.className}</td>
+													<td>${instructor.classesName}</td>
 													<td>${instructor.departmentName}</td>
 													<td>${instructor.schoolName}</td>
 									    			<td>

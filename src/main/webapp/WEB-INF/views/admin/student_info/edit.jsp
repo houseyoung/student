@@ -58,7 +58,7 @@
 												<label class="control-label">所属班级</label>
 											</div>
 											<div class="col-sm-3">
-												<input type="text" class="form-control" name="className" value="${studentDto.className}">
+												<input type="text" class="form-control" name="classesName" value="${studentDto.classesName}">
 										    </div>
 										</div>
 										<div class="form-group">
@@ -149,7 +149,7 @@
 										}
 									}
 								},
-								className: {
+								classesName: {
 									validators: {
 										notEmpty: {
 											message: '所属班级不能为空'

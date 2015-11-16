@@ -33,7 +33,7 @@
     <td>${showInstructorHimself.id}</td>
     <td>${showInstructorHimself.username}</td>
     <td>${showInstructorHimself.name}</td>
-    <td>${showInstructorHimself.className}</td>
+    <td>${showInstructorHimself.classesName}</td>
     <td>${showInstructorHimself.departmentName}</td>
     <td>${showInstructorHimself.schoolName}</td>
     <td>

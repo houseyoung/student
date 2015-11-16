@@ -10,7 +10,7 @@ public class AdminDto {
     private String username;
     private String password;
     private String name;
-    private String className;
+    private String classesName;
     private Integer departmentId;
     private Integer schoolId;
     private String departmentName;
@@ -64,12 +64,12 @@ public class AdminDto {
         this.name = name;
     }
 
-    public String getClassName() {
-        return className;
+    public String getClassesName() {
+        return classesName;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClassesName(String classesName) {
+        this.classesName = classesName;
     }
 
     public Integer getDepartmentId() {

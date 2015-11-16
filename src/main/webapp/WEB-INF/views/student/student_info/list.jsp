@@ -46,7 +46,7 @@
 													<td>${showHimself.studentId}</td>
 													<td>${showHimself.studentName}</td>
 													<td>${showHimself.sex}</td>
-													<td>${showHimself.className}</td>
+													<td>${showHimself.classesName}</td>
 													<td>${showHimself.departmentName}</td>
 													<td>${showHimself.schoolName}</td>
 													<td>${showHimself.birthday}</td>

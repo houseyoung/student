@@ -6,7 +6,7 @@ package com.houseyoung.student.dto;
 public class ClassDto {
     private Integer id;
     private Integer departmentId;
-    private String className;
+    private String classesName;
     private String departmentName;
     private String schoolName;
 
@@ -26,12 +26,12 @@ public class ClassDto {
         this.departmentId = departmentId;
     }
 
-    public String getClassName() {
-        return className;
+    public String getClassesName() {
+        return classesName;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClassesName(String classesName) {
+        this.classesName = classesName;
     }
 
     public String getDepartmentName() {

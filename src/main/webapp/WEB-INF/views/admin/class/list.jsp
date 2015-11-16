@@ -57,7 +57,7 @@
 												<c:forEach var="classDto" items="${listClass}">
 												<tr>
 													<td>${classDto.id}</td>
-													<td>${classDto.className}</td>
+													<td>${classDto.classesName}</td>
 													<td>${classDto.departmentName}</td>
 													<td>${classDto.schoolName}</td>
 									    			<td>

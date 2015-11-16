@@ -25,7 +25,6 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4>课程信息列表</h4>
-									<%--<a class="btn btn-primary add" href="#"><i class="fa fa-plus"></i>&nbsp;添加</a>--%>
 								</div>
 								<div class="panel-body">
 									<form class="form-horizontal" action="${website}instructor/course" method="post">
