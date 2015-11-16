@@ -1,6 +1,12 @@
 package com.houseyoung.student.controller.student;
 
+import com.houseyoung.student.dto.HealthDto;
+import com.houseyoung.student.dto.ScoreDto;
 import com.houseyoung.student.dto.StudentDto;
+import com.houseyoung.student.entity.Course;
+import com.houseyoung.student.service.CourseService;
+import com.houseyoung.student.service.HealthService;
+import com.houseyoung.student.service.ScoreService;
 import com.houseyoung.student.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * StudentInfoController
@@ -21,6 +28,15 @@ import javax.servlet.http.HttpServletRequest;
 public class StudentInfoController {
     @Resource
     private StudentService studentService;
+
+    @Resource
+    private HealthService healthService;
+
+    @Resource
+    private CourseService courseService;
+
+    @Resource
+    private ScoreService scoreService;
 
     //去个人信息页
     @RequestMapping(value = {"", "list"})
@@ -105,8 +121,61 @@ public class StudentInfoController {
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "student/student_info";
+            return "student/student_info/list";
         }
     }
 
+    //去健康页
+    @RequestMapping(value = "health")
+    public String toHealth(Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取StudentID
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            //显示右上角个人信息
+            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+
+            List<HealthDto> listHimself = healthService.listHimself(studentId);
+            model.addAttribute("listHimself", listHimself);
+            return "student/student_info/health";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info/list";
+        }
+    }
+
+    //去课程页
+    @RequestMapping(value = "course")
+    public String toCourse(Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取StudentID
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            //显示右上角个人信息
+            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+
+            List<Course> listHimself = courseService.listHimself(studentId);
+            model.addAttribute("listHimself", listHimself);
+            return "student/student_info/course";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info/list";
+        }
+    }
+
+    //去成绩页
+    @RequestMapping(value = "score")
+    public String toScore(Model model, HttpServletRequest request) throws Exception{
+        try {
+            //通过Session获取StudentID
+            String studentId = (String) request.getSession().getAttribute("studentDto");
+            //显示右上角个人信息
+            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+
+            List<ScoreDto> listHimself = scoreService.listHimself(studentId);
+            model.addAttribute("listHimself", listHimself);
+            return "student/student_info/score";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "student/student_info/list";
+        }
+    }
 }

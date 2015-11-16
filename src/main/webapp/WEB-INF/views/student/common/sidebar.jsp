@@ -11,18 +11,18 @@
                 <a href="${website}student/student_info"><span>基本信息</span></a>
             </li>
             <li>
-                <a href="${website}student/health"><span>健康状况信息</span></a>
+                <a href="${website}student/student_info/health"><span>健康状况信息</span></a>
             </li>
         </ul>
     </li>
     <li class="">
-        <a href="${website}student/score">
+        <a href="${website}student/student_info/score">
             <i class="fa fa-hand-o-right"></i>
             <span>查看成绩信息</span>
         </a>
     </li>
     <li class="">
-            <a href="${website}student/course">
+            <a href="${website}student/student_info/course">
                 <i class="fa fa-hand-o-right"></i> 
                 <span>查看课程信息</span>
             </a>
