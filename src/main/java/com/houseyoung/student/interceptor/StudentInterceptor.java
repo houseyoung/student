@@ -11,13 +11,10 @@ import javax.servlet.http.HttpSession;
  * Created by houseyoung on 2015/10/10 15:20.
  * Modify from http://jinnianshilongnian.iteye.com/blog/1670856 & http://www.cnblogs.com/AloneSword/p/3420286.html
  */
-public class UserInterceptor extends HandlerInterceptorAdapter{
-    private String loginUrl, forbiddenUrl;
+public class StudentInterceptor extends HandlerInterceptorAdapter{
+    private String loginUrl;
     public void setLoginUrl(String loginUrl) {
         this.loginUrl = loginUrl;
-    }
-    public void setForbiddenUrl(String forbiddenUrl) {
-        this.forbiddenUrl = forbiddenUrl;
     }
 
     @Override
@@ -35,7 +32,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter{
 
         //非法访问时跳转至错误页
         //(使用RequestDispatcher.forward跳转，地址栏地址不变)
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(request.getContextPath() + forbiddenUrl);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(request.getContextPath() + "/forbidden");
         requestDispatcher.forward(request, response);
         return false;
     }
