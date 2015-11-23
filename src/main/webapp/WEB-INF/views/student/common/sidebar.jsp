@@ -1,19 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- <nav class="J_sidebar">     -->
 <ul class="nav nav-pills sidebar pull-left" id="sidebar">
-    <li class="J_menu-li">
-        <a href="javascript:;">
+    <li class="">
+        <a href="${website}student/student_info">
             <i class="fa fa-hand-o-right"></i>
             <span>个人信息管理</span>
         </a>
-        <ul class="sub-menu J_subMenu">
-            <li>
-                <a href="${website}student/student_info"><span>基本信息</span></a>
-            </li>
-            <li>
-                <a href="${website}student/student_info/health"><span>健康状况信息</span></a>
-            </li>
-        </ul>
     </li>
     <li class="">
         <a href="${website}student/student_info/score">

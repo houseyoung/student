@@ -50,6 +50,9 @@ public class StudentInfoController {
             model.addAttribute("studentName", showHimself.getStudentName());
 
             model.addAttribute("showHimself", showHimself);
+
+            List<HealthDto> listHimselfHealth = healthService.listHimself(studentId);
+            model.addAttribute("listHimselfHealth", listHimselfHealth);
             return "student/student_info/list";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
@@ -119,24 +122,6 @@ public class StudentInfoController {
             studentDto.setStudentId(studentId);
             studentService.editPassword(studentDto, password);
             return "redirect:";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "student/student_info/list";
-        }
-    }
-
-    //去健康页
-    @RequestMapping(value = "health")
-    public String toHealth(Model model, HttpServletRequest request) throws Exception{
-        try {
-            //通过Session获取StudentID
-            String studentId = (String) request.getSession().getAttribute("studentDto");
-            //显示右上角个人信息
-            model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
-
-            List<HealthDto> listHimself = healthService.listHimself(studentId);
-            model.addAttribute("listHimself", listHimself);
-            return "student/student_info/health";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "student/student_info/list";
