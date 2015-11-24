@@ -4,7 +4,7 @@
 	<head>
 		<title>学生登录</title>
 		<%@ include file="../common/head.jsp" %>
-		<link rel="stylesheet" href="${website}/resources/css/admin/login/login.css" />
+		<link rel="stylesheet" href="${website}/resources/css/student/login/login.css" />
 	</head>
 	<body class="login-background">
 		<div class="page container clearfix">

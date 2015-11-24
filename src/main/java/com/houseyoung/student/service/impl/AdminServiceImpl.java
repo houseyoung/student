@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService{
                 throw new Exception("姓名不可为空");
             }
             //TODO: 判断用户名是否存在
-            admin.setPassword(MD5Util.md5(admin.getUsername()));
+            admin.setPassword(MD5Util.md5(admin.getPassword()));
             adminMapper.insertAdmin(admin);
         } catch (Exception e){
             throw e;
