@@ -22,7 +22,7 @@
     </script>
 </head>
 <body>
-<form action="${website}fileupload" method="post" enctype="multipart/form-data">
+<form action="${website}fileUpload" method="post" enctype="multipart/form-data">
     <input type="file" name="file"/> <input type="submit" value="Submit"/>
 </form>
 </body>

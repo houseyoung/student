@@ -48,6 +48,7 @@ public class StudentInfoController {
 
             //显示右上角个人信息
             model.addAttribute("studentName", showHimself.getStudentName());
+            model.addAttribute("studentId", studentId);
 
             model.addAttribute("showHimself", showHimself);
 
@@ -70,6 +71,7 @@ public class StudentInfoController {
 
             //显示右上角个人信息
             model.addAttribute("studentName", showHimself.getStudentName());
+            model.addAttribute("studentId", studentId);
 
             model.addAttribute("interest", showHimself.getInterest());
             return "student/student_info/editinterest";
@@ -86,6 +88,7 @@ public class StudentInfoController {
             String studentId = (String) request.getSession().getAttribute("studentDto");
             //显示右上角个人信息
             model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+            model.addAttribute("studentId", studentId);
 
             studentDto.setStudentId(studentId);
             studentService.editInterest(studentDto, interest);
@@ -96,35 +99,37 @@ public class StudentInfoController {
         }
     }
 
-    //去修改密码页
-    @RequestMapping(value = "editpassword", method = RequestMethod.GET)
+    //去修改个人信息页
+    @RequestMapping(value = "edithimself", method = RequestMethod.GET)
     public String toEditPassword(Model model, HttpServletRequest request) throws Exception{
         try {
             //显示右上角个人信息
             String studentId = (String) request.getSession().getAttribute("studentDto");
             model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+            model.addAttribute("studentId", studentId);
 
-            return "student/student_info/editpassword";
+            return "student/student_info/edithimself";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "student/student_info/list";
         }
     }
 
-    @RequestMapping(value = "editpassword", method = RequestMethod.POST)
+    @RequestMapping(value = "edithimself", method = RequestMethod.POST)
     public String editPassword(StudentDto studentDto, String password, Model model, HttpServletRequest request) throws Exception{
         try {
             //通过Session获取StudentID
             String studentId = (String) request.getSession().getAttribute("studentDto");
             //显示右上角个人信息
             model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+            model.addAttribute("studentId", studentId);
 
             studentDto.setStudentId(studentId);
             studentService.editPassword(studentDto, password);
             return "redirect:";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "student/student_info/list";
+            return "student/edithimself/list";
         }
     }
 
@@ -136,6 +141,7 @@ public class StudentInfoController {
             String studentId = (String) request.getSession().getAttribute("studentDto");
             //显示右上角个人信息
             model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+            model.addAttribute("studentId", studentId);
 
             List<Course> listHimself = courseService.listHimself(studentId);
             model.addAttribute("listHimself", listHimself);
@@ -154,6 +160,7 @@ public class StudentInfoController {
             String studentId = (String) request.getSession().getAttribute("studentDto");
             //显示右上角个人信息
             model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+            model.addAttribute("studentId", studentId);
 
             List<ScoreDto> listHimself = scoreService.listHimself(studentId);
             model.addAttribute("listHimself", listHimself);

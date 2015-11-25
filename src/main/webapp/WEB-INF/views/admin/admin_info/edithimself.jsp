@@ -27,7 +27,7 @@
 								<div class="panel-heading">
 									<h4>修改个人信息</h4>
 								</div>
-								<form id="defaultForm" class="form-horizontal" action="${website}admin/admin_info/edithimself" method="post">
+								<form id="defaultForm" class="form-horizontal" action="${website}admin/admin_info/edithimself" method="post" name="form" enctype="multipart/form-data">
 									<div class="panel-body">
 										<div class="form-group">
 											<div class="col-sm-1 col-sm-offset-3">
@@ -52,6 +52,15 @@
 											<div class="col-sm-3">
 												<input type="text" class="form-control" name="name" value="${showHimself.name}">
 										    </div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-1 col-sm-offset-3">
+												<label class="control-label">修改头像</label>
+											</div>
+											<div class="col-sm-3">
+												<img src="${website}resources/upload/pic/admin/${username}.png" onerror="javascript:this.src='${website}resources/img/common/empty.jpg'" width="80px" height="80px" style="margin-right:30px" /><button type="button" onclick="upload()" class="btn-primary btn"><i class="fa fa-save"></i>&nbsp;上传头像</button>
+												<input type="file" name="file" />
+											</div>
 										</div>
 									</div>
 									<div class="row foot">
@@ -101,6 +110,13 @@
 					$form[0].submit();
 				});
 	});
+</script>
+<script type="text/javascript">
+	function upload()
+	{
+		document.form.action="${website}uploadicon_admin";
+		document.form.submit();
+	}
 </script>
 	</body>
 </html>

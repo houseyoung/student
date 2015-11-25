@@ -59,7 +59,7 @@ public class FileUploadController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "upload";
+        return "redirect:admin/admin_info/edithimself";
     }
 
     //上传辅导员头像
@@ -81,7 +81,7 @@ public class FileUploadController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "upload";
+        return "redirect:instructor/edithimself";
     }
 
     //上传学生头像
@@ -103,7 +103,7 @@ public class FileUploadController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "upload";
+        return "redirect:student/student_info/edithimself";
     }
 
     //显示上传页

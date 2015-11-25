@@ -25,6 +25,7 @@ public class StudentIndexController {
             //显示右上角个人信息
             String studentId = (String) request.getSession().getAttribute("studentDto");
             model.addAttribute("studentName", studentService.showHimself(studentId).getStudentName());
+            model.addAttribute("studentId", studentId);
 
             return "student/index";
         } catch (Exception e) {
