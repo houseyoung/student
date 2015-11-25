@@ -93,9 +93,9 @@
 									message: '密码不能为空'
 								},
 								stringLength: {
-									min: 6,
+									min: 5,
 									max: 20,
-									message: '密码长度为6~20个字符'
+									message: '密码长度为5~20个字符'
 								}
 							}
 						},
