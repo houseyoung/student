@@ -13,6 +13,6 @@
 您没有访问该页面的权限，请返回重试。
 <br>
 <input type="button" name="Submit" onclick="javascript:history.back(-1);" value="返回上一页">
-<input type="button" name="Submit" onclick="${website}" value="返回首页">
+<button onclick="javascript:window.location.href='${website}';">返回首页</button>
 </body>
 </html>
